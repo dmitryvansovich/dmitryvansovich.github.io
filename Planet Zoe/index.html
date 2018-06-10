@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<!-- ANIMATIONS -->
+	<link rel="stylesheet" href="css/animate.css">
+
+	<!-- FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- STYLE -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- SCRIPTS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+	<title>Project "Zoe"</title>
+</head>
+<body>
+	<div class="loading" id="loading">
+		<div class="loading-text animated fadeIn py-4" id="loading-content">
+			<img src="./img/logo.png" width="300" height="300" id="img"><br>
+			<b class="shawn">SHAWN</ins></b>GAMES
+		</div>
+	</div>
+	<div class="menu row" id="menu">
+		<div class="col-md-4 p-4 pt-5 menu-left"><ul>
+			<li class="menu-item px-2 text-center py-3 mt-5" onclick="newGame();"><i class="fa fa-play-circle fa-fw text-white"></i> НОВАЯ ИГРА</li>
+			<li class="menu-item px-2 text-center py-3"><i class="fa fa-play-circle-o fa-fw text-white"></i> ПРОДОЛЖИТЬ</li>
+			<li class="menu-item px-2 text-center py-3"><i class="fa fa-gear fa-fw text-white"></i> НАСТРОЙКИ</li>
+			<li class="menu-item px-2 text-center py-3"><i class="fa fa-users fa-fw text-white"></i> АВТОРЫ</li>
+		</ul></div>
+		<div class="col menu-right">
+			<div class="game-name">Project "ZOE"</div>
+			<img id="shipimage" src="./img/spaceCraft4_SW.png" id="img" class="menu-img">
+			<div class="version">beta 0.3</div>
+		</div>
+	</div>
+	<div class="game row" id="game">
+		<div class="game-left col-md-3">
+			<div class="box py-3 px-2 my-10 row">
+				<div class="col-12 row">
+					<div class="col-1"><img class="icon" width="16" height="16" src="img/icons/army.png"></div>
+					<div class="col">
+						<div class="progress-back" id="armyback">
+							<div class="progress-bar" id="army" style="width: 50%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 row mt-2">
+					<div class="col-1"><img class="icon" width="16" height="16" src="img/icons/nature.png"></div>
+					<div class="col">
+						<div class="progress-back" id="natureback">
+							<div class="progress-bar" id="nature" style="width: 50%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 row mt-2">
+					<div class="col-1"><img class="icon" width="16" height="16" src="img/icons/peoples.png"></div>
+					<div class="col">
+						<div class="progress-back" id="peoplesback">
+							<div class="progress-bar" id="peoples" style="width: 50%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 row mt-2">
+					<div class="col-1"><img class="icon" width="16" height="16" src="img/icons/eat.png"></div>
+					<div class="col">
+						<div class="progress-back" id="eatback">
+							<div class="progress-bar" id="eat" style="width: 50%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 row mt-2">
+					<div class="col-1"><img class="icon" width="16" height="16" src="img/icons/money.png"></div>
+					<div class="col">
+						<div class="progress-back" id="moneyback">
+							<div class="progress-bar" id="money" style="width: 50%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 row mt-2 mb-4">
+					<div class="col-1"><img class="icon" width="16" height="16" src="img/icons/weapon.png"></div>
+					<div class="col">
+						<div class="progress-back" id="weaponback">
+							<div class="progress-bar" id="weapon" style="width: 50%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="mt-4 m-auto" id="year">
+					8721г.
+				</div>
+			</div>
+		</div>
+		<div class="game-center col-md-6">
+			<div class="box mx-1 my-5 p-3 text-center">
+				<p id="card-text">Следите за показателями слева(армия, природа, население, еда, деньги, оружие). Чтобы выиграть не доведите один из показателей до нуля.</p>
+				<button onclick="firstclick()" onmouseover="firsthover()" onmouseout="firstover()" class="card-left" id="first">Хорошо</button>
+				<button onclick="secondclick()" onmouseover="secondhover()" onmouseout="secondover()" class="card-right" id="second">Окей</button><br><br>
+				<b class="mt-1" id="card-title">Разработчик</b><br><br>
+				<div class="card text-align" id="card">
+					<img src="img/characters/web.png" id="card-image" style="margin: 47px 0 14.5px 14.5px;" width="120" height="120">
+				</div><br><br>
+			</div>
+		</div>
+		<div class="game-right col-md-3 my-10 text-center">
+			<img src="img/planets/3.png" id="planet" width="200" height="200">
+		</div>
+	</div>
+	<script>
+		document.getElementById('menu').className = "menu row d-none";
+		document.getElementById('game').className = "game row d-none";
+
+		setTimeout(function(){
+			document.getElementById('loading-content').className = "loading-text py-4 animated fadeOut";
+			setTimeout(function(){
+				document.getElementById('menu').className = "menu row";
+				document.getElementById('shipimage').className = "menu-img animated fadeInUp";
+				document.getElementById('loading').className = "d-none";
+			}, 1000);
+		}, 2000);
+
+		var thiscard = null;
+		var lastcard = null;
+		var thisGameOver = false;
+		var year = 8721;
+
+		var army = 50;
+		var nature = 50;
+		var peoples = 50;
+		var eat = 50;
+		var money = 50;
+		var weapon = 50;
+
+		var newGame = function(){
+			document.getElementById('menu').className = "menu row d-none";
+			document.getElementById('game').className = "game row";
+
+			thiscard = null;
+			lastcard = null;
+			thisGameOver = false;
+			year = 8721;
+
+			army = 50;
+			nature = 50;
+			peoples = 50;
+			eat = 50;
+			money = 50;
+			weapon = 50;
+
+			$('#card-title').text('Разработчик');
+			$('#card-text').text('Следите за показателями слева(армия, природа, население, еда, деньги, оружие). Чтобы выиграть не доведите один из показателей до нуля.');
+			$('#first').text('Хорошо');
+			$('#second').text('Окей');
+			$('#card-image').attr('src', 'img/characters/web.png');
+		}
+
+		var cards = [{
+			"cardtitle": "Солдат",
+			"cardtext": "Нам нужно построить защитные сооружения",
+			"first": "Да",
+			"second": "Нет",
+			"cardimage": "img/characters/soldier.png",
+			
+			"armyplus1": 10,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 20,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 20,
+			"weaponplus1": 10,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 10,
+			"natureplus2": 10,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 10,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 0,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 10,
+		},{
+			"cardtitle": "Генерал",
+			"cardtext": "Нужно добавить закон об обязательной службе в армии",
+			"first": "Да",
+			"second": "Нет",
+			"cardimage": "img/characters/general.png",
+			
+			"armyplus1": 10,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 20,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 10,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 10,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 10,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 10,
+		},{
+			"cardtitle": "Лётчик",
+			"cardtext": "Наши самолёты кто-то обстреливает с соседней планеты, разберитесь!",
+			"first": "Генерал!",
+			"second": "Не важно",
+			"cardimage": "img/characters/military.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 10,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 20,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 10,
+			"moneyminus1": 0,
+			"weaponplus1": 0,
+			"weaponminus1": 10,
+
+			"armyplus2": 0,
+			"armyminus2": 20,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 10,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 0,
+			"moneyminus2": 10,
+			"weaponplus2": 0,
+			"weaponminus2": 10,
+		},{
+			"cardtitle": "Детектив",
+			"cardtext": "В ходе последнего расследования было обнаружено пять убитых фермеров. Кто-то убивает их и крадёт запасы овощей!",
+			"first": "Генерал!",
+			"second": "Нам это выгодно",
+			"cardimage": "img/characters/detective.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 10,
+			"natureminus1": 0,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 20,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 0,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 10,
+			"peoplesplus2": 0,
+			"peoplesminus2": 10,
+			"eatplus2": 0,
+			"eatminus2": 20,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Артист",
+			"cardtext": 'Могу ли я сыграть Вас в фильме "101 несчастье ZOE"?',
+			"first": "Да",
+			"second": "Охрана!",
+			"cardimage": "img/characters/artist.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 20,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 20,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 20,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Астронавт",
+			"cardtext": "Господин президент, мы обнаружили три новые планеты с жизнью. Кажется, они слабо развиты.",
+			"first": "Захватим!",
+			"second": "Оставьте их",
+			"cardimage": "img/characters/astronaut.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 10,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 10,
+			"eatminus1": 0,
+			"moneyplus1": 10,
+			"moneyminus1": 0,
+			"weaponplus1": 0,
+			"weaponminus1": 10,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 10,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 0,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Шеф повар",
+			"cardtext": "В одном из ресторанов произошло возгорание.",
+			"first": "Спасайте людей!",
+			"second": "Спасайте склад!",
+			"cardimage": "img/characters/chef.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 20,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 20,
+			"eatplus2": 10,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Клоун",
+			"cardtext": "Нам нужно больше денег для развлечений.",
+			"first": "Да",
+			"second": "Нет",
+			"cardimage": "img/characters/clown.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 10,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Детектив",
+			"cardtext": "Шеф повар использует половые органы животных чтобы делать свою фирменную пиццу!",
+			"first": "Полиция!",
+			"second": "Нам это выгодно",
+			"cardimage": "img/characters/detective.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 10,
+			"eatplus1": 0,
+			"eatminus1": 10,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 0,
+			"eatplus2": 10,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Доктор",
+			"cardtext": "На планете появилась неизвестная болезнь, каждый день погибает всё больше и больше людей!",
+			"first": "Лечите людей!",
+			"second": "Нам это выгодно",
+			"cardimage": "img/characters/doctor.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 20,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Инженер",
+			"cardtext": "Мы создали новый мощный танк.",
+			"first": "Продайте",
+			"second": "Оставьте",
+			"cardimage": "img/characters/engineer.png",
+			
+			"armyplus1": 10,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 20,
+			"weaponplus1": 30,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 30,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 10,
+		},{
+			"cardtitle": "Пожарный",
+			"cardtext": "Господин президент, нам нужен транспорт быстрее нынешнего! Мы не успеваем приезжать!",
+			"first": "Инженеры!",
+			"second": "Учитесь водить!",
+			"cardimage": "img/characters/firefighter.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 10,
+			"natureminus1": 0,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 20,
+			"peoplesplus2": 0,
+			"peoplesminus2": 10,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Взломщик",
+			"cardtext": "Я смог взломать секретную защищенную военную систему связи. Вам стоило бы улучшить защиту.",
+			"first": "Да",
+			"second": "Охрана!",
+			"cardimage": "img/characters/hacker.png",
+			
+			"armyplus1": 10,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 10,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 0,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 10,
+		},{
+			"cardtitle": "Мафия",
+			"cardtext": "30 тысяч ферм теперь под нашем контролем. Мы предлагаем Вам выкупить их.",
+			"first": "Да",
+			"second": "Генерал!",
+			"cardimage": "img/characters/mafia.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 10,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 20,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 10,
+			"natureplus2": 0,
+			"natureminus2": 10,
+			"peoplesplus2": 0,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 20,
+			"moneyplus2": 0,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Механик",
+			"cardtext": "Нам не хватает денег, чтобы чинить машины.",
+			"first": "Увеличить налоги",
+			"second": "Нам это не выгодно",
+			"cardimage": "img/characters/mechanic.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 10,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 10,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 10,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Полиция",
+			"cardtext": "В хранилище банка проникло 40 преступников, у них новейшее оружие! Мы не справляемся, нам нужна помощь!",
+			"first": "Генерал!",
+			"second": "Сами разберитесь",
+			"cardimage": "img/characters/police.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 10,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 10,
+			"moneyminus1": 0,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 20,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 0,
+			"moneyminus2": 20,
+			"weaponplus2": 0,
+			"weaponminus2": 10,
+		},{
+			"cardtitle": "Биолог",
+			"cardtext": "Кто-то полностью вырубил один из лесов!",
+			"first": "Генерал!",
+			"second": "Нам это выгодно",
+			"cardimage": "img/characters/scientist.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 10,
+			"natureplus1": 10,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 10,
+			"moneyminus1": 0,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 30,
+			"peoplesplus2": 0,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 0,
+			"moneyminus2": 20,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "СМИ",
+			"cardtext": "Мы узнали, то что шеф повар делает свою фирменную пиццу из половых органов!",
+			"first": "Я вам заплачу!",
+			"second": "И что?",
+			"cardimage": "img/characters/telemarketer.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 10,
+			"peoplesminus1": 0,
+			"eatplus1": 10,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 10,
+			"eatplus2": 0,
+			"eatminus2": 20,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Студент",
+			"cardtext": "Наконец я завершила обучение! Кем же мне пойти работать?",
+			"first": "Биологом",
+			"second": "Инженером",
+			"cardimage": "img/characters/student.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 10,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 0,
+			"weaponplus1": 0,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 0,
+			"moneyminus2": 0,
+			"weaponplus2": 10,
+			"weaponminus2": 0,
+		},{
+			"cardtitle": "Сварщик",
+			"cardtext": "В наших мощных сверхскоростных космических ракетах мы обнаружили небольшую щель.",
+			"first": "Чините!",
+			"second": "Нам это выгодно",
+			"cardimage": "img/characters/welder.png",
+			
+			"armyplus1": 0,
+			"armyminus1": 0,
+			"natureplus1": 0,
+			"natureminus1": 0,
+			"peoplesplus1": 0,
+			"peoplesminus1": 0,
+			"eatplus1": 0,
+			"eatminus1": 0,
+			"moneyplus1": 0,
+			"moneyminus1": 10,
+			"weaponplus1": 10,
+			"weaponminus1": 0,
+
+			"armyplus2": 0,
+			"armyminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 0,
+			"peoplesplus2": 0,
+			"peoplesminus2": 0,
+			"eatplus2": 0,
+			"eatminus2": 0,
+			"moneyplus2": 10,
+			"moneyminus2": 0,
+			"weaponplus2": 0,
+			"weaponminus2": 10,
+		}];
+
+		function getRandomInt(min, max){
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		function generateCard(){
+			var cardid = getRandomInt(0,cards.length);
+
+			if(cardid != lastcard){
+				$('#card-title').text(cards[cardid].cardtitle);
+				$('#card-text').text(cards[cardid].cardtext);
+				$('#first').text(cards[cardid].first);
+				$('#second').text(cards[cardid].second);
+				$('#card-image').attr('src', cards[cardid].cardimage);
+
+				thiscard = cardid;
+				lastcard = cardid;
+			} else {
+				return generateCard();
+			}
+		}
+
+		function firsthover(){
+			if(cards[thiscard].armyplus1 > 0 || cards[thiscard].armyminus1 > 0){
+				$('#army').css('background-color',"#3498DB");
+				$('#armyback').css('border-color',"#3498DB");
+			}
+
+			if(cards[thiscard].natureplus1 > 0 || cards[thiscard].natureminus1 > 0){
+				$('#nature').css('background-color',"#3498DB");
+				$('#natureback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].peoplesplus1 > 0 || cards[thiscard].peoplesminus1 > 0){
+				$('#peoples').css('background-color',"#3498DB");
+				$('#peoplesback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].eatplus1 > 0 || cards[thiscard].eatminus1 > 0){
+				$('#eat').css('background-color',"#3498DB");
+				$('#eatback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].moneyplus1 > 0 || cards[thiscard].moneyminus1 > 0){
+				$('#money').css('background-color',"#3498DB");
+				$('#moneyback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].weaponplus1 > 0 || cards[thiscard].weaponminus1 > 0){
+				$('#weapon').css('background-color',"#3498DB");
+				$('#weaponback').css('border-color',"#3498DB");
+			}
+		}
+
+		function firstover(){
+			if(cards[thiscard].armyplus1 > 0 || cards[thiscard].armyminus1 > 0){
+				$('#army').css('background-color',"#fff");
+				$('#armyback').css('border-color',"#fff");
+			}
+
+			if(cards[thiscard].natureplus1 > 0 || cards[thiscard].natureminus1 > 0){
+				$('#nature').css('background-color',"#fff");
+				$('#natureback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].peoplesplus1 > 0 || cards[thiscard].peoplesminus1 > 0){
+				$('#peoples').css('background-color',"#fff");
+				$('#peoplesback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].eatplus1 > 0 || cards[thiscard].eatminus1 > 0){
+				$('#eat').css('background-color',"#fff");
+				$('#eatback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].moneyplus1 > 0 || cards[thiscard].moneyminus1 > 0){
+				$('#money').css('background-color',"#fff");
+				$('#moneyback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].weaponplus1 > 0 || cards[thiscard].weaponminus1 > 0){
+				$('#weapon').css('background-color',"#fff");
+				$('#weaponback').css('border-color',"#fff");
+			}
+		}
+
+		function secondhover(){
+			if(cards[thiscard].armyplus2 > 0 || cards[thiscard].armyminus2 > 0){
+				$('#army').css('background-color',"#3498DB");
+				$('#armyback').css('border-color',"#3498DB");
+			}
+
+			if(cards[thiscard].natureplus2 > 0 || cards[thiscard].natureminus2 > 0){
+				$('#nature').css('background-color',"#3498DB");
+				$('#natureback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].peoplesplus2 > 0 || cards[thiscard].peoplesminus2 > 0){
+				$('#peoples').css('background-color',"#3498DB");
+				$('#peoplesback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].eatplus2 > 0 || cards[thiscard].eatminus2 > 0){
+				$('#eat').css('background-color',"#3498DB");
+				$('#eatback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].moneyplus2 > 0 || cards[thiscard].moneyminus2 > 0){
+				$('#money').css('background-color',"#3498DB");
+				$('#moneyback').css('border-color',"#3498DB");
+			}
+			
+			if(cards[thiscard].weaponplus2 > 0 || cards[thiscard].weaponminus2 > 0){
+				$('#weapon').css('background-color',"#3498DB");
+				$('#weaponback').css('border-color',"#3498DB");
+			}
+		}
+
+		function secondover(){
+			if(cards[thiscard].armyplus2 > 0 || cards[thiscard].armyminus2 > 0){
+				$('#army').css('background-color',"#fff");
+				$('#armyback').css('border-color',"#fff");
+			}
+
+			if(cards[thiscard].natureplus2 > 0 || cards[thiscard].natureminus2 > 0){
+				$('#nature').css('background-color',"#fff");
+				$('#natureback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].peoplesplus2 > 0 || cards[thiscard].peoplesminus2 > 0){
+				$('#peoples').css('background-color',"#fff");
+				$('#peoplesback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].eatplus2 > 0 || cards[thiscard].eatminus2 > 0){
+				$('#eat').css('background-color',"#fff");
+				$('#eatback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].moneyplus2 > 0 || cards[thiscard].moneyminus2 > 0){
+				$('#money').css('background-color',"#fff");
+				$('#moneyback').css('border-color',"#fff");
+			}
+			
+			if(cards[thiscard].weaponplus2 > 0 || cards[thiscard].weaponminus2 > 0){
+				$('#weapon').css('background-color',"#fff");
+				$('#weaponback').css('border-color',"#fff");
+			}
+		}
+
+		function firstclick(){
+			if(thisGameOver == false){
+				if(thiscard != null){
+					if(cards[thiscard].armyplus1 > 0){
+						army = army+cards[thiscard].armyplus1;
+						$('#army').css('width',army+'%');
+					}
+
+					if(cards[thiscard].natureplus1 > 0){
+						nature = nature+cards[thiscard].natureplus1;
+						$('#nature').css('width',nature+'%');
+					}
+
+					if(cards[thiscard].peoplesplus1 > 0){
+						peoples = peoples+cards[thiscard].peoplesplus1;
+						$('#peoples').css('width',peoples+'%');
+					}
+
+					if(cards[thiscard].eatplus1 > 0){
+						eat = eat+cards[thiscard].eatplus1;
+						$('#eat').css('width',eat+'%');
+					}
+
+					if(cards[thiscard].moneyplus1 > 0){
+						money = money+cards[thiscard].moneyplus1;
+						$('#money').css('width',money+'%');
+					}
+
+					if(cards[thiscard].weaponplus1 > 0){
+						weapon = weapon+cards[thiscard].weaponplus1;
+						$('#weapon').css('width',weapon+'%');
+					}
+
+					if(cards[thiscard].armyminus1 > 0){
+						army = army-cards[thiscard].armyminus1;
+						$('#army').css('width',army+'%');
+					}
+
+					if(cards[thiscard].natureminus1 > 0){
+						nature = nature-cards[thiscard].natureminus1;
+						$('#nature').css('width',nature+'%');
+					}
+
+					if(cards[thiscard].peoplesminus1 > 0){
+						peoples = peoples-cards[thiscard].peoplesminus1;
+						$('#peoples').css('width',peoples+'%');
+					}
+
+					if(cards[thiscard].eatminus1 > 0){
+						eat = eat-cards[thiscard].eatminus1;
+						$('#eat').css('width',eat+'%');
+					}
+
+					if(cards[thiscard].moneyminus1 > 0){
+						money = money-cards[thiscard].moneyminus1;
+						$('#money').css('width',money+'%');
+					}
+
+					if(cards[thiscard].weaponminus1 > 0){
+						weapon = weapon-cards[thiscard].weaponminus1;
+						$('#weapon').css('width',weapon+'%');
+					}
+
+					if(army > 100) { army = 100; $('#army').css('width',army+'%'); }
+					if(nature > 100) { nature = 100; $('#nature').css('width',nature+'%'); }
+					if(peoples > 100) { peoples = 100; $('#peoples').css('width',peoples+'%'); }
+					if(eat > 100) { eat = 100; $('#eat').css('width',eat+'%'); }
+					if(money > 100) { money = 100; $('#money').css('width',money+'%'); }
+					if(weapon > 100) { weapon = 100; $('#weapon').css('width',weapon+'%'); }
+
+					if(army < 1) { gameOver(1); thisGameOver = true; }
+					if(nature < 1) { gameOver(2); thisGameOver = true; }
+					if(peoples < 1) { gameOver(3); thisGameOver = true; }
+					if(eat < 1) { gameOver(4); thisGameOver = true; }
+					if(money < 1) { gameOver(5); thisGameOver = true; }
+					if(weapon < 1) { gameOver(6); thisGameOver = true; }
+				
+					$('#army').css('background-color',"#fff");
+					$('#armyback').css('border-color',"#fff");
+
+					$('#nature').css('background-color',"#fff");
+					$('#natureback').css('border-color',"#fff");
+
+					$('#peoples').css('background-color',"#fff");
+					$('#peoplesback').css('border-color',"#fff");
+
+					$('#eat').css('background-color',"#fff");
+					$('#eatback').css('border-color',"#fff");
+
+					$('#money').css('background-color',"#fff");
+					$('#moneyback').css('border-color',"#fff");
+
+					$('#weapon').css('background-color',"#fff");
+					$('#weaponback').css('border-color',"#fff");
+
+					if(nature >= 10 && nature <= 20){ $('#planet').attr('src',"img/planets/5.png"); }
+					if(nature >= 20 && nature <= 40){ $('#planet').attr('src',"img/planets/4.png"); }
+					if(nature >= 40 && nature <= 60){ $('#planet').attr('src',"img/planets/3.png"); }
+					if(nature >= 60 && nature <= 80){ $('#planet').attr('src',"img/planets/2.png"); }
+					if(nature >= 80 && nature <= 100){ $('#planet').attr('src',"img/planets/1.png"); }
+
+					generateCard();
+					year = year+1;
+					$('#year').text(year+'г.');
+				} else {
+					generateCard();
+				}
+			} else {
+				document.getElementById('menu').className = "menu row";
+				document.getElementById('shipimage').className = "menu-img animated fadeInUp";
+				document.getElementById('game').className = "game row d-none";
+			}
+		}
+
+		function secondclick(){
+			if(thisGameOver == false){
+				if(thiscard != null){
+					if(cards[thiscard].armyplus2 > 0){
+						army = army+cards[thiscard].armyplus2;
+						$('#army').css('width',army+'%');
+					}
+
+					if(cards[thiscard].natureplus2 > 0){
+						nature = nature+cards[thiscard].natureplus2;
+						$('#nature').css('width',nature+'%');
+					}
+
+					if(cards[thiscard].peoplesplus2 > 0){
+						peoples = peoples+cards[thiscard].peoplesplus2;
+						$('#peoples').css('width',peoples+'%');
+					}
+
+					if(cards[thiscard].eatplus2 > 0){
+						eat = eat+cards[thiscard].eatplus2;
+						$('#eat').css('width',eat+'%');
+					}
+
+					if(cards[thiscard].moneyplus2 > 0){
+						money = money+cards[thiscard].moneyplus2;
+						$('#money').css('width',money+'%');
+					}
+
+					if(cards[thiscard].weaponplus2 > 0){
+						weapon = weapon+cards[thiscard].weaponplus2;
+						$('#weapon').css('width',weapon+'%');
+					}
+
+					if(cards[thiscard].armyminus2 > 0){
+						army = army-cards[thiscard].armyminus2;
+						$('#army').css('width',army+'%');
+					}
+
+					if(cards[thiscard].natureminus2 > 0){
+						nature = nature-cards[thiscard].natureminus2;
+						$('#nature').css('width',nature+'%');
+					}
+
+					if(cards[thiscard].peoplesminus2 > 0){
+						peoples = peoples-cards[thiscard].peoplesminus2;
+						$('#peoples').css('width',peoples+'%');
+					}
+
+					if(cards[thiscard].eatminus2 > 0){
+						eat = eat-cards[thiscard].eatminus2;
+						$('#eat').css('width',eat+'%');
+					}
+
+					if(cards[thiscard].moneyminus2 > 0){
+						money = money-cards[thiscard].moneyminus2;
+						$('#money').css('width',money+'%');
+					}
+
+					if(cards[thiscard].weaponminus2 > 0){
+						weapon = weapon-cards[thiscard].weaponminus2;
+						$('#weapon').css('width',weapon+'%');
+					}
+
+					if(army > 100) { army = 100; $('#army').css('width',army+'%'); }
+					if(nature > 100) { nature = 100; $('#nature').css('width',nature+'%'); }
+					if(peoples > 100) { peoples = 100; $('#peoples').css('width',peoples+'%'); }
+					if(eat > 100) { eat = 100; $('#eat').css('width',eat+'%'); }
+					if(money > 100) { money = 100; $('#money').css('width',money+'%'); }
+					if(weapon > 100) { weapon = 100; $('#weapon').css('width',weapon+'%'); }
+
+					if(army < 1) { gameOver(1); thisGameOver = true; }
+					if(nature < 1) { gameOver(2); thisGameOver = true; }
+					if(peoples < 1) { gameOver(3); thisGameOver = true; }
+					if(eat < 1) { gameOver(4); thisGameOver = true; }
+					if(money < 1) { gameOver(5); thisGameOver = true; }
+					if(weapon < 1) { gameOver(6); thisGameOver = true; }
+				
+					$('#army').css('background-color',"#fff");
+					$('#armyback').css('border-color',"#fff");
+
+					$('#nature').css('background-color',"#fff");
+					$('#natureback').css('border-color',"#fff");
+
+					$('#peoples').css('background-color',"#fff");
+					$('#peoplesback').css('border-color',"#fff");
+
+					$('#eat').css('background-color',"#fff");
+					$('#eatback').css('border-color',"#fff");
+
+					$('#money').css('background-color',"#fff");
+					$('#moneyback').css('border-color',"#fff");
+
+					$('#weapon').css('background-color',"#fff");
+					$('#weaponback').css('border-color',"#fff");
+
+					if(nature >= 10 && nature <= 20){ $('#planet').attr('src',"img/planets/5.png"); }
+					if(nature >= 20 && nature <= 40){ $('#planet').attr('src',"img/planets/4.png"); }
+					if(nature >= 40 && nature <= 60){ $('#planet').attr('src',"img/planets/3.png"); }
+					if(nature >= 60 && nature <= 80){ $('#planet').attr('src',"img/planets/2.png"); }
+					if(nature >= 80 && nature <= 100){ $('#planet').attr('src',"img/planets/1.png"); }
+
+					generateCard();
+					year = year+1;
+					$('#year').text(year+'г.');
+				} else {
+					generateCard();
+				}
+			} else {
+				document.getElementById('menu').className = "menu row";
+				document.getElementById('shipimage').className = "menu-img animated fadeInUp";
+				document.getElementById('game').className = "game row d-none";
+			}
+		}
+
+		function gameOver(num){
+			if(num == 1){
+				$('#card-title').text('Генерал');
+				$('#card-text').text('Господин президент, на нас напали!');
+				$('#first').text('Я..');
+				$('#second').text('Что..');
+				$('#card-image').attr('src', 'img/characters/general.png');
+
+				thiscard = null;
+			}
+
+			if(num == 2){
+				$('#card-title').text('Биолог');
+				$('#card-text').text('Природа планеты уничтожена!');
+				$('#first').text('Я..');
+				$('#second').text('Что..');
+				$('#card-image').attr('src', 'img/characters/scientist.png');
+
+				thiscard = null;
+			}
+			
+			if(num == 3){
+				$('#card-title').text('Мафия');
+				$('#card-text').text('Люди против Вас, теперь мы контролируем эту планету.');
+				$('#first').text('Я..');
+				$('#second').text('Что..');
+				$('#card-image').attr('src', 'img/characters/mafia.png');
+
+				thiscard = null;
+			}
+			
+			if(num == 4){
+				$('#card-title').text('Шеф повар');
+				$('#card-text').text('Господин президент, в стране больше нету еды! Люди голодают и умирают.');
+				$('#first').text('Я..');
+				$('#second').text('Что..');
+				$('#card-image').attr('src', 'img/characters/chef.png');
+
+				thiscard = null;
+			}
+			
+			if(num == 5){
+				$('#card-title').text('Директор банка');
+				$('#card-text').text('Господин президент, экономика страны разрушена!');
+				$('#first').text('Я..');
+				$('#second').text('Что..');
+				$('#card-image').attr('src', 'img/characters/butler.png');
+
+				thiscard = null;
+			}
+			
+			if(num == 6){
+				$('#card-title').text('Генерал');
+				$('#card-text').text('Господин президент, у армии больше нет оружия!');
+				$('#first').text('Я..');
+				$('#second').text('Что..');
+				$('#card-image').attr('src', 'img/characters/soldier.png');
+
+				thiscard = null;
+			}
+		}
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<!-- <script type="text/javascript" src="lib/point.min.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript" src="js/functions.js"></script> -->
+</body>
+</html>
