@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+	font-size: 12px;
+    font-family: 'PT Sans', sans-serif;
+    line-height: 1.154;
+    font-weight: 900;
+    word-wrap: break-word;
+}
+
+.loading {
+    background-color: #141720;
+    color: #fff;
+    height: 480px;
+    width: 840px;
+    text-align: center;
+}
+
+.authors {
+    background-color: #141720;
+    color: #fff;
+    height: 480px;
+    width: 840px;
+    text-align: center;
+}
+
+.cat-scene {
+    background-color: #141720;
+    color: #fff;
+    height: 480px;
+    width: 840px;
+}
+
+.scene-button-next {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 2px solid #fff;
+    color: #141720;
+    transition: 0.5s;
+}
+
+.scene-button-next:hover {
+    border: 2px solid #fff;
+    background-color: #141720;
+    color: #fff;
+    cursor: pointer;
+}
+
+.scene-button-back {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 2px solid #fff;
+    color: #141720;
+    transition: 0.5s;
+}
+
+.scene-button-back:hover {
+    border: 2px solid #fff;
+    background-color: #141720;
+    color: #fff;
+    cursor: pointer;
+}
+
+b.shawn {
+    border: 3px solid #fff;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    margin-right: 0.2em;
+    transition: 0.5s;
+}
+
+b.shawn:hover {
+    background-color: #fff;
+    color: #141720;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+div.loading-text {
+    margin: 0;
+    padding: 0;
+    font-size: 38px;
+    font-weight: 400;
+    font-family: 'Nunito', sans-serif; 
+}
+
+.menu {
+    color: #fff;
+    background-color: #141720;
+    height: 480px;
+    width: 840px;
+}
+
+.game {
+    color: #fff;
+    background-color: #141720;
+    height: 480px;
+    width: 840px;
+}
+
+div.game-name {
+    position: absolute;
+    right: 3.9em;
+    top: 1em;
+    font-size: 38px;
+    font-family: 'Nunito', sans-serif; 
+}
+
+img.menu-img {
+    position: absolute;
+    top: 12em;
+    right: 12.5em;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    font-size: 18px;
+    color: #fff;
+    opacity: 0.5;
+    transition: 0.5s;
+    margin-left: 0.7em;
+}
+
+li:hover {
+    color: #fff;
+    cursor: pointer;
+    margin-left: 1.3em;
+    opacity: 1;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff;
+}
+
+div.version {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
+.op-1 {
+    opacity: 0.1;
+}
+
+.op-2 {
+    opacity: 0.2;
+}
+
+.op-3 {
+    opacity: 0.3;
+}
+
+.op-4 {
+    opacity: 0.4;
+}
+
+.op-5 {
+    opacity: 0.5;
+}
+
+.op-6 {
+    opacity: 0.6;
+}
+
+.op-7 {
+    opacity: 0.7;
+}
+
+.op-8 {
+    opacity: 0.8;
+}
+
+.op-9 {
+    opacity: 0.9;
+}
+
+.op-10 {
+    opacity: 1;
+}
+
+i {
+    color: #fff;
+}
+
+.menu-left {
+    background-color: rgb(15,17,24,0.5);
+}
+
+.menu-right {
+    background-color: #141720;
+}
+
+.card {
+    margin: auto;
+    height: 170px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: #141720;
+    transition: 1s;
+    border: 3px solid black;
+}
+
+.icon {
+    margin-top: 2px;
+    padding: 0;
+}
+
+.progress-back {
+    width: 100%;
+    margin-top: 2px;
+    background-color: rgb(15,17,24);
+    border: 1px solid #fff;
+    height: 16px;
+    padding: 2px;
+    transition: 0.5s;
+}
+
+.col-12 {
+    padding: 0;
+    margin: 0;
+}
+
+.progress-bar {
+    width: 50%;
+    background-color: #fff;
+    height: 10px;
+    transition: 0.5s;
+}
+
+.my-7 {
+    margin: 7em 0;
+}
+
+.my-9 {
+    margin: 9em 0;
+}
+
+.my-10 {
+    margin: 10em 0;
+}
+
+.my-15 {
+    margin: 15em 0;
+}
+
+.card-left, .card-right {
+    width: 49%;
+    border: none;
+    background-color: rgb(15,17,24);
+    height: 26px;
+    border: 1px solid #fff;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.card-left:hover, .card-right:hover {
+    background-color: #fff;
+    color: rgb(15,17,24);
+    cursor: pointer;
+}
+
+#first:hover ~ #card {
+    transform: perspective(1px) translate(-2rem, 0) rotate(5deg);
+}
+
+#second:hover ~ #card {
+    transform: perspective(1px) translate(2rem, 0) rotate(-5deg);
+}
+
+.box {
+    color: #fff;
+    background-color: rgb(15,17,24);
+}
