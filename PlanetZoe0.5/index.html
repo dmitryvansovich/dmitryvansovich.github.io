@@ -41,7 +41,7 @@
 		<div class="col menu-right">
 			<div class="game-name">Project "ZOE"</div>
 			<img id="shipimage" src="./img/spaceCraft4_SW.png" id="img" class="menu-img">
-			<div class="version">beta 0.5</div>
+			<div class="version">beta 0.8.1</div>
 		</div>
 	</div>
 	<div class="cat-scene startig-scene text-center pt-3" id="starting-scene">
@@ -218,7 +218,7 @@
 			document.getElementById('authors').className = "authors row d-none";
 			document.getElementById('menu').className = "menu row";
 			document.getElementById('shipimage').className = "menu-img animated fadeInUp";
-		document.getElementById('authors-back').className = "scene-button-back d-none";
+			document.getElementById('authors-back').className = "scene-button-back d-none";
 		}
 
 		var newGame = function(){
@@ -237,6 +237,9 @@
 			eat = 50;
 			money = 50;
 			weapon = 50;
+
+			$('#year').text(year+'г.');
+			$('#youryear').text(youryear+' год у власти');
 
 			$('#army').css('width',army+'%');
 			$('#nature').css('width',nature+'%');
@@ -1604,8 +1607,8 @@
 
 			"armyplus2": 10,
 			"armyminus2": 0,
-			"natureplus2": 20,
-			"natureminus2": 0,
+			"natureplus2": 0,
+			"natureminus2": 20,
 			"peoplesplus2": 0,
 			"peoplesminus2": 0,
 			"eatplus2": 0,
