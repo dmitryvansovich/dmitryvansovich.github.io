@@ -23,7 +23,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- 	<div class="start-loading" id="start-loading">
+	<div class="start-loading" id="start-loading">
 		<img src="img/shawngames.png" class="shawngames-center animated fadeIn" id="start-loading-img">
 	</div>
 
@@ -32,9 +32,9 @@
 		<div class="loading-back" id="loadingback">
 			<div class="loading-bar" id="loadingbar" style="width:0%;"></div>
 		</div>
-	</div> -->
+	</div>
 
-	<div class="menu" id="menu">
+	<div class="menu d-none" id="menu">
 		<div class="cd-slider">
 	      <ul>
 	        <li class="item current" style="background: #fff;">
@@ -145,7 +145,7 @@
 		});
 	</script>
 
-<!-- 	<script>
+	<script>
 		setTimeout(function(){
 			document.getElementById('start-loading-img').className = "shawngames-center animated fadeOut";
 			document.getElementById('loading').className = "loading";
@@ -169,7 +169,11 @@
 						setTimeout(function(){
 							document.getElementById('logotype-loading').className = "logotype-center animated fadeOut";
 							document.getElementById('loadingback').className = "loading-back animated fadeOutDown";
-							
+
+							setTimeout(function(){
+								document.getElementById('loading').className = "loading d-none";
+								document.getElementById('menu').className = "menu";
+							}, 1000);
 						}, 500);
 					} else {
 						loading();
@@ -177,7 +181,7 @@
 				}
 			}, 40);
 		}
-	</script> -->
+	</script>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
