@@ -186,8 +186,8 @@
 	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 	<script>
 		VK.init(function() {
-		    VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
-			    alert("Post ID:" + data.response.post_id); 
+		    VK.api("account.getProfileInfo", function (data) {
+			    alert("Post ID:" + data.response.first_name); 
 			});
 		}, '5.80'); 
 	</script>
