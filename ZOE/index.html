@@ -183,6 +183,15 @@
 		}
 	</script>
 
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+	<script>
+		VK.init(function() {
+		    VK.api("wall.post", {"message": "Hello!", "v":"5.73"}, function (data) {
+			    alert("Post ID:" + data.response.post_id); 
+			});
+		}, '5.80'); 
+	</script>
+
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 </body>
