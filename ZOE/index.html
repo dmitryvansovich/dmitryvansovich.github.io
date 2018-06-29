@@ -123,6 +123,11 @@
 		</div>
 	</div>
 
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+	<script>
+		VK.init('5.80');
+	</script>
+	
 	<script>
 		setTimeout(function(){
 			document.getElementById('start-loading-img').className = "shawngames-center animated fadeOut";
@@ -159,11 +164,10 @@
 				}
 			}, 40);
 		}
-	</script>
 
-	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
-	<script>
-				VK.callMethod("showRequestBox", 44301619, 12312312);
+		function inviteFriend(){
+			VK.callMethod("showInviteBox");
+		};
 	</script>
 
 	<script>
