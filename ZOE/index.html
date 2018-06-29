@@ -127,11 +127,9 @@
 	<script>
 		VK.init('5.80');
 										      
-		VK.Auth.login(function(res){
-			alert(res.session);
+		VK.Api.call('friends.get', function(data){
+			console.log(data.response[0]);
 		});
-																																								
-		console.log(uid.first_name);
 	</script>
 	
 	<script>
