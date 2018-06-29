@@ -14,8 +14,7 @@ body {
 
 .start-loading, .loading, .menu, .game {
 	width: 1000px;
-	height: 680px;/*
-	border: 4px solid #83d297;*/
+	height: 680px;
 }
 
 .start-loading > .shawngames-center {
@@ -149,8 +148,6 @@ body {
 	visibility: hidden;
 }
 
-/* Transitions 
-----------------------------------*/
 .card img, .card .img, .info > * {
 	opacity: 0;
 	-webkit-transform: translateY(20%);
@@ -215,7 +212,7 @@ body {
 }
 
 .menubox7button {
-	width: 664px;
+	width: 668px;
 	height: 75px;
 	position: absolute;
 	top: 239px;
@@ -274,18 +271,25 @@ body {
 	top: 505px;
 	left: 830px;
 	height: 150px;
-	width: 130px;
+	width: 134px;
 }
 
 .menubox7 {
 	top: 165px;
 	left: 290px;
 	height: 320px;
-	width: 670px;
+	width: 674px;
 }
 
 .menulogotype {
 	margin-left: 305px;
+}
+
+#menuuseravatar {
+	border-radius: 50%;
+	border: 6px solid #83d297;
+	width: 200px;
+	height: 200px;
 }
 
 .fa-7x { font-size: 7em; }
