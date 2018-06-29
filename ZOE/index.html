@@ -127,7 +127,7 @@
 	<script>
 		VK.init('5.80');
 										      
-		VK.Api.call('friends.get', function(data){
+		VK.Api('friends.get', function(data){
 			console.log(data.response[0]);
 		});
 	</script>
