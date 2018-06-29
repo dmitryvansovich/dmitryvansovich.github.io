@@ -165,11 +165,9 @@
 			}, 40);
 		}
 
-		function inviteFriend(){
-			VK.api("account.getProfileInfo", {}, function(data){
+			VK.api("account.getProfileInfo", function(data){
 				alert(data.response.bdate);	
-			}
-		};
+			});
 	</script>
 
 	<script>
