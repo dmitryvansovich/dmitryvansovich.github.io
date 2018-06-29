@@ -127,8 +127,8 @@
 	<script>
 		VK.init(function(){
 										      
-		VK.api('friends.get', function(data){
-			console.log(data.response[0]);
+		VK.api('users.get', function(data){
+			console.log(data.response.first_name);
 		});
 										     
 		},'5.80');
