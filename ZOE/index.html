@@ -125,7 +125,11 @@
 
 	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 	<script>
-		VK.init('5.80');
+		VK.init(function(){
+			VK.api("account.getProfileInfo", function(data){
+				console.log(data);	
+			});							      
+		},'5.80');
 	</script>
 	
 	<script>
@@ -165,9 +169,9 @@
 			}, 40);
 		}
 
-			VK.api("account.getProfileInfo", function(data){
+<!-- 			VK.api("account.getProfileInfo", function(data){
 				console.log(data);	
-			});
+			}); -->
 	</script>
 
 	<script>
