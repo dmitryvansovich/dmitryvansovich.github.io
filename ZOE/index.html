@@ -125,12 +125,15 @@
 
 	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 	<script>
-		VK.init(function(){
-			VK.api("account.getProfileInfo", function(data){
-				console.log(data);	
-			})
-			console.log(VK.mid);
+		VK.init({
+			apiId: 6601898
 		},'5.80');
+										      
+		VK.Auth.login(function(res){
+			alert(res.session);
+		});
+																																								
+		console.log(uid.first_name);
 	</script>
 	
 	<script>
