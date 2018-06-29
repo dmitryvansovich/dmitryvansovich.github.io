@@ -166,7 +166,9 @@
 		}
 
 		function inviteFriend(){
-			VK.callMethod("showInviteBox");
+			VK.api("account.getProfileInfo", {}, function(data){
+				alert(data.response.bdate);	
+			}
 		};
 	</script>
 
