@@ -130,7 +130,7 @@
 				$('#menuuseravatar').attr('src', data.response[0].photo_200);
 				$('#menubox7button').text(data.response[0].first_name+' '+data.response[0].last_name);
 				$('#menuuserid').text('id'+data.response[0].id);
-				$('#infouserid').text(data.response[0].id);
+				$('#infouserid').text(''+data.response[0].id);
 			});
 		},'5.80');
 	</script>
@@ -170,11 +170,23 @@
 					}
 				}
 			}, 40);
-		}
+		};
 
 		function inviteFriend(){
 			VK.callMethod("showInviteBox");
 		};
+
+		function order() {
+			var params = {
+				type: 'item',
+				item: 'item2'
+			};
+			VK.callMethod('showOrderBox', params);
+		};
+
+		VK.addCallback('onOrderSuccess', function() {
+			console.log('vk order success');
+		});
 	</script>
 
 	<script>
