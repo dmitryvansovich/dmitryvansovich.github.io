@@ -176,13 +176,11 @@
 			VK.callMethod("showInviteBox");
 		};
 
-		function order() {
-			var params = {
-				type: 'item',
-				item: 'item2'
-			};
-			VK.callMethod('showOrderBox', params);
+		var params = {
+			type: 'item',
+			item: 'item2'
 		};
+		VK.callMethod('showOrderBox', params);
 
 		VK.addCallback('onOrderSuccess', function() {
 			console.log('vk order success');
