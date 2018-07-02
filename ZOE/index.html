@@ -169,14 +169,6 @@
 		function inviteFriend(){
 			VK.callMethod("showInviteBox");
 		};
-		var params = {
-			type: 'item',
-			item: 'item2'
-		};
-		VK.callMethod('showOrderBox', params);
-		VK.addCallback('onOrderSuccess', function() {
-			console.log('vk order success');
-		});
 	</script>
 
 	<script>
