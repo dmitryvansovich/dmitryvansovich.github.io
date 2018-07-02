@@ -140,26 +140,21 @@
 			document.getElementById('start-loading-img').className = "shawngames-center animated fadeOut";
 			document.getElementById('loading').className = "loading";
 			document.getElementById('start-loading').className = "start-loading d-none";
-
 			startloading = true;
 			loading();
 		}, 2000);
-
 		var lprogress = 1;
 		var startloading = false;
-
 		function loading(){
 			setTimeout(function(){
 				if(startloading = true){
 					lprogress = lprogress + 1;
 					$('#loadingbar').css('width',lprogress+'%');
-
 					if(lprogress == 100){
 						startloading = false;
 						setTimeout(function(){
 							document.getElementById('logotype-loading').className = "logotype-center animated fadeOut";
 							document.getElementById('loadingback').className = "loading-back animated fadeOutDown";
-
 							setTimeout(function(){
 								document.getElementById('loading').className = "loading d-none";
 								document.getElementById('menu').className = "menu row";
@@ -171,17 +166,14 @@
 				}
 			}, 40);
 		};
-
 		function inviteFriend(){
 			VK.callMethod("showInviteBox");
 		};
-
 		var params = {
 			type: 'item',
-			item: 'item33'
+			item: 'item2'
 		};
 		VK.callMethod('showOrderBox', params);
-
 		VK.addCallback('onOrderSuccess', function() {
 			console.log('vk order success');
 		});
@@ -189,30 +181,23 @@
 
 	<script>
 		$(function() {
-
 			$(".prev").on('click', function(event) {
 				event.preventDefault();
 				prevSlide();
 			});
-
 			$(".next").on('click', function(event) {
 				event.preventDefault();
 				nextSlide();
 			});
-
 			if ($(".item").length <= 1) {
 				$(".next").addClass('hide-nav');
 			}
-
 			$(".prev").addClass('hide-nav');
-
 			function nextSlide() {
 				var atual = $(".cd-slider").find('.current'),
 					next = atual.next();
-
 				next.addClass('current').removeClass('prev_slide').siblings().removeClass('current');
 				next.prevAll().addClass('prev_slide');
-
 				if (next.index() > 0) {
 					$(".prev").removeClass('hide-nav');
 				}
@@ -220,13 +205,10 @@
 					$(".next").addClass('hide-nav');
 				}
 			}
-
 			function prevSlide() {
 				var atual = $(".cd-slider").find('.current'),
 					prev = atual.prev();
-
 				prev.addClass('current').removeClass('prev_slide').siblings().removeClass('current');
-
 				if (prev.index() !== $(".item").last().index()) {
 					$(".next").removeClass('hide-nav');
 				} 
@@ -234,7 +216,6 @@
 					$(".prev").addClass('hide-nav');
 				}
 			}
-
 		});
 	</script>
 
