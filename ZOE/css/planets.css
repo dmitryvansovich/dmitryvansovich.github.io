@@ -1,0 +1,921 @@
+/*
+
+  planets.css
+  developer: Dmitry Vansovich (Shawn)
+
+*/
+
+/* -------------------------------------------- PLANET1 -------------------------------------------- */
+
+.planet1_small
+{
+    overflow: hidden;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    background-image:      linear-gradient(top left, #24b88b 20%, #21776f);
+    background-image: -moz-linear-gradient(top left, #24b88b 20%, #21776f);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+
+.planet1_wraper
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 7rem;
+    height: 7rem;
+    margin: auto;
+
+    border-radius: 50%;
+}
+.planet1_shadow
+{
+    background-image:      linear-gradient(top left, #24b88b 20%, #21776f);
+    background-image: -moz-linear-gradient(top left, #24b88b 20%, #21776f);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+.planet1
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    animation: rotate 55s linear infinite;
+
+    border-radius: 50%;
+}
+.planet1_wraper::before,
+.planet1_wraper::after
+{
+    position: absolute;
+
+    display: block;
+
+    content: '';
+    animation: rotate 25s linear infinite;
+
+    border-radius: 50%;
+}
+.planet1_wraper::before
+{
+    top: -1.75rem;
+    left: -1.75rem;
+
+    width: 11rem;
+    height: 11rem;
+
+    animation-delay: 1s;
+}
+.planet1_wraper::after
+{
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 15rem;
+    height: 15rem;
+}
+.planet1 > *
+{
+    position: relative;
+
+    opacity: .3;
+    border-radius: 50%;
+    background-color: #209b85;
+    box-shadow: inset 1px 1px 5px #163040, 0 0 7px #63eed2 ;
+}
+.crater1:nth-of-type(1)
+{
+    top: 2rem;
+    left: 1.5rem;
+
+    width: .75rem;
+    height: .75rem;
+}
+.crater1:nth-of-type(2)
+{
+    top: -.75rem;
+    left: 5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.crater1:nth-of-type(3)
+{
+    top: .5rem;
+    left: 2rem;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.crater1:nth-of-type(4)
+{
+    top: -1.5rem;
+    left: 3.5rem;
+
+    width: .5rem;
+    height: .5rem;
+}
+.crater1:nth-of-type(5)
+{
+    top: 1.25rem;
+    left: 3.5rem;
+
+    width: 2rem;
+    height: 1.5rem;
+}
+
+/* -------------------------------------------- PLANET2 -------------------------------------------- */
+
+.planet2_small
+{
+    overflow: hidden;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    background-image:      linear-gradient(top left, #b82428 20%, #772121);
+    background-image: -moz-linear-gradient(top left, #b82429 20%, #772121);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+
+.planet2_wraper
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 7rem;
+    height: 7rem;
+    margin: auto;
+
+    border-radius: 50%;
+}
+.planet2_shadow
+{
+    background-image:      linear-gradient(top left, #b82428 20%, #772121);
+    background-image: -moz-linear-gradient(top left, #b82429 20%, #772121);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+.planet2
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    animation: rotate 55s linear infinite;
+
+    border-radius: 50%;
+}
+.planet2_wraper::before,
+.planet2_wraper::after
+{
+    position: absolute;
+
+    display: block;
+
+    content: '';
+    animation: rotate 25s linear infinite;
+
+    border-radius: 50%;
+}
+.planet2_wraper::before
+{
+    top: -1.75rem;
+    left: -1.75rem;
+
+    width: 11rem;
+    height: 11rem;
+
+    animation-delay: 1s;
+}
+.planet2_wraper::after
+{
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 15rem;
+    height: 15rem;
+}
+.planet2 > *
+{
+    position: relative;
+
+    opacity: .3;
+    border-radius: 50%;
+    background-color: #9b2021;
+    box-shadow: inset 1px 1px 5px #401716, 0 0 7px #ee6365 ;
+}
+.crater2:nth-of-type(1)
+{
+    top: 2rem;
+    left: 1.5rem;
+
+    width: .75rem;
+    height: .75rem;
+}
+.crater2:nth-of-type(2)
+{
+    top: -.75rem;
+    left: 5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.crater2:nth-of-type(3)
+{
+    top: .5rem;
+    left: 2rem;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.crater2:nth-of-type(4)
+{
+    top: -1.5rem;
+    left: 3.5rem;
+
+    width: .5rem;
+    height: .5rem;
+}
+.crater2:nth-of-type(5)
+{
+    top: 1.25rem;
+    left: 3.5rem;
+
+    width: 2rem;
+    height: 1.5rem;
+}
+
+/* -------------------------------------------- PLANET3 -------------------------------------------- */
+
+.planet3_small
+{
+    overflow: hidden;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    background-image:      linear-gradient(top left, #24b832 20%, #217728);
+    background-image: -moz-linear-gradient(top left, #24b832 20%, #217728);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+
+.planet3_wraper
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 7rem;
+    height: 7rem;
+    margin: auto;
+
+    border-radius: 50%;
+}
+.planet3_shadow
+{
+    background-image:      linear-gradient(top left, #24b832 20%, #217728);
+    background-image: -moz-linear-gradient(top left, #24b832 20%, #217728);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+.planet3
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    animation: rotate 55s linear infinite;
+
+    border-radius: 50%;
+}
+.planet3_wraper::before,
+.planet3_wraper::after
+{
+    position: absolute;
+
+    display: block;
+
+    content: '';
+    animation: rotate 25s linear infinite;
+
+    border-radius: 50%;
+}
+.planet3_wraper::before
+{
+    top: -1.75rem;
+    left: -1.75rem;
+
+    width: 11rem;
+    height: 11rem;
+
+    animation-delay: 1s;
+}
+.planet3_wraper::after
+{
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 15rem;
+    height: 15rem;
+}
+.planet3 > *
+{
+    position: relative;
+
+    opacity: .3;
+    border-radius: 50%;
+    background-color: #209b2a;
+    box-shadow: inset 1px 1px 5px #16401a, 0 0 7px #63ee6f ;
+}
+.crater3:nth-of-type(1)
+{
+    top: 2rem;
+    left: 1.5rem;
+
+    width: .75rem;
+    height: .75rem;
+}
+.crater3:nth-of-type(2)
+{
+    top: -.75rem;
+    left: 5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.crater3:nth-of-type(3)
+{
+    top: .5rem;
+    left: 2rem;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.crater3:nth-of-type(4)
+{
+    top: -1.5rem;
+    left: 3.5rem;
+
+    width: .5rem;
+    height: .5rem;
+}
+.crater3:nth-of-type(5)
+{
+    top: 1.25rem;
+    left: 3.5rem;
+
+    width: 2rem;
+    height: 1.5rem;
+}
+
+/* -------------------------------------------- PLANET4 -------------------------------------------- */
+
+.planet4_small
+{
+    overflow: hidden;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    background-image:      linear-gradient(top left, #2430b8 20%, #212977);
+    background-image: -moz-linear-gradient(top left, #2430b8 20%, #212977);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+
+.planet4_wraper
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 7rem;
+    height: 7rem;
+    margin: auto;
+
+    border-radius: 50%;
+}
+.planet4_shadow
+{
+    background-image:      linear-gradient(top left, #2430b8 20%, #212977);
+    background-image: -moz-linear-gradient(top left, #2430b8 20%, #212977);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+.planet4
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    animation: rotate 55s linear infinite;
+
+    border-radius: 50%;
+}
+.planet4_wraper::before,
+.planet4_wraper::after
+{
+    position: absolute;
+
+    display: block;
+
+    content: '';
+    animation: rotate 25s linear infinite;
+
+    border-radius: 50%;
+}
+.planet4_wraper::before
+{
+    top: -1.75rem;
+    left: -1.75rem;
+
+    width: 11rem;
+    height: 11rem;
+
+    animation-delay: 1s;
+}
+.planet4_wraper::after
+{
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 15rem;
+    height: 15rem;
+}
+.planet4 > *
+{
+    position: relative;
+
+    opacity: .3;
+    border-radius: 50%;
+    background-color: #202b9b;
+    box-shadow: inset 1px 1px 5px #161a40, 0 0 7px #636fee;
+}
+.crater4:nth-of-type(1)
+{
+    top: 2rem;
+    left: 1.5rem;
+
+    width: .75rem;
+    height: .75rem;
+}
+.crater4:nth-of-type(2)
+{
+    top: -.75rem;
+    left: 5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.crater4:nth-of-type(3)
+{
+    top: .5rem;
+    left: 2rem;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.crater4:nth-of-type(4)
+{
+    top: -1.5rem;
+    left: 3.5rem;
+
+    width: .5rem;
+    height: .5rem;
+}
+.crater4:nth-of-type(5)
+{
+    top: 1.25rem;
+    left: 3.5rem;
+
+    width: 2rem;
+    height: 1.5rem;
+}
+
+/* -------------------------------------------- PLANET5 -------------------------------------------- */
+
+.planet5_small
+{
+    overflow: hidden;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    background-image:      linear-gradient(top left, #b82491 20%, #772161);
+    background-image: -moz-linear-gradient(top left, #b82491 20%, #772161);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+
+.planet5_wraper
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 7rem;
+    height: 7rem;
+    margin: auto;
+
+    border-radius: 50%;
+}
+.planet5_shadow
+{
+    background-image:      linear-gradient(top left, #b82491 20%, #772161);
+    background-image: -moz-linear-gradient(top left, #b82491 20%, #772161);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+.planet5
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    animation: rotate 55s linear infinite;
+
+    border-radius: 50%;
+}
+.planet5_wraper::before,
+.planet5_wraper::after
+{
+    position: absolute;
+
+    display: block;
+
+    content: '';
+    animation: rotate 25s linear infinite;
+
+    border-radius: 50%;
+}
+.planet5_wraper::before
+{
+    top: -1.75rem;
+    left: -1.75rem;
+
+    width: 11rem;
+    height: 11rem;
+
+    animation-delay: 1s;
+}
+.planet5_wraper::after
+{
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 15rem;
+    height: 15rem;
+}
+.planet5 > *
+{
+    position: relative;
+
+    opacity: .3;
+    border-radius: 50%;
+    background-color: #9b207b;
+    box-shadow: inset 1px 1px 5px #401635, 0 0 7px #ee63cb;
+}
+.crater5:nth-of-type(1)
+{
+    top: 2rem;
+    left: 1.5rem;
+
+    width: .75rem;
+    height: .75rem;
+}
+.crater5:nth-of-type(2)
+{
+    top: -.75rem;
+    left: 5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.crater5:nth-of-type(3)
+{
+    top: .5rem;
+    left: 2rem;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.crater5:nth-of-type(4)
+{
+    top: -1.5rem;
+    left: 3.5rem;
+
+    width: .5rem;
+    height: .5rem;
+}
+.crater5:nth-of-type(5)
+{
+    top: 1.25rem;
+    left: 3.5rem;
+
+    width: 2rem;
+    height: 1.5rem;
+}
+
+/* -------------------------------------------- PLANET6 -------------------------------------------- */
+
+.planet6_small
+{
+    overflow: hidden;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    background-image:      linear-gradient(top left, #24b0b8 20%, #217277);
+    background-image: -moz-linear-gradient(top left, #24b0b8 20%, #217277);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+
+.planet6_wraper
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 7rem;
+    height: 7rem;
+    margin: auto;
+
+    border-radius: 50%;
+}
+.planet6_shadow
+{
+    background-image:      linear-gradient(top left, #24b0b8 20%, #217277);
+    background-image: -moz-linear-gradient(top left, #24b0b8 20%, #217277);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+.planet6
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    animation: rotate 55s linear infinite;
+
+    border-radius: 50%;
+}
+.planet6_wraper::before,
+.planet6_wraper::after
+{
+    position: absolute;
+
+    display: block;
+
+    content: '';
+    animation: rotate 25s linear infinite;
+
+    border-radius: 50%;
+}
+.planet6_wraper::before
+{
+    top: -1.75rem;
+    left: -1.75rem;
+
+    width: 11rem;
+    height: 11rem;
+
+    animation-delay: 1s;
+}
+.planet6_wraper::after
+{
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 15rem;
+    height: 15rem;
+}
+.planet6 > *
+{
+    position: relative;
+
+    opacity: .3;
+    border-radius: 50%;
+    background-color: #20949b;
+    box-shadow: inset 1px 1px 5px #163e40, 0 0 7px #63e6ee;
+}
+.crater6:nth-of-type(1)
+{
+    top: 2rem;
+    left: 1.5rem;
+
+    width: .75rem;
+    height: .75rem;
+}
+.crater6:nth-of-type(2)
+{
+    top: -.75rem;
+    left: 5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.crater6:nth-of-type(3)
+{
+    top: .5rem;
+    left: 2rem;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.crater6:nth-of-type(4)
+{
+    top: -1.5rem;
+    left: 3.5rem;
+
+    width: .5rem;
+    height: .5rem;
+}
+.crater6:nth-of-type(5)
+{
+    top: 1.25rem;
+    left: 3.5rem;
+
+    width: 2rem;
+    height: 1.5rem;
+}
+
+/* -------------------------------------------- PLANET7 -------------------------------------------- */
+
+.planet7_small
+{
+    overflow: hidden;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+    background-image:      linear-gradient(top left, #b8b524 20%, #777521);
+    background-image: -moz-linear-gradient(top left, #b8b524 20%, #777521);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+
+.planet7_wraper
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 7rem;
+    height: 7rem;
+    margin: auto;
+
+    border-radius: 50%;
+}
+.planet7_shadow
+{
+    background-image:      linear-gradient(top left, #b8b524 20%, #777521);
+    background-image: -moz-linear-gradient(top left, #b8b524 20%, #777521);
+    box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
+}
+.planet7
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    animation: rotate 55s linear infinite;
+
+    border-radius: 50%;
+}
+.planet7_wraper::before,
+.planet7_wraper::after
+{
+    position: absolute;
+
+    display: block;
+
+    content: '';
+    animation: rotate 25s linear infinite;
+
+    border-radius: 50%;
+}
+.planet7_wraper::before
+{
+    top: -1.75rem;
+    left: -1.75rem;
+
+    width: 11rem;
+    height: 11rem;
+
+    animation-delay: 1s;
+}
+.planet7_wraper::after
+{
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 15rem;
+    height: 15rem;
+}
+.planet7 > *
+{
+    position: relative;
+
+    opacity: .3;
+    border-radius: 50%;
+    background-color: #9b9820;
+    box-shadow: inset 1px 1px 5px #403f16, 0 0 7px #eeeb63;
+}
+.crater7:nth-of-type(1)
+{
+    top: 2rem;
+    left: 1.5rem;
+
+    width: .75rem;
+    height: .75rem;
+}
+.crater7:nth-of-type(2)
+{
+    top: -.75rem;
+    left: 5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.crater7:nth-of-type(3)
+{
+    top: .5rem;
+    left: 2rem;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.crater7:nth-of-type(4)
+{
+    top: -1.5rem;
+    left: 3.5rem;
+
+    width: .5rem;
+    height: .5rem;
+}
+.crater7:nth-of-type(5)
+{
+    top: 1.25rem;
+    left: 3.5rem;
+
+    width: 2rem;
+    height: 1.5rem;
+}
+
+@keyframes rotate
+{
+    to
+    {
+        transform: rotate(360deg);
+    }
+}
+
+.planet1_wraper:hover,
+.planet2_wraper:hover,
+.planet3_wraper:hover,
+.planet4_wraper:hover,
+.planet5_wraper:hover,
+.planet6_wraper:hover,
+.planet7_wraper:hover
+{
+    cursor: pointer;
+}
