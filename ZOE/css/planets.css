@@ -15,8 +15,7 @@
     height: 2rem;
 
     border-radius: 50%;
-    background-image:      linear-gradient(top left, #24b88b 20%, #21776f);
-    background-image: -moz-linear-gradient(top left, #24b88b 20%, #21776f);
+    background-color: #24b88b;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 
@@ -36,8 +35,7 @@
 }
 .planet1_shadow
 {
-    background-image:      linear-gradient(top left, #24b88b 20%, #21776f);
-    background-image: -moz-linear-gradient(top left, #24b88b 20%, #21776f);
+    background-color: #24b88b;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 .planet1
@@ -143,8 +141,7 @@
     height: 2rem;
 
     border-radius: 50%;
-    background-image:      linear-gradient(top left, #b82428 20%, #772121);
-    background-image: -moz-linear-gradient(top left, #b82429 20%, #772121);
+    background-color: #b82429;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 
@@ -164,8 +161,7 @@
 }
 .planet2_shadow
 {
-    background-image:      linear-gradient(top left, #b82428 20%, #772121);
-    background-image: -moz-linear-gradient(top left, #b82429 20%, #772121);
+    background-color: #b82429;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 .planet2
@@ -271,8 +267,7 @@
     height: 2rem;
 
     border-radius: 50%;
-    background-image:      linear-gradient(top left, #24b832 20%, #217728);
-    background-image: -moz-linear-gradient(top left, #24b832 20%, #217728);
+    background-color: #24b832;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 
@@ -292,8 +287,7 @@
 }
 .planet3_shadow
 {
-    background-image:      linear-gradient(top left, #24b832 20%, #217728);
-    background-image: -moz-linear-gradient(top left, #24b832 20%, #217728);
+    background-color: #24b832;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 .planet3
@@ -399,8 +393,7 @@
     height: 2rem;
 
     border-radius: 50%;
-    background-image:      linear-gradient(top left, #2430b8 20%, #212977);
-    background-image: -moz-linear-gradient(top left, #2430b8 20%, #212977);
+    background-color: #2430b8;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 
@@ -420,8 +413,7 @@
 }
 .planet4_shadow
 {
-    background-image:      linear-gradient(top left, #2430b8 20%, #212977);
-    background-image: -moz-linear-gradient(top left, #2430b8 20%, #212977);
+    background-color: #2430b8;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 .planet4
@@ -527,8 +519,7 @@
     height: 2rem;
 
     border-radius: 50%;
-    background-image:      linear-gradient(top left, #b82491 20%, #772161);
-    background-image: -moz-linear-gradient(top left, #b82491 20%, #772161);
+    background-color: #b82491;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 
@@ -548,8 +539,7 @@
 }
 .planet5_shadow
 {
-    background-image:      linear-gradient(top left, #b82491 20%, #772161);
-    background-image: -moz-linear-gradient(top left, #b82491 20%, #772161);
+    background-color: #b82491;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 .planet5
@@ -655,8 +645,7 @@
     height: 2rem;
 
     border-radius: 50%;
-    background-image:      linear-gradient(top left, #24b0b8 20%, #217277);
-    background-image: -moz-linear-gradient(top left, #24b0b8 20%, #217277);
+    background-color: #24b0b8;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 
@@ -676,8 +665,7 @@
 }
 .planet6_shadow
 {
-    background-image:      linear-gradient(top left, #24b0b8 20%, #217277);
-    background-image: -moz-linear-gradient(top left, #24b0b8 20%, #217277);
+    background-color: #24b0b8;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 .planet6
@@ -783,8 +771,7 @@
     height: 2rem;
 
     border-radius: 50%;
-    background-image:      linear-gradient(top left, #b8b524 20%, #777521);
-    background-image: -moz-linear-gradient(top left, #b8b524 20%, #777521);
+    background-color: #b8b524;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 
@@ -804,8 +791,7 @@
 }
 .planet7_shadow
 {
-    background-image:      linear-gradient(top left, #b8b524 20%, #777521);
-    background-image: -moz-linear-gradient(top left, #b8b524 20%, #777521);
+    background-color: #b8b524;
     box-shadow: inset 0 -5px 10px rgba(22, 48, 64, .5), 0 0 1.5rem rgba(170, 194, 194, .3);
 }
 .planet7
