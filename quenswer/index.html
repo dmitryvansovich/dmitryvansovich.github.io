@@ -32,12 +32,7 @@
 	<script>
 		VK.init(function(){
 			VK.api('users.get', {fields: "photo_50"}, function(data){
-				$('#vk-userinfo-avatarimg').attr('src', data.response.photo_50);
-				$('#vk-userinfo-contentinfo').text(data.response.first_name+' '+data.response.last_name);
-
-				setTimeout(function(){
-					document.getElementById('vk-userinfo').className = 'vk-userinfo';
-				}, 3000);
+				console.log(data);
 			});
 		},'5.80');
 	</script>
