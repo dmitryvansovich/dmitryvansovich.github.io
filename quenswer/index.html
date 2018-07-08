@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>quenswer</title>
+
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<!-- ANIMATIONS -->
+	<link rel="stylesheet" href="css/animate.css">
+
+	<!-- FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+	<!-- STYLE -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- SCRIPTS -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="vk-userinfo">
+		<div class="avatar"><img src="img/tile.png" id="vk-userinfo-avatarimg"></div>
+		<div class="content" id="vk-userinfo-contentinfo">Undefined Undefined</div>
+	</div>
+	<div class="balance">
+		<div class="money">
+			<div class="icon"><i class="fas fa-money-bill-alt"></i></div>
+			<div class="content">0</div>
+		</div>
+		<div class="coins">
+			<div class="icon"><i class="fas fa-coins"></i></div>
+			<div class="content">0</div>
+		</div>
+	</div>
+	<div class="menu" id="menu">
+		<div class="menu-content">
+			<b class="logo animated fadeIn">QUENSWER</b>
+			<div class="buttons-all row mt-5">
+				<div class="menu-button animated fadeInLeft" onclick="toCategories();"><i class="fa fa-fw fa-th-list"></i> ИГРАТЬ</div>
+				<div class="menu-button animated fadeInRight"><i class="fa fa-fw fa-th"></i> МАГАЗИН</div>
+				<div class="menu-button animated fadeInLeft"><i class="fa fa-fw fa-trophy"></i> ДОСТИЖЕНИЯ</div>
+				<div class="menu-button-2 animated fadeInRight"><i class="fa fa-fw fa-wrench"></i> НАСТРОЙКИ</div>
+				<div class="menu-button-2 menu-button-black animated fadeInRight"><i class="fa fa-fw fa-question"></i> ПОМОЩЬ</div>
+			</div>
+		</div>
+	</div>
+	<div class="categories d-none" id="categories">
+		<div class="categories-content">
+			<div class="buttons-all row mt-3">
+				<div onclick="toGame();" class="menu-button animated fadeInLeft"><i class="fa fa-fw fa-th-list"></i> ОБЩЕЕ</div>
+				<div class="menu-button menu-button-black animated fadeInRight"><i class="fa fa-fw fa-leaf"></i> БИОЛОГИЯ</div>
+				<div class="menu-button animated menu-button-black fadeInLeft"><i class="fa fa-fw fa-flask"></i> ХИМИЯ</div>
+				<div class="menu-button menu-button-black animated fadeInRight"><i class="fab fa-fw fa-cloudsmith"></i> ФИЗИКА</div>
+				<div class="menu-button menu-button-black animated fadeInLeft"><i class="fas fa-fw fa-sort-numeric-up"></i> МАТЕМАТИКА</div>
+				<div class="menu-button menu-button-black animated fadeInRight"><i class="fa fa-fw fa-book"></i> ЛИТЕРАТУРА</div>
+				<div onclick="toMenu();" class="menu-button menu-button-black menu-button-small animated fadeInRight"><i class="fa fa-fw fa-arrow-left"></i></div>
+			</div>
+		</div>
+		<div class="help">
+			<div class="icon"><i class="fa fa-info-circle"></i></div>
+			<div class="content">Выберите тему вопросов в игре</div>
+		</div>
+	</div>
+
+	<div class="game d-none" id="game">
+		<div class="game-map-5">
+			<div class="map-tile-5 bg-blue" onclick="walk(1);" id="tile1"></div>
+			<div class="map-tile-5" onclick="walk(2);" id="tile2"></div>
+			<div class="map-tile-5" onclick="walk(3);" id="tile3"></div>
+			<div class="map-tile-5" onclick="walk(4);" id="tile4"></div>
+			<div class="map-tile-5" onclick="walk(5);" id="tile5"></div>
+			<div class="map-tile-5" onclick="walk(6);" id="tile6"></div>
+			<div class="map-tile-5" onclick="walk(7);" id="tile7"></div>
+			<div class="map-tile-5" onclick="walk(8);" id="tile8"></div>
+			<div class="map-tile-5" onclick="walk(9);" id="tile9"></div>
+			<div class="map-tile-5" onclick="walk(10);" id="tile10"></div>
+			<div class="map-tile-5" onclick="walk(11);" id="tile11"></div>
+			<div class="map-tile-5" onclick="walk(12);" id="tile12"></div>
+			<div class="map-tile-5" onclick="walk(13);" id="tile13"></div>
+			<div class="map-tile-5" onclick="walk(14);" id="tile14"></div>
+			<div class="map-tile-5" onclick="walk(15);" id="tile15"></div>
+			<div class="map-tile-5" onclick="walk(16);" id="tile16"></div>
+			<div class="map-tile-5" onclick="walk(17);" id="tile17"></div>
+			<div class="map-tile-5" onclick="walk(18);" id="tile18"></div>
+			<div class="map-tile-5" onclick="walk(19);" id="tile19"></div>
+			<div class="map-tile-5" onclick="walk(20);" id="tile20"></div>
+			<div class="map-tile-5" onclick="walk(21);" id="tile21"></div>
+			<div class="map-tile-5" onclick="walk(22);" id="tile22"></div>
+			<div class="map-tile-5" onclick="walk(23);" id="tile23"></div>
+			<div class="map-tile-5" onclick="walk(24);" id="tile24"></div>
+			<div class="map-tile-5 bg-purple" onclick="walk(25);" id="tile25"></div>
+		</div>
+		<div class="question-block d-none" id="question">
+			<div class="question" id="question-text">В чём измеряется сила?</div>
+			<div class="answers">
+				<div id="answer1" onclick="answer(1);">Метры ( м )</div>
+				<div id="answer2" onclick="answer(2);">Ньютоны ( Н )</div>
+				<div id="answer3" onclick="answer(3);">Ваты ( Вт )</div>
+				<div id="answer4" onclick="answer(4);">Ньютон на метр ( Н * м ) </div>
+				<div id="tile" class="d-none"></div>
+				<div id="right" class="d-none"></div>
+			</div>
+		</div>
+		<div class="win-block d-none" id="win-block">
+			<div class="title"><i class="far fa-grin-beam fa-fw"></i> Вы выиграли!</div>
+			<div class="content">
+				Территорий захвачено: <label class="count" id="yourterrs">1</label><br>
+				Территорий захвачено соперником: <label class="count" id="enemyterrs">1</label><br><br><br>
+				<label class="add-money">
+					<i class="fas fa-money-bill-alt"></i> +0
+					<i class="fas fa-coins"></i> +500
+				</label>
+			</div>
+			<div class="menu-button" onclick="toMenu();"><i class="fa fa-fw fa-th-list"></i> МЕНЮ</div>
+		</div>
+		<div class="lose-block d-none" id="lose-block">
+			<div class="title"><i class="far fa-frown-open fa-fw"></i> Вы проиграли!</div>
+			<div class="content">
+				Территорий захвачено: <label class="count" id="yourterrs">1</label><br>
+				Территорий захвачено соперником: <label class="count" id="enemyterrs">1</label><br><br><br>
+				<label class="add-money">
+					<i class="fas fa-money-bill-alt"></i> +0
+					<i class="fas fa-coins"></i> +500
+				</label>
+			</div>
+			<div class="menu-button" onclick="toMenu();"><i class="fa fa-fw fa-th-list"></i> МЕНЮ</div>
+		</div>
+	</div>
+
+	<script>
+		var your_territories = 1;
+		var bot_territories = 1;
+
+		var botwalk = false;
+		var bgs = 2;
+
+		var selected = false;
+
+		var tiles = [
+			{"bg":1},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":0},
+			{"bg":2}
+		];
+
+		var toCategories = function(){
+			document.getElementById('menu').className = "menu d-none";
+			document.getElementById('categories').className = "categories";
+			document.getElementById('game').className = "game d-none";
+		}
+
+		var toMenu = function(){
+			document.getElementById('menu').className = "menu";
+			document.getElementById('categories').className = "categories d-none";
+			document.getElementById('game').className = "game d-none";
+		}
+
+		var toGame = function(){
+			document.getElementById('game').className = "game";
+			document.getElementById('categories').className = "categories d-none";
+			document.getElementById('menu').className = "menu d-none";
+		
+			your_territories = 1;
+			bot_territories = 1;
+
+			botwalk = false;
+			bgs = 2;
+
+			selected = false;
+
+			tiles = [
+				{"bg":1},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":0},
+				{"bg":2}
+			];
+
+			document.getElementById('tile1').className = "map-tile-5 bg-blue";
+			document.getElementById('tile25').className = "map-tile-5 bg-purple";
+			for(var i = 2; i < 25; i++){
+				document.getElementById('tile'+i).className = "map-tile-5";
+			}
+
+			document.getElementById('win-block').className = 'win-block d-none';
+			document.getElementById('lose-block').className = 'lose-block d-none';
+		}
+
+		function getRandomInt(min, max){
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+	</script>
+
+	<script>
+		var questions = [
+			{
+				"questiontext": "В чём измеряется сила?",
+				"answer1": "Ваты ( Вт )",
+				"answer2": "Ньютоны ( Н )",
+				"answer3": "Метры ( м )",
+				"answer4": "Метры на секунды ( м * с )",
+				"right": 2
+			},{
+				"questiontext": "Сколько на Земле материков начинаются на букву «А»?",
+				"answer1": "5",
+				"answer2": "1",
+				"answer3": "4",
+				"answer4": "2",
+				"right": 1
+			},{
+				"questiontext": "Сколько планет в Солнечной системе?",
+				"answer1": "8",
+				"answer2": "11",
+				"answer3": "9",
+				"answer4": "10",
+				"right": 3
+			},{
+				"questiontext": "Какой по счёту от Солнца является Земля?",
+				"answer1": "3",
+				"answer2": "4",
+				"answer3": "2",
+				"answer4": "5",
+				"right": 1
+			},{
+				"questiontext": "Какая самая близкая звезда к Земле?",
+				"answer1": "Солнце",
+				"answer2": "Марс",
+				"answer3": "Юпитер",
+				"answer4": "Венера",
+				"right": 1
+			},{
+				"questiontext": "Сколько камер имеет человеческое сердце?",
+				"answer1": "3",
+				"answer2": "2",
+				"answer3": "4",
+				"answer4": "1",
+				"right": 3
+			},{
+				"questiontext": "Кто придумал телефон?",
+				"answer1": "Стив Джобмс",
+				"answer2": "Джеймс Морс",
+				"answer3": "Вильям Дэ Порт",
+				"answer4": "Александр Грем Белл",
+				"right": 4
+			},{
+				"questiontext": "Где находится Тибет?",
+				"answer1": "В Китае",
+				"answer2": "В Америке",
+				"answer3": "В России",
+				"answer4": "В Украине",
+				"right": 1
+			},{
+				"questiontext": "Столица Аргентины?",
+				"answer1": "Рио де Жанейро",
+				"answer2": "Рим",
+				"answer3": "Буэнос-Айрес",
+				"answer4": "Пекин",
+				"right": 3
+			},{
+				"questiontext": "В какой стране находится центр Европы?",
+				"answer1": "Украина",
+				"answer2": "Россия",
+				"answer3": "Беларусь",
+				"answer4": "Литва",
+				"right": 1
+			},{
+				"questiontext": "В каком году началась Первая Мировая Война?",
+				"answer1": "1941г.",
+				"answer2": "1913г.",
+				"answer3": "1924г.",
+				"answer4": "1914г.",
+				"right": 4
+			},{
+				"questiontext": "Каким символом обозначают площадь?",
+				"answer1": "S",
+				"answer2": "P",
+				"answer3": "r",
+				"answer4": "R",
+				"right": 1
+			},{
+				"questiontext": "Сколько звёзд на флаге США?",
+				"answer1": "47",
+				"answer2": "50",
+				"answer3": "51",
+				"answer4": "53",
+				"right": 2
+			},{
+				"questiontext": "Кто такой Никола Тэсла?",
+				"answer1": "Изобретатель и физик",
+				"answer2": "Художник",
+				"answer3": "Скульптор",
+				"answer4": "Инженер",
+				"right": 1
+			},{
+				"questiontext": "Сколько материков на планете Земля?",
+				"answer1": "Три",
+				"answer2": "Два",
+				"answer3": "Шесть",
+				"answer4": "Семь",
+				"right": 3
+			},{
+				"questiontext": "Какое государство находится одновременно в двух частях мира?",
+				"answer1": "Китай",
+				"answer2": "Украина",
+				"answer3": "Канада",
+				"answer4": "Россия",
+				"right": 4
+			},{
+				"questiontext": "Самая сильная мышца человеческого тела?",
+				"answer1": "Язык",
+				"answer2": "Бицепс",
+				"answer3": "Трицепс",
+				"answer4": "Грудные",
+				"right": 1
+			},{
+				"questiontext": "Чему ровно отношение пути к времени?",
+				"answer1": "Площади",
+				"answer2": "Трению",
+				"answer3": "Скорости",
+				"answer4": "Силе",
+				"right": 3
+			},{
+				"questiontext": "Самая длинная река на Земле?",
+				"answer1": "Волга",
+				"answer2": "Амазонка",
+				"answer3": "Днепр",
+				"answer4": "Нил",
+				"right": 4
+			},{
+				"questiontext": "Сколько зубов у человека?",
+				"answer1": "30",
+				"answer2": "32",
+				"answer3": "31",
+				"answer4": "33",
+				"right": 2
+			},{
+				"questiontext": "Чему равно число Пи?",
+				"answer1": "3.14",
+				"answer2": "3.13",
+				"answer3": "3.15",
+				"answer4": "3.12",
+				"right": 1
+			},{
+				"questiontext": "Сколько заповедей в Библии?",
+				"answer1": "9",
+				"answer2": "11",
+				"answer3": "10",
+				"answer4": "12",
+				"right": 3
+			},{
+				"questiontext": "Кто придумал алфавит?",
+				"answer1": "Илья и Никита",
+				"answer2": "Кирилл и Артур",
+				"answer3": "Иван и Егор",
+				"answer4": "Кирилл и Мефодий",
+				"right": 4
+			},{
+				"questiontext": "Между какими странами был подписан пакт \"Рибентропа и Молотова\"?",
+				"answer1": "Германия и СССР",
+				"answer2": "Украина и Германия",
+				"answer3": "СССР и Украина",
+				"answer4": "Беларусь и Россия",
+				"right": 1
+			},{
+				"questiontext": "Как называется прямая, ограниченая точками?",
+				"answer1": "Прямая",
+				"answer2": "Отрезок",
+				"answer3": "Кривая",
+				"answer4": "Линия",
+				"right": 2
+			}
+		];
+
+		var walk = function(tile){
+			if(tiles[tile-1].bg == 0 && botwalk == false && selected == false){
+				document.getElementById('game').className = 'game question-open';
+				document.getElementById('question').className = 'question-block';
+				document.getElementById('tile'+tile).className = 'map-tile-5 bg-darkgrey';
+
+				var id = getRandomInt(0,questions.length);
+
+				$('#question-text').text(questions[id].questiontext);
+				$('#answer1').text(questions[id].answer1);
+				$('#answer2').text(questions[id].answer2);
+				$('#answer3').text(questions[id].answer3);
+				$('#answer4').text(questions[id].answer4);
+				$('#tile').text(tile);
+				$('#right').text(questions[id].right);
+
+				selected = true;
+			}
+		}
+
+		var answer = function(answer){
+			var tile = $('#tile').text();
+			var right = $('#right').text();
+			if(right == answer) {
+				your_territories = your_territories + 1;
+				document.getElementById('tile'+tile).className = 'map-tile-5 bg-blue';
+				document.getElementById('game').className = 'game';
+				document.getElementById('question').className = 'question-block d-none';
+
+				tiles[tile-1].bg = 1;
+				bot_walk();
+				botwalk = true;
+				bgs = bgs + 1;
+
+				win();
+				selected = false;
+			} else {
+				document.getElementById('tile'+tile).className = 'map-tile-5 bg-tomato';
+				document.getElementById('game').className = 'game';
+				document.getElementById('question').className = 'question-block d-none';
+
+				tiles[tile-1].bg = '3';
+				bot_walk();
+				botwalk = true;
+				bgs = bgs + 1;
+
+				win();
+				selected = false;
+			}
+		}
+
+		var bot_walk = function(){
+			var tile = getRandomInt(1,25);
+			if(!tiles[tile-1]){ bot_walk(); } else {
+			if(tiles[tile-1].bg == 0){
+				setTimeout(function(){
+					var chance = getRandomInt(1,3);
+					if(chance == 1){
+						document.getElementById('tile'+tile).className = 'map-tile-5 bg-tomato';
+						tiles[tile-1].bg = 3;
+						botwalk = false;
+						bgs = bgs + 1;
+
+						win();
+					} else {
+						document.getElementById('tile'+tile).className = 'map-tile-5 bg-purple';
+						tiles[tile-1].bg = 2;
+						botwalk = false;
+						bgs = bgs + 1;
+						bot_territories = bot_territories + 1;
+
+						win();
+					}
+				}, 1000);
+			} else {
+				bot_walk();
+			}}
+		}
+
+		var win = function(){
+			if(bgs >= 24){
+				if(your_territories > bot_territories || your_territories == bot_territories){
+					document.getElementById('game').className = 'game game-win';
+					document.getElementById('win-block').className = 'win-block';
+
+					$('#yourterrs').text(your_territories);
+					$('#enemyterrs').text(bot_territories);
+				} else {
+					document.getElementById('game').className = 'game game-win';
+					document.getElementById('lose-block').className = 'lose-block';
+
+					$('#yourterrs').text(your_territories);
+					$('#enemyterrs').text(bot_territories);
+				}
+			}
+		}
+	</script>
+
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+	<script>
+		VK.init(function(){
+			VK.api('users.get', {fields: "photo_200"}, function(data){
+				$('#vk-userinfo-avatarimg').attr('src', data.response[0].photo_200);
+				$('#vk-userinfo-contentinfo').text(data.response[0].first_name+' '+data.response[0].last_name);
+			});
+		},'5.80');
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+</body>
+</html>
