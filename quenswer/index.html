@@ -136,14 +136,6 @@
 		var money = 0;
 		var coins = 0;
 
-		alert('Money: '+money+' | Coins: '+coins);
-
-		setTimeout(function(){
-			var money = $('#money_text').text();
-			var coins = $('#coins_text').text();
-			alert('Money: '+money+' | Coins: '+coins);
-		}, 10000);
-
 		var your_territories = 1;
 		var bot_territories = 1;
 		var botwalk = false;
@@ -515,11 +507,11 @@
 					$('#enemyterrs1').text(bot_territories);
 
 					var winmoney = 0;
-					var wincoins = coins*1 + ((your_territories*3)-bot_territories)*1;
+					var wincoins = ((your_territories*3)-bot_territories)*1;
 
 					setBalance(winmoney, wincoins);
 					$('#win-money').text(winmoney);
-					$('#win-coins').text(wincoins);
+					$('#win-coins').text(coins*1+wincoins);
 				} else {
 					document.getElementById('game').className = 'game game-win';
 					document.getElementById('lose-block').className = 'lose-block';
@@ -528,11 +520,11 @@
 					$('#enemyterrs').text(bot_territories);
 
 					var losemoney = 0;
-					var losecoins = coins*1 - ((bot_territories*3)-your_territories)*1;
+					var losecoins = ((bot_territories*3)-your_territories)*1;
 
 					setBalance(losemoney, losecoins);
 					$('#lose-money').text(losemoney);
-					$('#lose-coins').text(losecoins);
+					$('#lose-coins').text(coins*1-losecoins);
 				}
 			}
 		}
