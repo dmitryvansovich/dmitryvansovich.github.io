@@ -30,11 +30,11 @@
 	<div class="balance">
 		<div class="money">
 			<div class="icon"><i class="fas fa-money-bill-alt"></i></div>
-			<div class="content">0</div>
+			<div class="content" id="money_text">0</div>
 		</div>
 		<div class="coins">
 			<div class="icon"><i class="fas fa-coins"></i></div>
-			<div class="content">0</div>
+			<div class="content" id="coins_text">0</div>
 		</div>
 	</div>
 	<div class="menu" id="menu">
@@ -103,17 +103,17 @@
 				<div id="answer3" onclick="answer(3);">Ваты ( Вт )</div>
 				<div id="answer4" onclick="answer(4);">Ньютон на метр ( Н * м ) </div>
 				<div id="tile" class="d-none"></div>
-				<div id="right" class="d-none"></div>
+				<div id="right" class="d-none">2</div>
 			</div>
 		</div>
 		<div class="win-block d-none" id="win-block">
 			<div class="title"><i class="far fa-grin-beam fa-fw"></i> Вы выиграли!</div>
 			<div class="content">
-				Территорий захвачено: <label class="count" id="yourterrs">1</label><br>
-				Территорий захвачено соперником: <label class="count" id="enemyterrs">1</label><br><br><br>
+				Территорий захвачено: <label class="count" id="yourterrs1">1</label><br>
+				Территорий захвачено соперником: <label class="count" id="enemyterrs1">1</label><br><br><br>
 				<label class="add-money">
-					<i class="fas fa-money-bill-alt"></i> +0
-					<i class="fas fa-coins"></i> +500
+					<i class="fas fa-money-bill-alt"></i> +<label id="win-money">0</label>
+					<i class="fas fa-coins"></i> +<label id="win-coins">0</label>
 				</label>
 			</div>
 			<div class="menu-button" onclick="toMenu();"><i class="fa fa-fw fa-th-list"></i> МЕНЮ</div>
@@ -124,8 +124,8 @@
 				Территорий захвачено: <label class="count" id="yourterrs">1</label><br>
 				Территорий захвачено соперником: <label class="count" id="enemyterrs">1</label><br><br><br>
 				<label class="add-money">
-					<i class="fas fa-money-bill-alt"></i> +0
-					<i class="fas fa-coins"></i> +500
+					<i class="fas fa-money-bill-alt"></i> -<label id="lose-money">0</label>
+					<i class="fas fa-coins"></i> -<label id="lose-coins">0</label>
 				</label>
 			</div>
 			<div class="menu-button" onclick="toMenu();"><i class="fa fa-fw fa-th-list"></i> МЕНЮ</div>
@@ -133,12 +133,13 @@
 	</div>
 
 	<script>
+		var money = 0;
+		var coins = 0;
+
 		var your_territories = 1;
 		var bot_territories = 1;
-
 		var botwalk = false;
 		var bgs = 2;
-
 		var selected = false;
 
 		var tiles = [
@@ -248,7 +249,7 @@
 				"right": 2
 			},{
 				"questiontext": "Сколько на Земле материков начинаются на букву «А»?",
-				"answer1": "5",
+				"answer1": "3",
 				"answer2": "1",
 				"answer3": "4",
 				"answer4": "2",
@@ -458,7 +459,7 @@
 				document.getElementById('game').className = 'game';
 				document.getElementById('question').className = 'question-block d-none';
 
-				tiles[tile-1].bg = '3';
+				tiles[tile-1].bg = 3;
 				bot_walk();
 				botwalk = true;
 				bgs = bgs + 1;
@@ -502,14 +503,28 @@
 					document.getElementById('game').className = 'game game-win';
 					document.getElementById('win-block').className = 'win-block';
 
-					$('#yourterrs').text(your_territories);
-					$('#enemyterrs').text(bot_territories);
+					$('#yourterrs1').text(your_territories);
+					$('#enemyterrs1').text(bot_territories);
+
+					var winmoney = 0;
+					var wincoins = coins + ((your_territories*3)-bot_territories);
+
+					setBalance(winmoney, wincoins);
+					$('#win-money').text(winmoney);
+					$('#win-coins').text(wincoins);
 				} else {
 					document.getElementById('game').className = 'game game-win';
 					document.getElementById('lose-block').className = 'lose-block';
 
 					$('#yourterrs').text(your_territories);
 					$('#enemyterrs').text(bot_territories);
+
+					var losemoney = 0;
+					var losecoins = coins - ((bot_territories*3)-your_territories);
+
+					setBalance(losemoney, losecoins);
+					$('#lose-money').text(losemoney);
+					$('#lose-coins').text(losecoins);
 				}
 			}
 		}
@@ -527,6 +542,28 @@
 				}, 3000);
 			});
 		},'5.80');
+
+		var setBalance = function(newmoney, newcoins){
+			VK.api('storage.set', {key: "money", value: newmoney});
+			VK.api('storage.set', {key: "coins", value: newcoins});
+
+			updateBalance();
+		}
+
+		var updateBalance = function(){
+			VK.api('storage.get' {key: "money"}, function(data){
+				money = data.response;
+			});
+
+			VK.api('storage.get' {key: "coins"}, function(data){
+				coins = data.response;
+			});
+
+			$('#money_text').text(money);
+			$('#coins_text').text(coins);
+		}
+
+		updateBalance();
 	</script>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
