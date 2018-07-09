@@ -552,15 +552,12 @@
 
 		var updateBalance = function(){
 			VK.api('storage.get', {key: "money"}, function(data){
-				money = data.response;
+				$('#money_text').text(data.response);
 			});
 
 			VK.api('storage.get', {key: "coins"}, function(data){
-				coins = data.response;
+				$('#coins_text').text(data.response);
 			});
-
-			$('#money_text').text(money);
-			$('#coins_text').text(coins);
 		}
 
 		updateBalance();
