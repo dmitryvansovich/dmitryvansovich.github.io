@@ -509,7 +509,7 @@
 					var winmoney = 0;
 					var wincoins = ((your_territories*3)-bot_territories)*1;
 
-					coins = coins + wincoins;
+					coins = coins*1 + wincoins;
 
 					setBalance(money, coins);
 					$('#win-money').text(winmoney);
@@ -524,7 +524,7 @@
 					var losemoney = 0;
 					var losecoins = ((bot_territories*3)-your_territories)*1;
 
-					coins = coins - losecoins;
+					coins = coins*1 - losecoins;
 
 					setBalance(money, coins);
 					$('#lose-money').text(losemoney);
@@ -565,6 +565,9 @@
 
 			money = $('#money_text').text();
 			coins = $('#coins_text').text();
+
+			money = money * 1;
+			coins = coins * 1;
 		}
 
 		updateBalance();
