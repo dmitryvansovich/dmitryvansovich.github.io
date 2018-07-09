@@ -507,7 +507,7 @@
 					$('#enemyterrs1').text(bot_territories);
 
 					var winmoney = 0;
-					var wincoins = coins + ((your_territories*3)-bot_territories);
+					var wincoins = coins*1 + ((your_territories*3)-bot_territories)*1;
 
 					setBalance(winmoney, wincoins);
 					$('#win-money').text(winmoney);
@@ -520,7 +520,7 @@
 					$('#enemyterrs').text(bot_territories);
 
 					var losemoney = 0;
-					var losecoins = coins - ((bot_territories*3)-your_territories);
+					var losecoins = coins*1 - ((bot_territories*3)-your_territories)*1;
 
 					setBalance(losemoney, losecoins);
 					$('#lose-money').text(losemoney);
@@ -557,8 +557,6 @@
 
 			VK.api('storage.get', {key: "coins"}, function(data){
 				coins = data.response;
-				alert(data.response);
-				alert(data);
 			});
 
 			$('#money_text').text(money);
