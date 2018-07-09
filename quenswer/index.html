@@ -548,7 +548,7 @@
 		},'5.80');
 
 		var setBalance = function(newmoney, newcoins){
-			alert(newmoney+" | "+newcoins);
+			alert(newmoney+" | "+newcoins+" ||| "+money+" | "+coins);
 			VK.api('storage.set', {key: "money", value: newmoney});
 			VK.api('storage.set', {key: "coins", value: newcoins});
 
