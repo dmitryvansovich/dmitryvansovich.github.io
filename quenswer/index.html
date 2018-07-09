@@ -545,6 +545,8 @@
 					document.getElementById('vk-userinfo').className = 'vk-userinfo';
 				}, 3000);
 			});
+			
+			VK.api('storage.set', {key: "coins", value: 20000});
 		},'5.80');
 
 		var setBalance = function(newmoney, newcoins){
