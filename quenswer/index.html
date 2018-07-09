@@ -513,7 +513,7 @@
 
 					setBalance(money, coins);
 					$('#win-money').text(winmoney);
-					$('#win-coins').text(coins*1+wincoins);
+					$('#win-coins').text(wincoins);
 				} else {
 					document.getElementById('game').className = 'game game-win';
 					document.getElementById('lose-block').className = 'lose-block';
@@ -528,7 +528,7 @@
 
 					setBalance(money, coins);
 					$('#lose-money').text(losemoney);
-					$('#lose-coins').text(coins*1-losecoins);
+					$('#lose-coins').text(losecoins);
 				}
 			}
 		}
@@ -545,11 +545,10 @@
 					document.getElementById('vk-userinfo').className = 'vk-userinfo';
 				}, 3000);
 			});
-			
-			VK.api('storage.set', {key: "coins", value: 20000});
 		},'5.80');
 
 		var setBalance = function(newmoney, newcoins){
+			alert(newmoney+" | "+newcoins);
 			VK.api('storage.set', {key: "money", value: newmoney});
 			VK.api('storage.set', {key: "coins", value: newcoins});
 
