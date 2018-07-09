@@ -136,6 +136,14 @@
 		var money = 0;
 		var coins = 0;
 
+		alert('Money: '+money+' | Coins: '+coins);
+
+		setTimeout(function(){
+			var money = $('#money_text').text();
+			var coins = $('#coins_text').text();
+			alert('Money: '+money+' | Coins: '+coins);
+		}, 5000);
+
 		var your_territories = 1;
 		var bot_territories = 1;
 		var botwalk = false;
@@ -558,6 +566,9 @@
 			VK.api('storage.get', {key: "coins"}, function(data){
 				$('#coins_text').text(data.response);
 			});
+
+			money = $('#money_text').text();
+			coins = $('#coins_text').text();
 		}
 
 		updateBalance();
