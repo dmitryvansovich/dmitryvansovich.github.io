@@ -557,6 +557,8 @@
 
 			VK.api('storage.get', {key: "coins"}, function(data){
 				coins = data.response;
+				alert(data.response);
+				alert(data);
 			});
 
 			$('#money_text').text(money);
