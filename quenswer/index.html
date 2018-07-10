@@ -27,7 +27,7 @@
 		<div class="avatar"><img src="img/tile.png" id="vk-userinfo-avatarimg"></div>
 		<div class="content" id="vk-userinfo-contentinfo">Undefined Undefined</div>
 	</div>
-	<div class="balance">
+	<div class="balance d-none" id="balance">
 		<div class="money">
 			<div class="icon"><i class="fas fa-money-bill-alt"></i></div>
 			<div class="content" id="money_text">0</div>
@@ -237,7 +237,7 @@
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
 	</script>
-
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 	<script>
 		var questions = [
 			{
@@ -511,7 +511,8 @@
 
 					coins = coins*1 + wincoins;
 
-					setBalance(money, coins);
+					//setBalance(money, coins);
+					updateBalance();
 					$('#win-money').text(winmoney);
 					$('#win-coins').text(wincoins);
 				} else {
@@ -526,16 +527,14 @@
 
 					coins = coins*1 - losecoins;
 
-					setBalance(money, coins);
+					//setBalance(money, coins);
+					updateBalance();
 					$('#lose-money').text(losemoney);
 					$('#lose-coins').text(losecoins);
 				}
 			}
 		}
-	</script>
 
-	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
-	<script>
 		VK.init(function(){
 			VK.api('users.get', {fields: "photo_50"}, function(data){
 				$('#vk-userinfo-avatarimg').attr('src', data.response[0].photo_50);
@@ -544,34 +543,24 @@
 				setTimeout(function(){
 					document.getElementById('vk-userinfo').className = 'vk-userinfo';
 				}, 3000);
+
+				VK.api('storage.get', {keys: "money,coins"}, function(data){
+					money = data.response[0].value*1;
+					coins = data.response[1].value*1;
+
+					updateBalance();
+					document.getElementById('balance').className = "balance";
+				});
 			});
 		},'5.80');
 
-		var setBalance = function(newmoney, newcoins){
-			alert(newmoney+" | "+newcoins+" ||| "+money+" | "+coins);
-			VK.api('storage.set', {key: "money", value: newmoney});
-			VK.api('storage.set', {key: "coins", value: newcoins});
-
-			updateBalance();
-		}
-
 		var updateBalance = function(){
-			VK.api('storage.get', {key: "money"}, function(data){
-				$('#money_text').text(data.response);
-			});
+			$('#money_text').text(money);
+			$('#coins_text').text(coins);
 
-			VK.api('storage.get', {key: "coins"}, function(data){
-				$('#coins_text').text(data.response);
-			});
-
-			money = $('#money_text').text();
-			coins = $('#coins_text').text();
-
-			money = money * 1;
-			coins = coins * 1;
+			VK.api('storage.set', {key: "money", value: money});
+			VK.api('storage.set', {key: "coins", value: coins});
 		}
-
-		updateBalance();
 	</script>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
