@@ -37,6 +37,10 @@
 			<div class="content" id="coins_text">0</div>
 		</div>
 	</div>
+	<div class="beta-test">
+		<div class="icon"><i class="fas fa-code"></i></div>
+		<div class="content">BetaT v.0.4.66 patch 3.1 DropKey: 331</div>
+	</div>
 	<div class="menu" id="menu">
 		<div class="menu-content">
 			<b class="logo animated fadeIn">QUENSWER</b>
@@ -52,13 +56,13 @@
 	<div class="categories d-none" id="categories">
 		<div class="categories-content">
 			<div class="buttons-all row mt-3">
-				<div onclick="toGame();" class="menu-button animated fadeInLeft"><i class="fa fa-fw fa-th-list"></i> ОБЩЕЕ</div>
-				<div class="menu-button menu-button-black animated fadeInRight"><i class="fa fa-fw fa-leaf"></i> БИОЛОГИЯ</div>
-				<div class="menu-button animated menu-button-black fadeInLeft"><i class="fa fa-fw fa-flask"></i> ХИМИЯ</div>
-				<div class="menu-button menu-button-black animated fadeInRight"><i class="fab fa-fw fa-cloudsmith"></i> ФИЗИКА</div>
-				<div class="menu-button menu-button-black animated fadeInLeft"><i class="fas fa-fw fa-sort-numeric-up"></i> МАТЕМАТИКА</div>
-				<div class="menu-button menu-button-black animated fadeInRight"><i class="fa fa-fw fa-book"></i> ЛИТЕРАТУРА</div>
-				<div onclick="toMenu();" class="menu-button menu-button-black menu-button-small animated fadeInRight"><i class="fa fa-fw fa-arrow-left"></i></div>
+				<div onclick="toGame();" class="menu-button animated fadeInLeft"><i class="fa fa-fw fa-th-list"></i> ОБЩЕЕ<label class="text-right count">5 x 5</label></div>
+				<div class="menu-button menu-button-black animated fadeInRight"><i class="fa fa-fw fa-leaf"></i> БИОЛОГИЯ<label class="text-right count buy-categorie">500 <i class="fas fa-coins"></i></label></div>
+				<div class="menu-button animated menu-button-black fadeInLeft"><i class="fa fa-fw fa-flask"></i> ХИМИЯ<label class="text-right count buy-categorie">500 <i class="fas fa-coins"></i></label></div>
+				<div class="menu-button menu-button-black animated fadeInRight"><i class="fab fa-fw fa-cloudsmith"></i> ФИЗИКА<label class="text-right count buy-categorie">500 <i class="fas fa-coins"></i></label></div>
+				<div class="menu-button menu-button-black animated fadeInLeft"><i class="fas fa-fw fa-sort-numeric-up"></i> МАТЕМАТИКА<label class="text-right count buy-categorie">500 <i class="fas fa-coins"></i></label></div>
+				<div class="menu-button menu-button-black animated fadeInRight"><i class="fa fa-fw fa-book"></i> ЛИТЕРАТУРА<label class="text-right count buy-categorie">500 <i class="fas fa-coins"></i></label></div>
+				<div onclick="toMenu();" class="menu-button menu-button-black menu-button-small animated fadeInLeft"><i class="fa fa-fw fa-arrow-left"></i></div>
 			</div>
 		</div>
 		<div class="help">
@@ -70,29 +74,29 @@
 	<div class="game d-none" id="game">
 		<div class="game-map-5">
 			<div class="map-tile-5 bg-blue" onclick="walk(1);" id="tile1"></div>
-			<div class="map-tile-5" onclick="walk(2);" id="tile2"></div>
-			<div class="map-tile-5" onclick="walk(3);" id="tile3"></div>
-			<div class="map-tile-5" onclick="walk(4);" id="tile4"></div>
-			<div class="map-tile-5" onclick="walk(5);" id="tile5"></div>
-			<div class="map-tile-5" onclick="walk(6);" id="tile6"></div>
-			<div class="map-tile-5" onclick="walk(7);" id="tile7"></div>
-			<div class="map-tile-5" onclick="walk(8);" id="tile8"></div>
-			<div class="map-tile-5" onclick="walk(9);" id="tile9"></div>
-			<div class="map-tile-5" onclick="walk(10);" id="tile10"></div>
-			<div class="map-tile-5" onclick="walk(11);" id="tile11"></div>
-			<div class="map-tile-5" onclick="walk(12);" id="tile12"></div>
-			<div class="map-tile-5" onclick="walk(13);" id="tile13"></div>
-			<div class="map-tile-5" onclick="walk(14);" id="tile14"></div>
-			<div class="map-tile-5" onclick="walk(15);" id="tile15"></div>
-			<div class="map-tile-5" onclick="walk(16);" id="tile16"></div>
-			<div class="map-tile-5" onclick="walk(17);" id="tile17"></div>
-			<div class="map-tile-5" onclick="walk(18);" id="tile18"></div>
-			<div class="map-tile-5" onclick="walk(19);" id="tile19"></div>
-			<div class="map-tile-5" onclick="walk(20);" id="tile20"></div>
-			<div class="map-tile-5" onclick="walk(21);" id="tile21"></div>
-			<div class="map-tile-5" onclick="walk(22);" id="tile22"></div>
-			<div class="map-tile-5" onclick="walk(23);" id="tile23"></div>
-			<div class="map-tile-5" onclick="walk(24);" id="tile24"></div>
+			<div class="map-tile-5 cl" onclick="walk(2);" id="tile2"></div>
+			<div class="map-tile-5 cl" onclick="walk(3);" id="tile3"></div>
+			<div class="map-tile-5 cl" onclick="walk(4);" id="tile4"></div>
+			<div class="map-tile-5 cl" onclick="walk(5);" id="tile5"></div>
+			<div class="map-tile-5 cl" onclick="walk(6);" id="tile6"></div>
+			<div class="map-tile-5 cl" onclick="walk(7);" id="tile7"></div>
+			<div class="map-tile-5 cl" onclick="walk(8);" id="tile8"></div>
+			<div class="map-tile-5 cl" onclick="walk(9);" id="tile9"></div>
+			<div class="map-tile-5 cl" onclick="walk(10);" id="tile10"></div>
+			<div class="map-tile-5 cl" onclick="walk(11);" id="tile11"></div>
+			<div class="map-tile-5 cl" onclick="walk(12);" id="tile12"></div>
+			<div class="map-tile-5 cl" onclick="walk(13);" id="tile13"></div>
+			<div class="map-tile-5 cl" onclick="walk(14);" id="tile14"></div>
+			<div class="map-tile-5 cl" onclick="walk(15);" id="tile15"></div>
+			<div class="map-tile-5 cl" onclick="walk(16);" id="tile16"></div>
+			<div class="map-tile-5 cl" onclick="walk(17);" id="tile17"></div>
+			<div class="map-tile-5 cl" onclick="walk(18);" id="tile18"></div>
+			<div class="map-tile-5 cl" onclick="walk(19);" id="tile19"></div>
+			<div class="map-tile-5 cl" onclick="walk(20);" id="tile20"></div>
+			<div class="map-tile-5 cl" onclick="walk(21);" id="tile21"></div>
+			<div class="map-tile-5 cl" onclick="walk(22);" id="tile22"></div>
+			<div class="map-tile-5 cl" onclick="walk(23);" id="tile23"></div>
+			<div class="map-tile-5 cl" onclick="walk(24);" id="tile24"></div>
 			<div class="map-tile-5 bg-purple" onclick="walk(25);" id="tile25"></div>
 		</div>
 		<div class="question-block d-none" id="question">
@@ -226,7 +230,7 @@
 			document.getElementById('tile1').className = "map-tile-5 bg-blue";
 			document.getElementById('tile25').className = "map-tile-5 bg-purple";
 			for(var i = 2; i < 25; i++){
-				document.getElementById('tile'+i).className = "map-tile-5";
+				document.getElementById('tile'+i).className = "map-tile-5 cl";
 			}
 
 			document.getElementById('win-block').className = 'win-block d-none';
