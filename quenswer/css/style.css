@@ -15,13 +15,19 @@ body {
     font-weight: 900;
     font-family: sans-serif;
     font-family: fa5-proxima-nova,Helvetica Neue,Helvetica,Arial,sans-serif;
+    background-image: url('../img/tiles/Tile/medievalTile_58.png');
 }
 
-.menu, .categories, .game {
+.menu, .categories, .game, .shop {
     width: 1000px;
     height: 580px;
-    background-color: #212529;
-    color: #fff;
+    /*background-color: #212529;*/
+    background-color: rgb(33, 37, 41, .7);
+    color: #f8f9fa;
+}
+
+.game {
+    background-image: url('../img/tiles/Tile/medievalTile_58.png');
 }
 
 .menu-content, .categories-content {
@@ -164,14 +170,14 @@ b.logo {
     position: absolute;
     left: 0;
     top: 5%;
-    color: #adb5bd;
+    color: #fff;
     display: inline-block;
     font-weight: 400;
 }
 
 .vk-userinfo .avatar {
     display: inline;
-    background-color: rgb(0,0,0,0.3);
+    background-color: rgb(0,0,0,0.4);
     padding: 10px;
     padding-left: 8px;
 }
@@ -184,7 +190,7 @@ b.logo {
 
 .vk-userinfo .content {
     display: inline;
-    background-color: rgb(0,0,0,0.2);
+    background-color: rgb(0,0,0,0.3);
     padding: 10px;
     padding-left: 50px;
     padding-right: 15px;
@@ -199,7 +205,7 @@ b.logo {
 }
 
 .balance .money {
-    color: #adb5bd;
+    color: #fff;
     /*display: inline-block;*/
     font-weight: 400;
     display: inline;
@@ -207,14 +213,14 @@ b.logo {
 
 .balance .money .icon {
     display: inline;
-    background-color: rgb(0,0,0,0.3);
+    background-color: rgb(0,0,0,0.4);
     padding: 10px;
     padding-left: 13px;
 }
 
 .balance .money .content {
     display: inline;
-    background-color: rgb(0,0,0,0.2);
+    background-color: rgb(0,0,0,0.3);
     padding: 10px;
     padding-left: 55px;
     padding-right: 15px;
@@ -222,7 +228,7 @@ b.logo {
 }
 
 .balance .coins {
-    color: #adb5bd;
+    color: #fff;
     /*display: inline-block;*/
     font-weight: 400;
     display: inline;
@@ -230,7 +236,7 @@ b.logo {
 
 .balance .coins .icon {
     display: inline;
-    background-color: rgb(0,0,0,0.3);
+    background-color: rgb(0,0,0,0.4);
     padding: 10px;
     padding-left: 13px;
     padding-right: 13px;
@@ -238,7 +244,7 @@ b.logo {
 
 .balance .coins .content {
     display: inline;
-    background-color: rgb(0,0,0,0.2);
+    background-color: rgb(0,0,0,0.3);
     padding: 10px;
     padding-left: 55px;
     padding-right: 15px;
@@ -251,7 +257,7 @@ b.logo {
     height: 190px;
     padding: 5px;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%; /* 80% */
     transform: translate(-50%, -50%);
     padding: 3px;
@@ -263,7 +269,7 @@ b.logo {
 }
 
 .game-win .game-map-5 {
-    top: 22%;
+    top: 16%;
 }
 
 .map-tile-5 {
@@ -271,17 +277,41 @@ b.logo {
     width: 30px;
     height: 30px;
     border-radius: 3px;
-    background-color: #f8f9fa;
-    border-color: rgba(0,0,0,.2);
+    background-color: rgb(248, 249, 250, .1);
+    background: none;
+    border-color: rgba(0,0,0,.3);
     border-style: solid;
     border-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    -webkit-box-shadow: inset 0 1px 0 hsla(0,0%,100%,.0125),0 1px 1px rgba(0,0,0,.05);
-    box-shadow: inset 0 1px 0 hsla(0,0%,100%,.0125),0 1px 1px rgba(0,0,0,.05);
-    border-top-width: .0625rem;
-    border-bottom-width: 0.2625rem;
     transition: 0.3s;
+}
+
+.castle1, .castle2 {
+    display: block;
+    width: 30px;
+    height: 60px;
+    margin-left: 68px;
+}
+
+.castle1 .top, .castle2 .top {
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/tiles/Structure/medievalStructure_02.png');
+    background-size: 30px 30px;
+}
+
+.castle1 .bottom, .castle2 .bottom {
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/tiles/Structure/medievalStructure_06.png');
+    background-size: 30px 30px;
+}
+
+.castle1 {
+    margin-bottom: 5px;
+}
+
+.castle2 {
+    
 }
 
 .bg-blue {
@@ -296,12 +326,103 @@ b.logo {
     background-color: tomato;
 }
 
+.game-map-5 .bg-blue1 {
+    background-image: url('../img/tiles/Unit/medievalUnit_15.png');
+    background-size: 30px 30px;
+    background-color: rgb(34, 139, 230, .6);
+}
+
+.game-map-5 .bg-blue2 {
+    background-image: url('../img/tiles/Structure/medievalStructure_18.png');
+    background-size: 30px 30px;
+    background-color: rgb(34, 139, 230, .6);
+}
+
+.game-map-5 .bg-blue3 {
+    background-image: url('../img/tiles/Structure/medievalStructure_20.png');
+    background-size: 30px 30px;
+    background-color: rgb(34, 139, 230, .6);
+}
+
+.game-map-5 .bg-blue4 {
+    background-image: url('../img/tiles/Structure/medievalStructure_21.png');
+    background-size: 30px 30px;
+    background-color: rgb(34, 139, 230, .6);
+}
+
+.game-map-5 .bg-blue5 {
+    background-image: url('../img/tiles/Structure/medievalStructure_17.png');
+    background-size: 30px 30px;
+    background-color: rgb(34, 139, 230, .6);
+}
+
+.game-map-5 .bg-purple1 {
+    background-image: url('../img/tiles/Unit/medievalUnit_03.png');
+    background-size: 30px 30px;
+    background-color: rgb(103, 65, 217, .6);
+}
+
+.game-map-5 .bg-purple2 {
+    background-image: url('../img/tiles/Structure/medievalStructure_17.png');
+    background-size: 30px 30px;
+    background-color: rgb(103, 65, 217, .6);
+}
+
+.game-map-5 .bg-purple3 {
+    background-image: url('../img/tiles/Structure/medievalStructure_18.png');
+    background-size: 30px 30px;
+    background-color: rgb(103, 65, 217, .6);
+}
+
+.game-map-5 .bg-purple4 {
+    background-image: url('../img/tiles/Structure/medievalStructure_20.png');
+    background-size: 30px 30px;
+    background-color: rgb(103, 65, 217, .6);
+}
+
+.game-map-5 .bg-purple5 {
+    background-image: url('../img/tiles/Structure/medievalStructure_21.png');
+    background-size: 30px 30px;
+    background-color: rgb(103, 65, 217, .6);
+}
+.game-map-5 .bg-tomato1 {
+    background-image: url('../img/tiles/Environment/medievalEnvironment_01.png');
+    background-size: 30px 30px;
+    background-color: rgb(255, 99, 71, .6);
+}
+
+.game-map-5 .bg-tomato2 {
+    background-image: url('../img/tiles/Environment/medievalEnvironment_07.png');
+    background-size: 30px 30px;
+    background-color: rgb(255, 99, 71, .6);
+}
+
+.game-map-5 .bg-tomato3 {
+    background-image: url('../img/tiles/Environment/medievalEnvironment_03.png');
+    background-size: 30px 30px;
+    background-color: rgb(255, 99, 71, .6);
+}
+
+.game-map-5 .bg-tomato4 {
+    background-image: url('../img/tiles/Environment/medievalEnvironment_06.png');
+    background-size: 30px 30px;
+    background-color: rgb(255, 99, 71, .6);
+}
+
+.game-map-5 .bg-tomato5 {
+    background-image: url('../img/tiles/Environment/medievalEnvironment_13.png');
+    background-size: 30px 30px;
+    background-color: rgb(255, 99, 71, .6);
+}
+
 .bg-darkgrey {
-    background-color: #212529;
+    background-color: rgb(248, 249, 250, .1);
+    border-color: rgb(0,0,0,.5);
 }
 
 .game-map-5 .cl:hover, .game-map-5 .cl:active {
-    background-color: #adb5bd;
+    background-color: rgb(248, 249, 250, .1);
+    border-color: rgb(0,0,0,.5);
     cursor: pointer;
 }
 
@@ -357,7 +478,7 @@ b.logo {
     background-color: rgb(0,0,0,.2);
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 73%;
     transform: translate(-50%, -50%);
     border-radius: .25rem;
     text-align: center;
@@ -441,23 +562,80 @@ label.buy-categorie:hover {
     position: absolute;
     right: 0;
     bottom: 5%;
-    color: #adb5bd;
+    color: #fff;
     display: inline-block;
     font-weight: 400;
 }
 
 .beta-test .icon {
     display: inline;
-    background-color: rgb(0,0,0,0.3);
+    background-color: rgb(0,0,0,0.4);
     padding: 10px;
     padding-left: 10px;
 }
 
 .beta-test .content {
     display: inline;
-    background-color: rgb(0,0,0,0.2);
+    background-color: rgb(0,0,0,0.3);
     padding: 10px;
     padding-left: 50px;
     padding-right: 15px;
     margin-left: -42px;
+}
+
+.shop .header {
+    position: absolute;
+    text-align: center;
+    display: inline;
+    width: 800px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 100px;
+}
+
+.shop .header div {
+    display: inline;
+}
+
+.shop .body {
+    position: absolute;
+    width: 500px;
+    background-color: rgb(0,0,0,.2);
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 150px;
+    padding: 15px;
+    height: 350px;
+}
+
+.shop .body .product {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.shop .body .product .icon {
+    padding: 8.5px;
+    display: inline;
+    background-color: rgb(0,0,0,.3);
+}
+
+.shop .body .product .content {
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    margin-left: -37px;
+    padding-left: 42px;
+    background-color: rgb(0,0,0,.2);
+}
+
+label.shop-buy {
+    transition: 0.5s;
+    margin-top: -3px;
+    margin-right: 7px;
+}
+
+label.shop-buy:hover {
+    background-color: #f8f9fa;
+    color: #1a1e21;
+    cursor: pointer;
 }
