@@ -46,7 +46,7 @@
 			<b class="logo animated fadeIn">QUENSWER</b>
 			<div class="buttons-all row mt-5">
 				<div class="menu-button animated fadeInLeft" onclick="toCategories();"><i class="fa fa-fw fa-th-list"></i> ИГРАТЬ</div>
-				<div class="menu-button animated fadeInRight"><i class="fa fa-fw fa-th"></i> МАГАЗИН</div>
+				<div class="menu-button animated fadeInRight" onclick="toShop();"><i class="fa fa-fw fa-th"></i> МАГАЗИН<label class="text-right count">NEW</label></div>
 				<div class="menu-button animated fadeInLeft"><i class="fa fa-fw fa-trophy"></i> ДОСТИЖЕНИЯ</div>
 				<div class="menu-button-2 animated fadeInRight"><i class="fa fa-fw fa-wrench"></i> НАСТРОЙКИ</div>
 				<div class="menu-button-2 menu-button-black animated fadeInRight"><i class="fa fa-fw fa-question"></i> ПОМОЩЬ</div>
@@ -70,12 +70,34 @@
 			<div class="content">Выберите тему вопросов в игре</div>
 		</div>
 	</div>
-
+	<div class="shop d-none" id="shop">
+		<div class="header">
+			<div onclick="toMenu();" class="menu-button menu-button-black menu-button-small"><i class="fa fa-fw fa-arrow-left"></i></div>
+			<div id="shopbutton1" class="menu-button"><i class="fas fa-arrow-alt-circle-up fa-fw"></i> БУСТЫ</div>
+			<div id="shopbutton2" class="menu-button menu-button-black"><i class="fas fa-money-bill-alt fa-fw"></i> БАКСЫ</div>
+			<div id="shopbutton3" class="menu-button menu-button-black"><i class="fas fa-coins fa-fw"></i> МОНЕТЫ</div>
+			<div id="shopbutton4" class="menu-button menu-button-black"><i class="fas fa-fire fa-fw"></i> ВВЕСТИ ПРОМОКОД</div>
+		</div>
+		<div class="body" id="body-home">
+			<div class="product">
+				<div class="icon"><i class="fas fa-star-half-alt"></i></div>
+				<div class="content">50 на 50 - убрать два неправильных ответа<label class="text-right count shop-buy">500 <i class="fas fa-coins"></i></label> x 1</div>
+			</div>
+			<div class="product">
+				<div class="icon"><i class="fas fa-star-half-alt"></i></div>
+				<div class="content">50 на 50 - убрать два неправильных ответа</div>
+			</div>
+		</div>
+	</div>
 	<div class="game d-none" id="game">
 		<div class="game-map-5">
-			<div class="map-tile-5 bg-blue" onclick="walk(1);" id="tile1"></div>
+			<div class="castle1">
+				<div class="top"></div>
+				<div class="bottom"></div>
+			</div>
+			<div class="map-tile-5 cl" onclick="walk(1);" id="tile1"></div>
 			<div class="map-tile-5 cl" onclick="walk(2);" id="tile2"></div>
-			<div class="map-tile-5 cl" onclick="walk(3);" id="tile3"></div>
+			<div class="map-tile-5 bg-blue1" onclick="walk(3);" id="tile3"></div>
 			<div class="map-tile-5 cl" onclick="walk(4);" id="tile4"></div>
 			<div class="map-tile-5 cl" onclick="walk(5);" id="tile5"></div>
 			<div class="map-tile-5 cl" onclick="walk(6);" id="tile6"></div>
@@ -95,9 +117,13 @@
 			<div class="map-tile-5 cl" onclick="walk(20);" id="tile20"></div>
 			<div class="map-tile-5 cl" onclick="walk(21);" id="tile21"></div>
 			<div class="map-tile-5 cl" onclick="walk(22);" id="tile22"></div>
-			<div class="map-tile-5 cl" onclick="walk(23);" id="tile23"></div>
+			<div class="map-tile-5 bg-purple1" onclick="walk(23);" id="tile23"></div>
 			<div class="map-tile-5 cl" onclick="walk(24);" id="tile24"></div>
-			<div class="map-tile-5 bg-purple" onclick="walk(25);" id="tile25"></div>
+			<div class="map-tile-5 cl" onclick="walk(25);" id="tile25"></div>
+			<div class="castle2">
+				<div class="top"></div>
+				<div class="bottom"></div>
+			</div>
 		</div>
 		<div class="question-block d-none" id="question">
 			<div class="question" id="question-text">В чём измеряется сила?</div>
@@ -107,7 +133,7 @@
 				<div id="answer3" onclick="answer(3);">Ваты ( Вт )</div>
 				<div id="answer4" onclick="answer(4);">Ньютон на метр ( Н * м ) </div>
 				<div id="tile" class="d-none"></div>
-				<div id="right" class="d-none">2</div>
+				<div id="right" class="d-none"></div>
 			</div>
 		</div>
 		<div class="win-block d-none" id="win-block">
@@ -147,6 +173,8 @@
 		var selected = false;
 
 		var tiles = [
+			{"bg":0},
+			{"bg":0},
 			{"bg":1},
 			{"bg":0},
 			{"bg":0},
@@ -167,27 +195,35 @@
 			{"bg":0},
 			{"bg":0},
 			{"bg":0},
+			{"bg":2},
 			{"bg":0},
-			{"bg":0},
-			{"bg":0},
-			{"bg":0},
-			{"bg":2}
+			{"bg":0}
 		];
 
 		var toCategories = function(){
 			document.getElementById('menu').className = "menu d-none";
+			document.getElementById('shop').className = "shop d-none";
 			document.getElementById('categories').className = "categories";
 			document.getElementById('game').className = "game d-none";
 		}
 
 		var toMenu = function(){
 			document.getElementById('menu').className = "menu";
+			document.getElementById('shop').className = "shop d-none";
+			document.getElementById('categories').className = "categories d-none";
+			document.getElementById('game').className = "game d-none";
+		}
+
+		var toShop = function(){
+			document.getElementById('menu').className = "menu d-none";
+			document.getElementById('shop').className = "shop";
 			document.getElementById('categories').className = "categories d-none";
 			document.getElementById('game').className = "game d-none";
 		}
 
 		var toGame = function(){
 			document.getElementById('game').className = "game";
+			document.getElementById('shop').className = "shop d-none";
 			document.getElementById('categories').className = "categories d-none";
 			document.getElementById('menu').className = "menu d-none";
 		
@@ -200,6 +236,8 @@
 			selected = false;
 
 			tiles = [
+				{"bg":0},
+				{"bg":0},
 				{"bg":1},
 				{"bg":0},
 				{"bg":0},
@@ -220,18 +258,17 @@
 				{"bg":0},
 				{"bg":0},
 				{"bg":0},
+				{"bg":2},
 				{"bg":0},
-				{"bg":0},
-				{"bg":0},
-				{"bg":0},
-				{"bg":2}
+				{"bg":0}
 			];
 
-			document.getElementById('tile1').className = "map-tile-5 bg-blue";
-			document.getElementById('tile25').className = "map-tile-5 bg-purple";
-			for(var i = 2; i < 25; i++){
+			for(var i = 1; i < 25; i++){
 				document.getElementById('tile'+i).className = "map-tile-5 cl";
 			}
+
+			document.getElementById('tile3').className = "map-tile-5 bg-blue1";
+			document.getElementById('tile23').className = "map-tile-5 bg-purple1";
 
 			document.getElementById('win-block').className = 'win-block d-none';
 			document.getElementById('lose-block').className = 'lose-block d-none';
@@ -424,7 +461,7 @@
 				"answer1": "Шахта ТауТона",
 				"answer2": "Озеро Байкал",
 				"answer3": "Кольская скважина",
-				"answer4": "Марианская впадина?",
+				"answer4": "Марианская впадина",
 				"right": 4
 			},{
 				"questiontext": "Какая самая маленькая планета Солнечной системы?",
@@ -517,7 +554,8 @@
 			var right = $('#right').text();
 			if(right == answer) {
 				your_territories = your_territories + 1;
-				document.getElementById('tile'+tile).className = 'map-tile-5 bg-blue';
+				var randomTile = getRandomInt(1,5);
+				document.getElementById('tile'+tile).className = 'map-tile-5 bg-blue'+randomTile;
 				document.getElementById('game').className = 'game';
 				document.getElementById('question').className = 'question-block d-none';
 
@@ -529,7 +567,8 @@
 				win();
 				selected = false;
 			} else {
-				document.getElementById('tile'+tile).className = 'map-tile-5 bg-tomato';
+				var randomTile = getRandomInt(1,5);
+				document.getElementById('tile'+tile).className = 'map-tile-5 bg-tomato'+randomTile;
 				document.getElementById('game').className = 'game';
 				document.getElementById('question').className = 'question-block d-none';
 
@@ -550,14 +589,16 @@
 				setTimeout(function(){
 					var chance = getRandomInt(1,3);
 					if(chance == 1){
-						document.getElementById('tile'+tile).className = 'map-tile-5 bg-tomato';
+						var randomTile = getRandomInt(1,5);
+						document.getElementById('tile'+tile).className = 'map-tile-5 bg-tomato'+randomTile;
 						tiles[tile-1].bg = 3;
 						botwalk = false;
 						bgs = bgs + 1;
 
 						win();
 					} else {
-						document.getElementById('tile'+tile).className = 'map-tile-5 bg-purple';
+						var randomTile = getRandomInt(1,5);
+						document.getElementById('tile'+tile).className = 'map-tile-5 bg-purple'+randomTile;
 						tiles[tile-1].bg = 2;
 						botwalk = false;
 						bgs = bgs + 1;
