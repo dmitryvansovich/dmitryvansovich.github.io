@@ -9,8 +9,8 @@
 	transform-style: preserve-3d;
 	transform: translate(-50%, -50%) rotateX(60deg) rotateZ(45deg);
 
-	height: 18em;
-	width: 18em;
+	height: 28em;
+	width: 28em;
 }
 
 html,
@@ -80,7 +80,16 @@ body {
 }
 
 .map .gray {
-	background-color: #d8d3bf;
+	background-color: #d8d3bf!important;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385,
+	 6px 6px #979385;
 }
 
 .tile:after {
@@ -101,11 +110,30 @@ body {
 
 .tile img.tree {
 	width: 2em;
-	height: 5em;
+	height: 6em;
+	position: relative;
+	top: -1.7em;
+	margin-top: -11em;
+	margin-left: -0.8em;
+ 	transform: rotateZ(-44.5deg);
+}
+
+.tile .building1:nth-of-type(1) {
+	width: 4.5em;
+	height: 8em;
+	position: relative;
+	margin-top: -3.5em;
+	margin-left: -1.7em;
+ 	transform: rotateZ(-44.5deg);
+}
+
+.tile .building1:nth-of-type(2) {
+	width: 4.5em;
+	height: 8em;
 	position: relative;
 	top: -2em;
 	margin-top: -11em;
-	margin-left: -0.6em;
+	margin-left: -6.7em;
  	transform: rotateZ(-44.5deg);
 }
 
@@ -148,7 +176,7 @@ body {
 
 .tile .road, .tile .road1, .tile .road2, .tile .road3, .tile .road4,
 .tile .road5, .tile .road6, .tile .river1, .tile .river2,  .tile .gray-tree,
-.tile .river3, .tile .river4, .tile .road5 {
+.tile .river3, .tile .river4, .tile .road5, .tile .road0, .tile .road7 {
 	float: left;
 }
 
@@ -1085,6 +1113,291 @@ body {
 .tile .road5:nth-of-type(5) {
 	width: 4em;
 	height: 1.1em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+/* ROAD1 */
+
+.tile .road0:nth-of-type(1) {
+	width: 0.5em;
+	height: 4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road0:nth-of-type(2) {
+	width: 0.2em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road0:nth-of-type(3) {
+	width: 0.2em;
+	height: 1.6em;
+	display: inline-block;
+	background-color: #c2c2c2; /* this */
+	margin-top: 1.2em;
+	margin-left: -0.2em;
+	position: relative;
+	top: -19px;
+	left: -19px;
+	box-shadow:  1px 1px #9e9f9f,
+	 2px 2px #9e9f9f,
+	 3px 3px #9e9f9f,
+	 4px 4px #9e9f9f,
+	 5px 5px #9e9f9f,
+	 6px 6px #9e9f9f,
+	 7px 7px #9e9f9f,
+	 8px 8px #9e9f9f,
+	 9px 9px #9e9f9f,
+	 10px 10px #9e9f9f,
+	 11px 11px #9e9f9f,
+	 12px 12px #9e9f9f,
+	 13px 13px #9e9f9f,
+	 14px 14px #9e9f9f,
+	 15px 15px #9e9f9f,
+	 16px 16px #9e9f9f,
+	 17px 17px #9e9f9f,
+	 18px 18px #9e9f9f,
+	 19px 19px #9e9f9f;
+}
+
+.tile .road0:nth-of-type(4) {
+	width: 0.2em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	margin-top: 2.6em;
+	margin-left: -0.2em;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road0:nth-of-type(5) {
+	width: 0.4em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road0:nth-of-type(6) {
+	width: 0.4em;
+	height: 1.6em;
+	display: inline-block;
+	background-color: #d8d3bf; /* this */
+	margin-top: 1.2em;
+	margin-left: -0.4em;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385,
+	 -17px -17px #c2c2c2,
+	 -18px -18px #c2c2c2,
+	 -19px -19px #c2c2c2;
+}
+
+.tile .road0:nth-of-type(7) {
+	width: 0.4em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	margin-top: 2.6em;
+	margin-left: -0.4em;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road0:nth-of-type(8) {
+	width: 1.8em;
+	height: 4em;
+	display: inline-block;
+	background-color: #686868;
+}
+
+.tile .road0:nth-of-type(9) {
+	width: 1.1em;
+	height: 4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+/* ROAD7 */
+
+.tile .road7:nth-of-type(1) {
+	width: 1.1em;
+	height: 4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road7:nth-of-type(2) {
+	width: 1.8em;
+	height: 1.2em;
+	display: inline-block;
+	background-color: #686868;
+}
+
+.tile .road7:nth-of-type(3) {
+	width: 1.1em;
+	height: 1.2em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road7:nth-of-type(4) {
+	width: 0.4em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #fff;
+}
+
+.tile .road7:nth-of-type(5) {
+	width: 0.3em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #686868;
+}
+
+.tile .road7:nth-of-type(6) {
+	width: 0.1em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #fff;
+}
+
+.tile .road7:nth-of-type(7) {
+	width: 0.3em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #686868;
+}
+
+.tile .road7:nth-of-type(8) {
+	width: 0.1em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #fff;
+}
+
+.tile .road7:nth-of-type(9) {
+	width: 0.3em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #686868;
+}
+
+.tile .road7:nth-of-type(10) {
+	width: 0.2em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #fff;
+}
+.tile .road7:nth-of-type(11) {
+	width: 0.1em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #686868;
+}
+
+.tile .road7:nth-of-type(12) {
+	width: 1.1em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #d8d3bf;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	box-shadow:  1px 1px #979385,
+	 2px 2px #979385,
+	 3px 3px #979385,
+	 4px 4px #979385,
+	 5px 5px #979385;
+}
+
+.tile .road7:nth-of-type(13) {
+	width: 1.8em;
+	height: 1.4em;
+	display: inline-block;
+	background-color: #686868;
+}
+
+.tile .road7:nth-of-type(14) {
+	width: 1.1em;
+	height: 1.4em;
 	display: inline-block;
 	background-color: #d8d3bf;
 	position: relative;
