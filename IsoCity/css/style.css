@@ -23,6 +23,14 @@ body {
     outline: none;
 }
 
+* {
+    -ms-overflow-style: none;  // IE 10+
+    overflow: -moz-scrollbars-none;  // Firefox
+}
+*::-webkit-scrollbar { 
+    display: none;  // Safari and Chrome
+}
+
 body {
 	pointer-events: none;
 	background: #7ca340;
