@@ -86,6 +86,60 @@ body {
 	left: 0;
 }
 
+.right_menus_buttonsHover1 {
+	color: #7F7F7F;
+	background-color: #222;
+	padding: 15px;
+	border-radius: 5px;
+	position: relative;
+	margin-bottom: 1%;
+	font-size: 14px;
+	transition: 0.3s;
+}
+
+#right_menus_buttonsHover5 {
+	color: #7F7F7F;
+	background-color: #222;
+	padding: 15px;
+	border-radius: 5px;
+	position: relative;
+	margin-top: 1%;
+	font-size: 14px;
+	transition: 0.3s;
+}
+
+.left-buttons {
+	position: fixed;
+	left: 1%;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: auto;
+}
+
+.left-buttons .leftbutton {
+	width: 2.2em;
+	height: 2.2em;
+	line-height: 2.2em;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 16px;
+	background-color: #222;
+	text-align: center;
+	transition: 0.3s;
+}
+
+.left-buttons .leftbutton:hover {
+	cursor: pointer;
+	background-color: #2a2a2a;
+	color: #fff;
+}
+
+.right_menus_buttonsHover1 .title {
+	color: #fff;
+	margin-bottom: 3px;
+	font-weight: 900;
+}
+
 .choice-element-body {
 	text-align: center;
 	width: 96%;
@@ -138,7 +192,7 @@ body {
 }
 
 .balance .coins {
-	margin-left: 1%;
+	margin-left: 0.3%;
 	float: left;
 }
 
@@ -194,6 +248,11 @@ body {
 	border-radius: 5px;
 	margin-left: 0.3em;
 	float: right;
+	pointer-events: auto;
+}
+
+.city-info-box .right:hover {
+	cursor: pointer;
 }
 
 .choice-element-menu {
