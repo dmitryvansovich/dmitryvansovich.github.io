@@ -424,43 +424,87 @@
 
 	<div class="balance">
 		<div class="money">
-			<div class="content"><div class="icon"><i class="fa fa-coins"></i></div>100</div>
+			<div class="content"><div class="icon"><i class="fa fa-money-bill"></i></div>100</div>
 		</div>
 		<div class="coins">
-			<div class="content"><div class="icon"><i class="fa fa-money-bill"></i></div>102432</div>
+			<div class="content"><div class="icon"><i class="fa fa-coins"></i></div>102432</div>
+		</div>
+	</div>
+
+	<div class="left-buttons">
+		<div class="leftbutton" onclick="removeBuildings()" onmouseenter="right_menus_buttonsHover(5);" onmouseleave="right_menus_buttonsUnHover(5);" id="removeBuildings"><i class="fas fa-sort-down"></i></div>
+		<div class="leftbutton" onclick="showBuildings()" onmouseenter="right_menus_buttonsHover(5);" onmouseleave="right_menus_buttonsUnHover(5);" id="showBuildings" style="display: none"><i class="fas fa-sort-up"></i></div>
+
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover5" style="opacity: 0;">
+			<div class="title">ВЫРОВНЯТЬ</div>
+			Убрать/показать здания
 		</div>
 	</div>
 
 	<div class="center-buttons">
-		<div class="choice-element-button" onclick="choise_element_cancel();" id="cancel-el" style="background-color: tomato; padding: 1.5em 1.9em;display: none">
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover0" style="opacity: 0; display: none;">
+			<div class="title" style="color:tomato;">ОТМЕНА</div>
+			Отменить строительство
+		</div>
+	
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover1" style="opacity: 0; display: none;">
+			<div class="title">СТРОИТЬ</div>
+			Меню выбора постройки
+		</div>
+
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover2" style="opacity: 0; display: none;">
+			<div class="title">УПРАВЛЕНИЕ</div>
+			Меню управления городом
+		</div>
+
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover3" style="opacity: 0; display: none;">
+			<div class="title">ТОВАРЫ</div>
+			Список товаров
+		</div>
+
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover4" style="opacity: 0; display: none;">
+			<div class="title">ЭНЕРГИЯ</div>
+			Меню поступления энергии
+		</div>
+
+		<div class="choice-element-button" onclick="choise_element_cancel();" onmouseenter="right_menus_buttonsHover(0);" onmouseleave="right_menus_buttonsUnHover(0);" id="cancel-el" style="background-color: tomato; padding: 1.5em 1.9em;display: none">
 			<i class="fas fa-times"></i>
 			<div class="key" style="left: 2.4em;">1</div>
 		</div>
 
-		<div class="choice-element-button" onclick="choise_element_open();" id="choice-el" style="padding: 1.5em 1.6em;">
+		<div class="choice-element-button" onclick="choise_element_open();" onmouseenter="right_menus_buttonsHover(1);" onmouseleave="right_menus_buttonsUnHover(1);" id="choice-el" style="padding: 1.5em 1.6em;">
 			<i class="far fa-building"></i>
 			<div class="key" style="left: 2.6em;">1</div>
 		</div>
 
-		<div class="trophys-button button-disabled">
-			<i class="fa fa-trophy"></i>
+		<div class="trophys-button button-disabled" onmouseenter="right_menus_buttonsHover(2);" onmouseleave="right_menus_buttonsUnHover(2);">
+			<i class="fa fa-cogs"></i>
 			<div class="key">2</div>
 		</div>
 
-		<div class="trophys-button button-disabled" style="padding: 1.5em 1.4em;">
+		<div class="trophys-button button-disabled" onmouseenter="right_menus_buttonsHover(3);" onmouseleave="right_menus_buttonsUnHover(3);" style="padding: 1.5em 1.4em;">
 			<i class="fas fa-box-open"></i>
 			<div class="key" style="left: 2.8em;">3</div>
 		</div>
 
-		<div class="trophys-button button-disabled" style="padding: 1.5em 2em;">
+		<div class="trophys-button button-disabled" onmouseenter="right_menus_buttonsHover(4);" onmouseleave="right_menus_buttonsUnHover(4);" style="padding: 1.5em 2em;">
 			<i class="fas fa-bolt"></i>
 			<div class="key" style="left: 2.2em;">4</div>
 		</div>
 	</div>
 
 	<div class="city-info-box">
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover6" style="opacity: 0; display: none;">
+			<div class="title">СЧАСТЬЕ</div>
+			Уровень счастья населения
+		</div>
+		<div class="right_menus_buttonsHover1" id="right_menus_buttonsHover7" style="opacity: 0; display: none;">
+			<div class="title">НАСЕЛЕНИЕ</div>
+			Население города
+		</div>
 		<div class="left"><i class="fas fa-fw fa-university" style="position: relative; top: -1px;"></i> YOUR CITY NAME</div>
-		<div class="right">132 <i class="fas fa-fw fa-users"></i></div>
+		<div class="right" onmouseenter="right_menus_buttonsHover(6);" onmouseleave="right_menus_buttonsUnHover(6);">100% <i class="fa fa-fw fa-smile" style="color:#6BE26B;"></i></div>
+		<div class="right" onmouseenter="right_menus_buttonsHover(7);" onmouseleave="right_menus_buttonsUnHover(7);">132 <i class="fas fa-fw fa-users"></i></div>
 	</div>
 
 	<div class="choice-element" id="choice-element-window" style="display: none;">
@@ -848,6 +892,63 @@
 				if(tiles[tile-1].z == true) return;
 				tile_div.innerHTML = ``;
 
+			}
+
+			function right_menus_buttonsHover(button){
+				document.getElementById('right_menus_buttonsHover0').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover0').style.display = 'none';
+				document.getElementById('right_menus_buttonsHover1').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover1').style.display = 'none';
+				document.getElementById('right_menus_buttonsHover2').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover2').style.display = 'none';
+				document.getElementById('right_menus_buttonsHover3').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover3').style.display = 'none';
+				document.getElementById('right_menus_buttonsHover4').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover4').style.display = 'none';
+				document.getElementById('right_menus_buttonsHover5').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover5').style.display = 'none';
+				document.getElementById('right_menus_buttonsHover6').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover6').style.display = 'none';
+				document.getElementById('right_menus_buttonsHover7').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover7').style.display = 'none';
+
+				document.getElementById('right_menus_buttonsHover'+button).style.display = "block";
+				setTimeout(function(){
+					document.getElementById('right_menus_buttonsHover'+button).style.opacity = '1';
+				}, 300);
+			}
+
+			function right_menus_buttonsUnHover(button){
+				document.getElementById('right_menus_buttonsHover0').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover1').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover2').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover3').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover4').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover5').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover6').style.opacity = '0';
+				document.getElementById('right_menus_buttonsHover7').style.opacity = '0';
+			}
+
+			function removeBuildings(){
+				var imgs = document.querySelectorAll('img'); 
+				var allImgs = imgs.length;
+				for (i=0; i<allImgs; i++){
+				    imgs[i].style.display = 'none';
+				}
+
+				document.getElementById('removeBuildings').style.display = "none";
+				document.getElementById('showBuildings').style.display = "block";
+			}
+
+			function showBuildings(){
+				var imgs = document.querySelectorAll('img'); 
+				var allImgs = imgs.length;
+				for (i=0; i<allImgs; i++){
+				    imgs[i].style.display = 'inline-block';
+				}
+
+				document.getElementById('showBuildings').style.display = "none";
+				document.getElementById('removeBuildings').style.display = "block";
 			}
 		</script>
 
