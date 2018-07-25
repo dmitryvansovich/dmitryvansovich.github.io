@@ -33,12 +33,16 @@ body {
 
 body {
 	pointer-events: none;
-	background: #7ca340;
+	background: /*#7ca340*/ #87AB51;
     font-size: 14px;
     line-height: 1.154;
     word-wrap: break-word;
     font-weight: 400;
 	font-family: Roboto,sans-serif;
+}
+
+.body-dark {
+	background: #455132;
 }
 
 .preview {
@@ -49,16 +53,25 @@ body {
 	transform-style: preserve-3d;
 	transform: translate(-50%, -50%) rotateX(60deg) rotateZ(45deg);
 
-	height: 5.3em;
+	height: 6.7em;
 	width: 5.3em;
 
 	margin: 2em -1em -2em 4em;
 	padding-left: 0.5em;
 	padding-right: 0.6em;
 	padding-top: 0.5em;
-	padding-bottom: 0.6em;
 	transition: 0.3s;
 	background-color: rgb(34,34,34,.5);
+}
+
+.preview .element_cost {
+	margin-top: 4.5em;
+	color: #fff;
+	font-weight: 900;
+}
+
+.map .tile .element_cost {
+	display: none;
 }
 
 .preview:hover {
@@ -152,6 +165,11 @@ body {
 	top: 0;
 	overflow-y: auto;
 	left: 0;
+}
+
+label {
+	margin: 0;
+	padding: 0;
 }
 
 .controls {
@@ -356,15 +374,101 @@ body {
 
 	perspective: 1000px;
 	transform-style: preserve-3d;
-	transform: translate(-50%, -50%) rotateX(60deg) rotateZ(45deg);
+	transform: translate(-50%, -50%) rotateX(60deg) rotateZ(45deg) scale(2);
+
+	box-shadow:0px 0px 16em 2em #7ca340;
 
 	height: 82.2em;
 	width: 82.2em;
-	border: 15px dashed #222;
+	border: 15px solid #87AB51;
+}
+
+.map-container-dark {
+	float: left;
+  	position: fixed;
+
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	transform: translate(-50%, -50%) rotateX(60deg) rotateZ(45deg);
+
+	box-shadow:0px 0px 16em 6em #7ca340;
+
+	height: 82.2em;
+	width: 82.2em;
+	border: 15px solid /*#87AB51*/ #455132;
 }
 
 .map {
 	float: left;
+}
+
+.modal1 {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    pointer-events: auto;
+}
+
+.modal-body {
+    margin: 15% auto;
+    width: 80%;
+}
+
+.modal-title {
+    background-color: #323237;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 25px 25px 1px 25px;
+}
+
+.modal-footer {
+    background-color: #323237;
+    color: #fff;
+    padding: 25px;
+    text-align: right;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.modal-content {
+    background-color: #2B2B30;
+    color: #7E7E7E;
+    padding: 25px;
+}
+
+.modal-content input {
+	background-color: #242424;
+	border: 1px solid #101010;
+	border-radius: none;
+	padding: 5px;
+	color: #7F7F7F;
+	margin: 5px 0;
+}
+
+.modal1 .close1 {
+    color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #54CB54;
+    border-style: solid;
+    border-color: #46A047;
+    border-width: 1px;
+    border-bottom-width: 3px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.modal1 .close1:hover,
+.modal1 .close1:focus {
+    text-decoration: none;
+    background-color: #46A047;
+    cursor: pointer;
 }
 
 .map .tile {
@@ -373,6 +477,8 @@ body {
 
 	width: 4em;
 	height: 4em;
+
+	/*border: 0.1px solid rgb(255,255,255,0.2);*/
 
 	cursor: pointer;
 	background-color: #7ca340;
@@ -417,6 +523,50 @@ body {
 		 39px 39px rgb(167, 125, 83);*/
 }
 
+.map .tile .tile-2:nth-of-type(1) {
+	width: 2em;
+	height: 2em;
+	background-color: none;
+	border-top: 3px solid #87AB51;
+	border-left: 3px solid #87AB51;
+	border-right: 2px solid #87AB51;
+	border-bottom: 2px solid #87AB51;
+	float: left;
+}
+
+.map .tile .tile-2:nth-of-type(2) {
+	width: 2em;
+	height: 2em;
+	background-color: none;
+	border-top: 3px solid #87AB51;
+	border-right: 3px solid #87AB51;
+	border-left: 2px solid #87AB51;
+	border-bottom: 2px solid #87AB51;
+	float: left;
+}
+
+.map .tile .tile-2:nth-of-type(3) {
+	width: 2em;
+	height: 2em;
+	background-color: none;
+	border-bottom: 3px solid #87AB51;
+	border-left: 3px solid #87AB51;
+	border-right: 2px solid #87AB51;
+	border-top: 2px solid #87AB51;
+	float: left;
+}
+
+.map .tile .tile-2:nth-of-type(4) {
+	width: 2em;
+	height: 2em;
+	background-color: none;
+	border-bottom: 3px solid #87AB51;
+	border-right: 3px solid #87AB51;
+	border-left: 2px solid #87AB51;
+	border-top: 2px solid #87AB51;
+	float: left;
+}
+
 .dark {
 	background-color: #686868!important;
 }
@@ -442,6 +592,10 @@ body {
 
 	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0);
 	background: rgba(255, 255, 255, 0);
+}
+
+.no-evenets {
+	pointer-events: none;
 }
 
 .tile img.tree {
