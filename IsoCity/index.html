@@ -2427,7 +2427,7 @@
 			<div class="content"><div class="icon"><i class="fa fa-money-bill"></i></div><label id="money">100</label></div>
 		</div>
 		<div class="coins">
-			<div class="content"><div class="icon"><i class="fa fa-coins"></i></div><label id="coins">50000</label></div>
+			<div class="content"><div class="icon"><i class="fa fa-coins"></i></div><label id="coins">5000</label></div>
 		</div>
 	</div>
 
@@ -2858,7 +2858,7 @@
 
 		<script>
 			var money = 100;
-			var coins = 50000;
+			var coins = 5000;
 			var move = true;
 
 			var choised_element = null;
@@ -2963,16 +2963,6 @@
 				if(!choised_element) return;
 				if(tiles[tile-1].z == true) return;
 				tile_div.innerHTML = choised_element;
-
-				setTimeout(function(){
-					if(tiles[tile-1].z == false){
-						tile_div.innerHTML = `
-							<div class="tile-2"></div>
-							<div class="tile-2"></div>
-							<div class="tile-2"></div>
-							<div class="tile-2"></div>`;
-					};
-				}, 1);
 			}
 
 			function tileUnHover(tile){
@@ -3080,83 +3070,78 @@
 
 		<script>
 		var up = false,
-		    right = false,
-		    down = false,
-		    left = false,
-		    x = window.innerWidth/2-130/2,
-		    y = window.innerHeight/2-130/2
+			right = false,
+			down = false,
+			left = false,
+			x = window.innerWidth/2-130/2,
+			y = window.innerHeight/2-130/2;
+
 		document.addEventListener('keydown',press)
 		function press(e){
-		  if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
-		    down = true;
-		    document.getElementById('control-w').className = "key active";
-		  }
-		  if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
-		    left = true;
-		    document.getElementById('control-d').className = "key active";
-		  }
-		  if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
-		    up = true;
-		    document.getElementById('control-s').className = "key active";
-		  }
-		  if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
-		    right = true;
-		    document.getElementById('control-a').className = "key active";
-		  }
+			if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
+				down = true;
+				document.getElementById('control-w').className = "key active";
+			}
+			if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+				left = true;
+				document.getElementById('control-d').className = "key active";
+			}
+			if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+				up = true;
+				document.getElementById('control-s').className = "key active";
+			}
+			if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
+				right = true;
+				document.getElementById('control-a').className = "key active";
+			}
 		}
+
 		document.addEventListener('keyup',release)
 		function release(e){
-		  if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
-		    down = false;
-		    document.getElementById('control-w').className = "key";
-		  }
-		  if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
-		    left = false;
-		    document.getElementById('control-d').className = "key";
-		  }
-		  if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
-		    up = false;
-		    document.getElementById('control-s').className = "key";
-		  }
-		  if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
-		    right = false;
-		    document.getElementById('control-a').className = "key";
-		  }
+			if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
+				down = false;
+				document.getElementById('control-w').className = "key";
+			}
+			if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+				left = false;
+				document.getElementById('control-d').className = "key";
+			}
+			if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+				up = false;
+				document.getElementById('control-s').className = "key";
+			}
+			if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
+				right = false;
+				document.getElementById('control-a').className = "key";
+			}
 		}
-		function gameLoop(){
-		  var div = document.getElementById('map');
-		  if (up){
-		  	if(move == false) return;
-		  	if(buildingTheme == true){
-		  		y = y - 10;
-		  	}
-		    y = y - 20;
-		  }
-		  if (right){
-		  	if(move == false) return;
-		  	if(buildingTheme == true){
-		  		x = x + 10;
-		  	}
-		    x = x + 20;
-		  }
-		  if (down){
-		  	if(move == false) return;
-		  	if(buildingTheme == true){
-		  		y = y = 10;
-		  	}
-		    y = y + 20;
-		  }
-		  if (left){
-		  	if(move == false) return;
-		  	if(buildingTheme == true){
-		  		x = x - 10;
-		  	}
-		    x = x - 20;
-		  }
 
-		  div.style.left = x+'px'
-		  div.style.top = y+'px'
-		  window.requestAnimationFrame(gameLoop);
+		function gameLoop(){
+			var div = document.getElementById('map');
+			if (up){
+				if(move == false) return;
+				if(buildingTheme == true){ y = y - 10; return; }
+				y = y - 20;
+			}
+			if (right){
+				if(move == false) return;
+				if(buildingTheme == true){ x = x + 10; return; }
+				x = x + 20;
+			}
+			if (down){
+				if(move == false) return;
+				if(buildingTheme == true){ y = y + 10; return; }
+				y = y + 20;
+			}
+			if (left){
+				if(move == false) return;
+				if(buildingTheme == true){ x = x - 10; return; }
+				x = x - 20;
+			}
+
+			div.style.left = x+'px'
+			div.style.top = y+'px'
+			window.requestAnimationFrame(gameLoop);
 		}
 		setInterval(function(){
 			document.getElementById('right_menus_buttonsHover0').style.opacity = '0';
