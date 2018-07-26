@@ -3120,23 +3120,23 @@
 			var div = document.getElementById('map');
 			if (up){
 				if(move == false) return;
-				if(buildingTheme == true){ y = y - 10; return; }
-				y = y - 20;
+				if(buildingTheme == true) y = y - 10;
+				if(buildingTheme == false) y = y - 20;
 			}
 			if (right){
 				if(move == false) return;
-				if(buildingTheme == true){ x = x + 10; return; }
-				x = x + 20;
+				if(buildingTheme == true) x = x + 10;
+				if(buildingTheme == false) x = x + 20;
 			}
 			if (down){
 				if(move == false) return;
-				if(buildingTheme == true){ y = y + 10; return; }
-				y = y + 20;
+				if(buildingTheme == true) y = y + 10;
+				if(buildingTheme == false) y = y + 20;
 			}
 			if (left){
 				if(move == false) return;
-				if(buildingTheme == true){ x = x - 10; return; }
-				x = x - 20;
+				if(buildingTheme == true) x = x - 10;
+				if(buildingTheme == false) x = x - 20;
 			}
 
 			div.style.left = x+'px'
