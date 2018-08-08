@@ -1,0 +1,207 @@
+*:active, *:hover {
+	outline: none;
+	box-shadow: none;
+}
+
+body {
+	font-size: 14px;
+	background: #fff;
+	height: 100%;
+	color: #222;
+	font-family: 'Exo 2', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+    background-color: #fff;
+   background-image:linear-gradient(#fff, #fff);
+}
+
+#content{
+    background-color: transparent;
+    background-image: 
+    linear-gradient(0deg, transparent 9%, 
+            rgba(34, 34, 34, .2) 10%, rgba(34, 34, 34, .2) 12%, transparent 13%, transparent 29%, 
+            rgba(34, 34, 34, .1) 30%, rgba(34, 34, 34, .1) 31%, transparent 32%, transparent 49%, 
+            rgba(34, 34, 34, .1) 50%, rgba(34, 34, 34, .1) 51%, transparent 52%, transparent 69%, 
+            rgba(34, 34, 34, .1) 70%, rgba(34, 34, 34, .1) 71%, transparent 72%, transparent 89%,
+            rgba(34, 34, 34, .1) 90%, rgba(34, 34, 34, .1) 91%, transparent 92%, transparent),
+    linear-gradient(90deg, transparent 9%, 
+            rgba(34, 34, 34, .2) 10%, rgba(34, 34, 34, .2) 12%, transparent 13%, transparent 29%, 
+            rgba(34, 34, 34, .1) 30%, rgba(34, 34, 34, .1) 31%, transparent 32%, transparent 49%, 
+            rgba(34, 34, 34, .1) 50%, rgba(34, 34, 34, .1) 51%, transparent 52%, transparent 69%, 
+            rgba(34, 34, 34, .1) 70%, rgba(34, 34, 34, .1) 71%, transparent 72%, transparent 89%,
+            rgba(34, 34, 34, .1) 90%, rgba(34, 34, 34, .1) 91%, transparent 92%, transparent);
+    
+    height:100%;
+  background-size:50px 50px;
+}
+
+.entity_list {
+	background-color: rgb(34,34,34,.8);
+	position: absolute;
+	left: 50%;
+	top: 20%;
+	transform: translate(-50%);
+	color: white;
+	width: 400px;
+}
+
+.entity_list .header {
+	background-color: rgb(34,34,34,.9);
+	padding: 15px;
+}
+
+.entity_list .body {
+	padding: 15px;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.entity_in_list {
+	background-color: rgb(34,34,34,.5);
+	transition: 0.5s;
+}
+
+.entity_in_list .float-left {
+	background-color: rgb(34,34,34,.7);
+}
+
+.entity_in_list .float-right {
+	padding: 10px;
+}
+
+.entity_in_list .center {
+	padding: 10px;
+	display: inline-block;
+}
+
+.entity_in_list:hover {
+	background-color: rgb(34,34,34,.7);
+	cursor: pointer;
+}
+
+div::-webkit-scrollbar {
+    width: 12px;
+}
+
+div::-webkit-scrollbar-track {
+    background: rgb(34,34,34,.9); 
+}
+ 
+div::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5px;
+    border: 2px solid #252525;
+}
+
+div::-webkit-scrollbar-thumb:hover {
+    background: #f1f1f1; 
+}
+
+.editor img {
+	position: absolute;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%);
+}
+
+.editor .top-menu {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+
+	background-color: rgb(34,34,34,.8);
+	padding: 15px;
+	color: #fff;
+}
+
+input.cleared, textarea.cleared {
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	outline: none;
+	color: #fff;
+	text-align: center;
+	resize: none;
+}
+
+textarea {
+	height: 150px;
+	font-size: 12px;
+}
+
+.editor .left-menu {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+
+	background-color: rgb(34,34,34,.8);
+	padding: 15px;
+	color: #fff;
+
+	text-align: center;
+}
+
+
+.editor .right-menu {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+
+	background-color: rgb(34,34,34,.8);
+	padding: 15px;
+	color: #fff;
+
+	text-align: center;
+	width: 150px;
+}
+
+.right-menu .clearfix {
+	font-size: 12px;
+}
+
+.right-menu input {
+	text-align: right;
+}
+
+input.cleared {
+	width: 60px;
+}
+
+.top-menu input {
+	width: 200px;
+}
+
+.save {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+
+	background-color: rgb(34,34,34,.8);
+	padding: 15px;
+	color: #fff;
+
+	text-align: center;
+}
+
+.save:hover {
+	background-color: rgb(34,34,34,.9);
+	cursor: pointer;
+	width: 100%;
+}
+
+#newentity:hover {
+	cursor: pointer;
+}

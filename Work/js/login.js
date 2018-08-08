@@ -1,11 +1,15 @@
-// let socket = io.connect('https://arialtest.herokuapp.com/',{'forceNew':false});
+let socket = io.connect('https://arialtest.herokuapp.com/',{'forceNew':false});
 
 socket.on('connect', function(socket){
 	console.log('Socket is connected!');
 });
 
-socket.on('data', function(data){
-	console.log(data);
+socket.on('SM00001', function(data){
+	if(data == true){
+		alert('Авторизация прошла успешно!');
+	} else {
+		alert('Неправильный логин/пароль');
+	}
 });
 
 function auth(login_input, password_input, who_input) {

@@ -90,6 +90,7 @@ body {
 	background-color: #111111;
 	border-top-right-radius: 25px;
 	border-bottom-right-radius: 25px;
+	cursor: pointer;
 }
 
 .dark-button:hover .float-right, .dark-button:active .float-right {
