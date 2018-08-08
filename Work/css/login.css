@@ -1,0 +1,50 @@
+*:active, *:hover {
+	outline: none;
+	box-shadow: none;
+}
+
+body {
+	font-size: 14px;
+	background: #f1f1f1;
+	height: 100%;
+	color: #222;
+	font-family: 'Exo 2', sans-serif;
+}
+
+.header {
+	background: #222222;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	font-size: 18px;
+	color: #fff;
+	font-weight: 900;
+}
+
+.body {
+	padding: 15px;
+	margin-top: 100px;
+}
+
+.login-block-header {
+	background-color: #222222;
+	color: #f1f1f1;
+}
+
+.login-block, .login-block-header {
+	text-align: center;
+	padding: 15px;
+	width: 400px;
+	margin: auto;
+	border: 3px solid #222222;
+}
+
+.input-group .input-group-prepend .input-group-text {
+	background-color: #222222;
+	color: #f1f1f1;
+}
+
+.btn-dark {
+	background-color: #222222;
+	width: 100%;
+}

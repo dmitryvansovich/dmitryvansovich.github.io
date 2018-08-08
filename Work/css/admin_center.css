@@ -1,0 +1,99 @@
+*:active, *:hover {
+	outline: none;
+	box-shadow: none;
+}
+
+body {
+	font-size: 14px;
+	background: #fff;
+	height: 100%;
+	color: #222;
+	font-family: 'Exo 2', sans-serif;
+}
+
+.header {
+	background: #222222;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	font-size: 18px;
+	color: #fff;
+	font-weight: 900;
+}
+
+.body {
+	padding: 15px;
+}
+
+.block-white {
+	background-color: #fff;
+	color: #222;
+}
+
+.btn-dark {
+	background-color: #222222;
+	width: 100%;
+}
+
+.welcome {
+	text-align: center;
+	background-color: #fff;
+}
+
+.welcome img {
+	width: 100px;
+	height: 100px;
+}
+
+.stats {
+	background-color: #222;
+	color: #fff;
+	padding: 25px 10px;
+}
+
+.stats div {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+.stats .col-md-3 .block-white, .stats .col-md-3 .block-white .float-left {
+	line-height: 70px;
+	text-align: center;
+}
+
+.dark-button {
+	background-color: #222;
+	color: #fff;
+	outline: none;
+	border: none;
+	text-align: left;
+	width: 100%;
+	padding-right: 0;
+	transition: 0.5s;
+}
+
+.dark-button .float-left {
+	padding: 16px;
+}
+
+.dark-button .float-right {
+	padding: 16px 18px;
+	margin-right: 50%;
+	border-radius: 50%;
+	background-color: #111111;
+	transition: 0.5s;
+	opacity: 0;
+}
+
+.dark-button:hover, .dark-button:active {
+	background-color: #111111;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+
+.dark-button:hover .float-right, .dark-button:active .float-right {
+	background-color: #222222;
+	margin-right: 0;
+	opacity: 1;
+}

@@ -1,0 +1,110 @@
+<!-- 
+	Заголовок: Админ центр
+
+	Содержание: 
+	1. Блок с заголовком;
+	2. Блок с приветствием;
+	3. Статистика;
+	4. Функции админ центра;
+
+	Нуждается в файлах:
+	1. js/admin_center.js;
+	2. js/socket.io;
+	3. css/admin_center.css;
+	4. img/admin.png;
+
+	Разработчик: Дмитрий Вансович
+	Даты разработки: 08.08.2018 - .08.2018
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Библиотека bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!-- Подключение стилей на страницу -->
+	<link rel="stylesheet" type="text/css" href="css/admin_center.css">
+
+	<!-- Шрифт -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+	<!-- Иконки -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+	<div class="header">
+		Админ центр
+	</div>
+
+	<div class="body">
+		<!-- <div class="block-white clearfix">
+			123
+		</div> -->
+		<div class="welcome">
+			<img src="img/admin.png">
+			<br><br>Добро пожаловать, <b>Apkko</b>!
+			<br>Вы авторизовались как <b>менеджер</b>
+		</div>
+
+		<div class="stats row mt-3">
+			<div class="col-md-3">
+				<div class="block-white p-2">
+					<div class="float-left p-2">
+						<i class="fas fa-fw fa-users fa-3x"></i>
+					</div>
+					Клиентов: 500
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="block-white p-2">
+					<div class="float-left p-2">
+						<i class="fas fa-fw fa-users fa-3x"></i>
+					</div>
+					Пользователей: 5000
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="block-white p-2">
+					<div class="float-left p-2">
+						<i class="fas fa-fw fa-users-cog fa-3x"></i>
+					</div>
+					Администраторов: 3
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="block-white p-2">
+					<div class="float-left p-2">
+						<i class="fas fa-fw fa-file-alt fa-3x"></i>
+					</div>
+					Всего логов: 500
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="mt-3 col-md-6 pm-none">
+				<button class="dark-button clearfix">
+					<div class="float-left">Редактор сущностей</div>
+					<div class="float-right"><i class="fas fa-arrow-right fa-fw"></i></div>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- socket.io -->
+	<script src="js/socket.io.js" type="text/javascript"></script>
+
+	<!-- JS страницы -->
+	<script src="js/admin_center.js" type="text/javascript"></script>
+
+	<!-- Jquery для bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+	<!-- Ajax для bootstrap -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
