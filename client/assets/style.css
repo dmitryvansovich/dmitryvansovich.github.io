@@ -1,0 +1,299 @@
+*:active, *:hover {
+	outline: none;
+	box-shadow: none;
+	box-sizing: border-box;
+}
+
+label {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	background: #f1f1f1;
+	height: 100%;
+	color: #222;
+	font-family: 'Exo 2', sans-serif;
+}
+
+.state_name {
+	position: absolute;
+	top: 2%;
+	right: 0;
+	color: #f1f1f1;
+	background-color: #222;
+	padding: 10px;
+}
+
+.gov_money {
+	position: absolute;
+	top: 2%;
+	left: 0;
+	color: #f1f1f1;
+	background-color: #222;
+	padding: 10px;
+}
+
+.gov_pointers {
+	position: absolute;
+	top: 10%;
+	left: 0;
+	color: #f1f1f1;
+	background-color: #222;
+	padding: 10px;
+}
+
+.bottom_menu, .getArmy, .deleteArmy, .move {
+	position: absolute;
+	left: 0;
+	bottom: 2%;
+	float: left;
+	display: none;
+}
+
+.bottom_menu div, .getArmy div, .deleteArmy div, .move div {
+	display: inline-block;
+	color: #f1f1f1;
+	background-color: #222;
+	padding: 10px;
+	height: 40px;
+	text-align: center;
+	line-height: 20px;
+	transition: 0.5s;
+}
+
+i:hover {
+	cursor: pointer;
+}
+
+.getArmy .button:hover, .bottom_menu .button:hover, .deleteArmy .button:hover, .move .button:hover {
+	cursor: pointer;
+	background-color: #111;
+}
+
+#map {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+}
+#map .state_player1 {
+    cursor: pointer;
+}
+#map .state_player1 .shape {
+    cursor: pointer;
+    -width: 0;
+}
+#map .state_player1 .label_icon_state {
+    fill: #fff;
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: normal;
+}
+#map .state_player1 .label_state {
+    display: none;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+}
+#map .state_player1:hover .label_state, #map .state.hover .label_state {
+    display: block;
+}
+#map .model-green .state_player1 .shape {
+    fill: #6cb361;
+    transition: 0.5s;
+}
+#map .model-green .state_player1 .icon_state {
+    fill: #10592f;
+}
+#map .model-green .state_player1 .label_icon_state {
+    fill: #fff;
+}
+#map .model-green .state_player1 .label_state {
+    fill: #666;
+}
+#map .model-green .state_player1:hover .shape, #map .model-green .state.hover .shape {
+    fill: #2d68b2;
+}
+#map .model-green .state_player1:hover .icon_state, #map .model-green .state.hover .icon_state {
+    fill: #5a95ce;
+}
+#map .model-orange .state_player1 .shape {
+    fill: #fd7132;
+}
+#map .model-orange .state_player1 .icon_state {
+    fill: #6cb361;
+}
+#map .model-orange .state_player1 .label_icon_state {
+    fill: #fff;
+}
+#map .model-orange .state_player1 .label_state {
+    fill: #666;
+}
+#map .model-orange .state_player1:hover .shape, #map .model-orange .state.hover .shape {
+    fill: #c93f04;
+}
+#map .model-orange .state_player1:hover .icon_state, #map .model-orange .state.hover .icon_state {
+    fill: #10592f;
+}
+#map .model-darkgreen .state_player1 .shape {
+    fill: #366823;
+}
+#map .model-darkgreen .state_player1 .icon_state {
+    fill: #2779c6;
+}
+#map .model-darkgreen .state_player1 .label_icon_state {
+    fill: #fff;
+}
+#map .model-darkgreen .state_player1 .label_state {
+    fill: #666;
+}
+#map .model-darkgreen .state_player1:hover .shape, #map .model-darkgreen .state.hover .shape {
+    fill: #4a8c31;
+}
+#map .model-darkgreen .state_player1:hover .icon_state, #map .model-darkgreen .state.hover .icon_state {
+    fill: #5a95ce;
+}
+.tooltip{
+    width:60px;
+    height:20px;
+    background-color:pink;
+    position:absolute;
+}
+#map .state_player2 {
+    cursor: pointer;
+}
+#map .state_player2 .shape {
+    cursor: pointer;
+    -width: 0;
+}
+#map .state_player2 .label_icon_state {
+    fill: #fff;
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: normal;
+}
+#map .state_player2 .label_state {
+    display: none;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+}
+#map .state_player2:hover .label_state, #map .state.hover .label_state {
+    display: block;
+}
+#map .model-green .state_player2 .shape {
+    fill: tomato;
+    transition: 0.5s;
+}
+#map .model-green .state_player2 .icon_state {
+    fill: tomato;
+}
+#map .model-green .state_player2 .label_icon_state {
+    fill: #fff;
+}
+#map .model-green .state_player2 .label_state {
+    fill: #666;
+}
+#map .model-green .state_player2:hover .shape, #map .model-green .state.hover .shape {
+    fill: #2d68b2;
+}
+#map .model-green .state_player2:hover .icon_state, #map .model-green .state.hover .icon_state {
+    fill: #5a95ce;
+}
+#map .model-orange .state_player2 .shape {
+    fill: #fd7132;
+}
+#map .model-orange .state_player2 .icon_state {
+    fill: #6cb361;
+}
+#map .model-orange .state_player2 .label_icon_state {
+    fill: #fff;
+}
+#map .model-orange .state_player2 .label_state {
+    fill: #666;
+}
+#map .model-orange .state_player2:hover .shape, #map .model-orange .state.hover .shape {
+    fill: #c93f04;
+}
+#map .model-orange .state_player2:hover .icon_state, #map .model-orange .state.hover .icon_state {
+    fill: #10592f;
+}
+#map .model-darkgreen .state_player2 .shape {
+    fill: #366823;
+}
+#map .model-darkgreen .state_player2 .icon_state {
+    fill: #2779c6;
+}
+#map .model-darkgreen .state_player2 .label_icon_state {
+    fill: #fff;
+}
+#map .model-darkgreen .state_player2 .label_state {
+    fill: #666;
+}
+#map .model-darkgreen .state_player2:hover .shape, #map .model-darkgreen .state.hover .shape {
+    fill: #4a8c31;
+}
+#map .model-darkgreen .state_player2:hover .icon_state, #map .model-darkgreen .state.hover .icon_state {
+    fill: #5a95ce;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  transition: : 0.2s;
+  background: #111;
+  border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+  border: 0px solid #000000;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #f1f1f1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.6px;
+}
+
+@-webkit-keyframes blink {
+    0% { fill: rgba(255,0,0,0.5); }
+    50% { fill: rgba(255,0,0,0); }
+    100% { fill: rgba(255,0,0,0.5); }
+}
+
+@keyframes blink {
+    0% { fill: rgba(255,0,0,0.5); }
+    50% { fill: rgba(255,0,0,0); }
+    100% { fill: rgba(255,0,0,0.5); }
+}
+
+#animate { 
+    height: 100px; 
+    width: 100px;
+    fill: rgba(255,0,0,1);
+}
+
+#animate {
+    -webkit-animation-direction: normal;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: blink;
+    -webkit-animation-timing-function: ease;   
+
+    animation-direction: normal;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-name: blink;
+    animation-timing-function: ease;       
+}
