@@ -1,10 +1,11 @@
-let socket = io.connect('https://ancientwar.herokuapp.com',{'forceNew':false});
+let socket = io.connect('https://ancientwarserver.herokuapp.com',{'forceNew':false});
 let money, pointers, player1, player2, this_player, game_key, player;
 let my_states_arr = [], enemy_states_arr = [];
 let move = false;
 let selected_state_movefrom;
 
 socket.on('connect', function(socket){
+	console.log('socket connected');
 });
 
 socket.on('data', function(data){
