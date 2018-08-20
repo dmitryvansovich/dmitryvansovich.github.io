@@ -1,4 +1,4 @@
-let socket = io.connect('localhost:8080',{'forceNew':false});
+let socket = io.connect('https://ancientwar.herokuapp.com',{'forceNew':false});
 let money, pointers, player1, player2, this_player, game_key, player;
 let my_states_arr = [], enemy_states_arr = [];
 let move = false;
