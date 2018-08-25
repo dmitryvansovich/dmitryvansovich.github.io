@@ -1,26 +1,46 @@
-let socket = io.connect('https://ancientwarserver.herokuapp.com',{'forceNew':false});
-let money, pointers, player1, player2, this_player, game_key, player;
+let socket = io.connect('https://ancientwarserver.herokuapp.com/',{'forceNew':false});
+//let socket = io.connect();
+let money, pointers, player1, player2, this_player, game_key, player, player_country;
 let my_states_arr = [], enemy_states_arr = [];
 let move = false;
 let selected_state_movefrom;
 
 socket.on('connect', function(socket){
-	console.log('socket connected');
+
 });
 
 socket.on('data', function(data){
-	if(data.command == 'SC001'){
+	if(data.command == 'DC001'){
 		money = data.money-2;
 		pointers = data.pointers-2;
 		this_player = data.user_socket;
 
 		clicker(1);
 		clicker(2);
+	} else if(data.command == 'DC002'){
+		if(data.key == game_key){
+			if(player != data.player){
+				socket.emit('data',{
+					command: 'CD002',
+					key: game_key,
+					money: money,
+					pointers: pointers,
+					player: player
+				})
+			}
+		}
+	} else if(data.command == 'DC003'){
+		if(data.key == game_key){
+			if(data.player == player){
+				$('#state_money').text(data.money);
+				$('#state_pointers').text(data.pointers);
+			}
+		}
 	}
 });
 
 socket.on('game', function(data){
-	if(data.command == 'SG001'){
+	if(data.command == 'SG001' && !game_key){
 		if(data.player1 != this_player && data.player2 != this_player) return;
 
 		game_key = data.key;
@@ -157,6 +177,16 @@ socket.on('game', function(data){
 				army: 500
 			}];
 		}
+
+		if(player == 2){
+			$('#player_country').text('Германия');
+			player_country = 'Германия';
+			$('#player_country_flag').attr('src','assets/img/germany.png');
+		} else if(player == 1){
+			$('#player_country').text('Америка');
+			player_country = 'Америка';
+			$('#player_country_flag').attr('src','assets/img/united-states.png');
+		}
 	} else if(data.command == 'SG002'){
 		if(game_key == data.key){
 			$('body').css('display','none');
@@ -176,31 +206,33 @@ socket.on('game', function(data){
 		}
 	} else if(data.command == 'SG004'){
 		if(game_key == data.key){
-			// let states = document.getElementsByTagName('a');
-
-			// if(this_player == player1){
-			// 	states[data.state].setAttribute("class","state_player2");
-			// 	states[data.state].style.opacity = '0.3';
-			// } else {
-			// 	states[data.state].setAttribute("class","state_player1");
-			// 	states[data.state].style.opacity = '0.3';
-			// }
-
-			// for(let i = 0; i <states.length; i++){
-			// 	states[i].style.opacity = '0.3';
-			// }
-
-			// let my_states = document.getElementsByClassName('state_player'+player);
-			// for(let i = 0; i < my_states.length; i++){
-			// 	my_states[i].style.opacity = '1';
-			// }
-
-			// move = false;
-			// selected_state = null;
-			// selected_state_move = null;
-			// selected_state_movefrom = null;
-
 			updateStates();
+		}
+	} else if(data.command == 'SC001'){
+		if(game_key == data.key){
+
+		}
+	}
+});
+
+socket.on('chat', function(data){
+	if(data.command == 'SC001'){
+		if(game_key == data.key){
+			// '<div class="message"><b>'+player_country+':</b> '+$('.chat-input').val()+'</div>'
+			let message;
+
+			if(data.player == 2){
+				message = '<div class="message"><b>Германия:</b> '+data.message+'</div>';
+			} else if(data.player == 1){
+				message = '<div class="message"><b>Америка:</b> '+data.message+'</div>';
+			}
+
+			let html = document.getElementById('messages').innerHTML;
+			html += message;
+			document.getElementById('messages').innerHTML = html;
+
+			var el = document.getElementsByClassName('chat-messages')[0];
+			el.scrollTop = el.scrollHeight;
 		}
 	}
 });
@@ -241,16 +273,92 @@ function click(state){
 			$('.getArmy').css('display','none');
 			$('.deleteArmy').css('display','none');
 
+			$('.right-panel').css('display','block');
+			$('.right-panel .buttons').css('display','none');
+
+			$('#state_terr').text(state.toUpperCase());
+			if(player_country == 'Америка'){
+				$('#terr_player_country').text('Германия');
+				$('#terr_player_country_flag').attr('src','assets/img/germany.png');
+
+				let terrs_text = null;
+				if(enemy_states_arr.length == 1) terrs_text = 'территория'
+				if(enemy_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория'
+				if(enemy_states_arr.length >= 5) terrs_text = 'территорий' 
+				document.getElementById('terr_state_name').innerHTML = enemy_states_arr.length+' '+terrs_text;	
+			} else {
+				$('#terr_player_country').text('Америка');
+				$('#terr_player_country_flag').attr('src','assets/img/united-states.png');
+
+				let terrs_text = null;
+				if(enemy_states_arr.length == 1) terrs_text = 'территория'
+				if(enemy_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория'
+				if(enemy_states_arr.length >= 5) terrs_text = 'территорий' 
+				document.getElementById('terr_state_name').innerHTML = enemy_states_arr.length+' '+terrs_text;
+			}
+
+			if(player_country == 'Германия'){
+				$('#terr_owner').text('Территория Америки');
+			} else {
+				$('#terr_owner').text('Территория Германии');
+			}
+
 			for(let i = 0; i < my_states_arr.length; i++){
 				if(my_states_arr[i].state == state.toUpperCase()){
-					$('.bottom_menu').css('display','block');
-					$('.getArmy').css('display','none');
-					$('.deleteArmy').css('display','none');
+					$('#state_army').text(numberWithSpaces(my_states_arr[i].army));
+					$('#state_popular').text(numberWithSpaces(my_states_arr[i].army*70));
+				}
+			}
+
+			for(let i = 0; i < enemy_states_arr.length; i++){
+				if(enemy_states_arr[i].state == state.toUpperCase()){
+					$('#state_army').text(numberWithSpaces(enemy_states_arr[i].army));
+					$('#state_popular').text(numberWithSpaces(my_states_arr[i].army*70));
+				}
+			}
+
+			$('#state_money').text('?');
+			$('#state_pointers').text('?');
+
+			for(let i = 0; i < my_states_arr.length; i++){
+				if(my_states_arr[i].state == state.toUpperCase()){
+					$('.right-panel .buttons').css('display','flex');
+
+					$('#state_money').text(money);
+					$('#state_pointers').text(pointers);
+
+					if(player_country == 'Германия'){
+						$('#terr_owner').text('Территория Германии');
+					} else {
+						$('#terr_owner').text('Территория Америки');
+					}
+
+					if(player_country == 'Америка'){
+						$('#terr_player_country').text('Америка');
+						$('#terr_player_country_flag').attr('src','assets/img/united-states.png');
+
+						let terrs_text = null;
+						if(my_states_arr.length == 1) terrs_text = 'территория'
+						if(my_states_arr.length >= 2 && my_states_arr <= 4) terrs_text = 'территория'
+						if(my_states_arr.length >= 5) terrs_text = 'территорий' 
+						document.getElementById('terr_state_name').innerHTML = my_states_arr.length+' '+terrs_text;
+					} else {
+						$('#terr_player_country').text('Германия');
+						$('#terr_player_country_flag').attr('src','assets/img/germany.png');
+
+						let terrs_text = null;
+						if(my_states_arr.length == 1) terrs_text = 'территория'
+						if(my_states_arr.length >= 2 && my_states_arr <= 4) terrs_text = 'территория'
+						if(my_states_arr.length >= 5) terrs_text = 'территорий' 
+						document.getElementById('terr_state_name').innerHTML = my_states_arr.length+' '+terrs_text;	
+					}	
 				}
 			}
 		} else if(!selected_state_move) {
 			let states = document.getElementsByTagName('a');
 			let thisstate = document.getElementById('state_'+state);	
+
+			if(thisstate.style.opacity != '0.7') return;
 
 			$('.move').css('display','block');
 
@@ -304,10 +412,10 @@ function click(state){
 function clicker(item){
 	if(item == 1) {
 		money = money + 2;
-		document.getElementById('gov_money').innerHTML = 'Казна: '+money+' <i onclick="clicker(1);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
+		document.getElementById('gov_money').innerHTML = 'Казна: '+money;
 	} else if(item == 2) {
 		pointers = pointers + 2;
-		document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers+' <i onclick="clicker(2);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
+		document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
 	}
 }
 
@@ -626,7 +734,11 @@ function updateStates(){
 		document.getElementById('label_icon_state_'+enemy_states_arr[i].state.toLowerCase()).textContent = ''+enemy_states_arr[i].army;
 	}
 
-	document.getElementsByClassName('state_name')[0].innerHTML = 'Территорий: '+my_states_arr.length;
+	let terrs_text = null;
+	if(my_states_arr.length == 1) terrs_text = 'территория'
+	if(my_states_arr.length >= 2 && my_states_arr <= 4) terrs_text = 'территория'
+	if(my_states_arr.length >= 5) terrs_text = 'территорий' 
+	document.getElementsByClassName('state_name')[0].innerHTML = my_states_arr.length+' '+terrs_text;
 }
 
 function newArmy(){
@@ -640,8 +752,8 @@ function newArmy(){
 
 			money = money - value*1;
 			pointers = pointers - 20;
-			document.getElementById('gov_money').innerHTML = 'Казна: '+money+' <i onclick="clicker(1);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
-			document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers+' <i onclick="clicker(2);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
+			document.getElementById('gov_money').innerHTML = 'Казна: '+money;
+			document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
 			my_states_arr[i].army = my_states_arr[i].army*1 + value*1;
 
 			socket.emit('game',{
@@ -652,7 +764,7 @@ function newArmy(){
 				byplayer: this_player
 			});
 
-			show_getArmy();
+			move_cancel();
 		}
 	}
 }
@@ -665,8 +777,8 @@ function deleteArmy(){
 			let value = document.getElementsByClassName('deleteArmy_range')[0].value;
 
 			money = money + value*1;
-			document.getElementById('gov_money').innerHTML = 'Казна: '+money+' <i onclick="clicker(1);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
-			document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers+' <i onclick="clicker(2);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
+			document.getElementById('gov_money').innerHTML = 'Казна: '+money;
+			document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
 			my_states_arr[i].army = my_states_arr[i].army*1 - value*1;
 
 			socket.emit('game',{
@@ -676,7 +788,7 @@ function deleteArmy(){
 				byplayer: this_player
 			});
 
-			show_deleteArmy();
+			move_cancel();
 		}
 	}
 }
@@ -708,7 +820,7 @@ function move_ok(){
 				my_states_arr[i].army = my_states_arr[i].army*1 + movefrom_army*1;
 
 				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers+' <i onclick="clicker(2);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
+				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
 
 				socket.emit('game',{
 					command: "GS001",
@@ -722,7 +834,7 @@ function move_ok(){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
 
 				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers+' <i onclick="clicker(2);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;"></i>';
+				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
@@ -742,6 +854,9 @@ function move_ok(){
 		for(var i = 0; i < my_states_arr.length; i++){
 			if(my_states_arr[i].state == selected_state_movefrom.toUpperCase()){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
+
+				pointers = pointers*1 - 30;
+				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
@@ -791,6 +906,7 @@ function move_ok(){
 					}
 
 					move_cancel();
+					selected_state_move = null;
 				} else {
 					enemy_states_arr[i].army = enemy_states_arr[i].army - movefrom_army;
 
@@ -805,6 +921,8 @@ function move_ok(){
 			}
 		}
 	}
+
+	move_cancel();
 }
 
 function move_cancel(){
@@ -812,6 +930,8 @@ function move_cancel(){
 	$('.getArmy').css('display','none');
 	$('.deleteArmy').css('display','none');
 	$('.move').css('display','none');
+	$('.right-panel').css('display','none');
+	$('.right-panel .buttons').css('display','none');
 
 	let states = document.getElementsByTagName('a');
 
@@ -828,4 +948,55 @@ function move_cancel(){
 	selected_state = null;
 	selected_state_move = null;
 	selected_state_movefrom = null;
+}
+
+let chat = false;
+function chat_button() {
+	if(chat == false){
+		$('.chat').css('bottom','0');
+		$('#chat-button-img').attr('src','assets/img/arrow-down.png');
+		$('.chat-button').css('background-color','#111');
+
+		chat = true;
+	} else if(chat == true){
+		$('.chat').css('bottom','-200px');
+		$('#chat-button-img').attr('src','assets/img/arrow-up.png');
+		$('.chat-button').css('background-color','#222');
+
+		chat = false;
+	}
+}
+
+function sendMessage() {
+	var message_text = $('.chat-input').val();
+
+	if(message_text == ' ') return;
+	if(message_text == '') return;
+	if(!game_key) return;
+	if(!player) return;
+
+	if(message_text){
+		socket.emit('chat',{
+			command: "CS001",
+			key: game_key,
+			message: message_text,
+			player: player
+		});
+	}
+
+
+	$('.chat-input').val('');
+}
+
+$('#chat-input').on('keypress', function() {
+    var that = this;
+
+    setTimeout(function() {
+        var res = /[^а-яА-Я!?: 1-9]/g.exec(that.value);
+        that.value = that.value.replace(res, '');
+    }, 0);
+});
+
+function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
