@@ -198,10 +198,16 @@ socket.on('game', function(data){
 				enemy_states_arr = data.newstates;
 				my_states_arr = data.enemynewstates;
 				updateStates();
+
+				console.log(enemy_states_arr);
+				console.log(my_states_arr);
 			} else {
 				my_states_arr = data.newstates;
 				enemy_states_arr = data.enemynewstates;
 				updateStates();
+
+				console.log(enemy_states_arr);
+				console.log(my_states_arr);
 			}
 		}
 	} else if(data.command == 'SG004'){
@@ -412,10 +418,10 @@ function click(state){
 function clicker(item){
 	if(item == 1) {
 		money = money + 2;
-		document.getElementById('gov_money').innerHTML = 'Казна: '+money;
+		document.getElementById('gov_money').innerHTML = 'Казна: '+numberWithSpaces(money);
 	} else if(item == 2) {
 		pointers = pointers + 2;
-		document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
+		document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 	}
 }
 
@@ -752,8 +758,8 @@ function newArmy(){
 
 			money = money - value*1;
 			pointers = pointers - 20;
-			document.getElementById('gov_money').innerHTML = 'Казна: '+money;
-			document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
+			document.getElementById('gov_money').innerHTML = 'Казна: '+numberWithSpaces(money);
+			document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 			my_states_arr[i].army = my_states_arr[i].army*1 + value*1;
 
 			socket.emit('game',{
@@ -777,18 +783,19 @@ function deleteArmy(){
 			let value = document.getElementsByClassName('deleteArmy_range')[0].value;
 
 			money = money + value*1;
-			document.getElementById('gov_money').innerHTML = 'Казна: '+money;
-			document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
+			document.getElementById('gov_money').innerHTML = 'Казна: '+numberWithSpaces(money);
+			document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 			my_states_arr[i].army = my_states_arr[i].army*1 - value*1;
+
+			move_cancel();
 
 			socket.emit('game',{
 				command: "GS001",
 				key: game_key,
 				newstates: my_states_arr,
+				enemynewstates: enemy_states_arr,
 				byplayer: this_player
 			});
-
-			move_cancel();
 		}
 	}
 }
@@ -820,7 +827,7 @@ function move_ok(){
 				my_states_arr[i].army = my_states_arr[i].army*1 + movefrom_army*1;
 
 				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
+				document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 
 				socket.emit('game',{
 					command: "GS001",
@@ -834,7 +841,7 @@ function move_ok(){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
 
 				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
+				document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
@@ -856,7 +863,7 @@ function move_ok(){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
 
 				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+pointers;
+				document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
@@ -1000,3 +1007,43 @@ $('#chat-input').on('keypress', function() {
 function numberWithSpaces(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
+
+setInterval(function(){
+	money = money + my_states_arr.length;
+	pointers = pointers + Math.floor(my_states_arr.length/7)*1;
+
+	document.getElementById('gov_money').innerHTML = 'Казна: '+numberWithSpaces(money);
+	document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
+}, 3000);
+
+function changeColor(type){
+	let states = document.getElementsByTagName('a');
+
+	if(type == 'peace'){
+		for(var x = 0; x < states.length; x++){
+			$('#'+states[x].id+' .shape').css('fill','#6cb361');
+		}
+	} else if(type == 'war'){
+		for(let i = 0; i < my_states_arr.length; i++){
+			for(let s = 0; s < states.length; s++){
+				if(states[s].id == 'state_'+my_states_arr[i].state.toLowerCase()){
+					$('#'+states[s].id+' .shape').css('fill','#6cb361');
+				}
+			}
+		}
+
+		for(let i = 0; i < enemy_states_arr.length; i++){
+			for(let s = 0; s < states.length; s++){
+				if(states[s].id == 'state_'+enemy_states_arr[i].state.toLowerCase()){
+					$('#'+states[s].id+' .shape').css('fill','tomato');
+				}
+			}
+		}
+	} else if(type == 'notype'){
+		for(var x = 0; x < states.length; x++){
+			$('#'+states[x].id+' .shape').css('fill','#518ad1');
+		}
+	}
+}
+
+//changeColor('notype');

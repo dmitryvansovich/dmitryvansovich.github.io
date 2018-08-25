@@ -70,7 +70,7 @@ body {
 }
 
 .chat .chat-display .chat-messages {
-	height: 152px;
+	height: 142px;
 	width: 277px;
 	transition: 0.5s;
 	padding-right: 5px;
@@ -83,6 +83,7 @@ body {
 	text-align: center;
 	padding: 3px;
 	margin-bottom: 5px;
+	word-break: break-all;
 }
 
 .chat .chat-display .chat-input {
