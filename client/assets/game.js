@@ -41,6 +41,19 @@ socket.on('data', function(data){
 
 socket.on('game', function(data){
 	if(data.command == 'SG001' && !game_key){
+		VK.init(function(){
+			VK.api('users.get', {fields: "photo_50"}, function(data){
+				// $('#vk-userinfo-avatarimg').attr('src', data.response[0].photo_50);
+				// $('#vk-userinfo-contentinfo').text(data.response[0].first_name+' '+data.response[0].last_name);
+				
+				socket.emit('chat',{
+					command: "CS002",
+					key: game_key,
+					message: 'Пользователь '+data.response[0].first_name+' '+data.response[0].last_name+' подключился к игре'
+				});
+			});
+		},'5.80');
+
 		if(data.player1 != this_player && data.player2 != this_player) return;
 
 		game_key = data.key;
@@ -1059,18 +1072,3 @@ function changeColor(type){
 }
 
 //changeColor('notype');
-
-VK.init(function(){
-	VK.api('users.get', {fields: "photo_50"}, function(data){
-		// $('#vk-userinfo-avatarimg').attr('src', data.response[0].photo_50);
-		// $('#vk-userinfo-contentinfo').text(data.response[0].first_name+' '+data.response[0].last_name);
-		
-		if(game_key){
-			socket.emit('chat',{
-				command: "CS002",
-				key: game_key,
-				message: 'Пользователь '+data.response[0].first_name+' '+data.response[0].last_name+' подключился к игре'
-			});
-		}
-	});
-},'5.80');
