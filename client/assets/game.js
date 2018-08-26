@@ -224,7 +224,6 @@ socket.on('game', function(data){
 socket.on('chat', function(data){
 	if(data.command == 'SC001'){
 		if(game_key == data.key){
-			// '<div class="message"><b>'+player_country+':</b> '+$('.chat-input').val()+'</div>'
 			let message;
 
 			if(data.player == 2){
@@ -232,6 +231,19 @@ socket.on('chat', function(data){
 			} else if(data.player == 1){
 				message = '<div class="message"><b>Америка:</b> '+data.message+'</div>';
 			}
+
+			let html = document.getElementById('messages').innerHTML;
+			html += message;
+			document.getElementById('messages').innerHTML = html;
+
+			var el = document.getElementsByClassName('chat-messages')[0];
+			el.scrollTop = el.scrollHeight;
+		}
+	} else if(data.command == 'SC002'){
+		if(game_key == data.key){
+			let message;
+
+			message = '<div class="message">'+data.message+'</div>';
 
 			let html = document.getElementById('messages').innerHTML;
 			html += message;
@@ -999,7 +1011,7 @@ $('#chat-input').on('keypress', function() {
     var that = this;
 
     setTimeout(function() {
-        var res = /[^а-яА-Я!?: 1-9]/g.exec(that.value);
+        var res = /[^а-яА-Я!?: 1-9,.ёЁ<>=-+;()0]/g.exec(that.value);
         that.value = that.value.replace(res, '');
     }, 0);
 });
@@ -1047,3 +1059,18 @@ function changeColor(type){
 }
 
 //changeColor('notype');
+
+VK.init(function(){
+	VK.api('users.get', {fields: "photo_50"}, function(data){
+		// $('#vk-userinfo-avatarimg').attr('src', data.response[0].photo_50);
+		// $('#vk-userinfo-contentinfo').text(data.response[0].first_name+' '+data.response[0].last_name);
+		
+		if(game_key){
+			socket.emit('chat',{
+				command: "CS002",
+				key: game_key,
+				message: 'Пользователь '+data.response[0].first_name+' '+data.response[0].last_name+' подключился к игре';
+			});
+		}
+	});
+},'5.80');
