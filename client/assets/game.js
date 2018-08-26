@@ -1069,7 +1069,7 @@ VK.init(function(){
 			socket.emit('chat',{
 				command: "CS002",
 				key: game_key,
-				message: 'Пользователь '+data.response[0].first_name+' '+data.response[0].last_name+' подключился к игре';
+				message: 'Пользователь '+data.response[0].first_name+' '+data.response[0].last_name+' подключился к игре'
 			});
 		}
 	});
