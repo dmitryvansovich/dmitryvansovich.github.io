@@ -17,6 +17,10 @@ body {
 	font-family: 'Exo 2', sans-serif;
 }
 
+#map{
+	position: absolute;
+}
+
 .gov_money {
 	position: absolute;
 	top: 2%;
@@ -61,35 +65,62 @@ body {
 	transition: 0.5s;
 }
 
+.chat .chat-global, .chat .chat-game {
+	display: inline-block;
+	color: #f1f1f1;
+	background-color: #222;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	transition: 0.5s;
+
+	display: none;
+}
+
+.chat .chat-global {
+	background-color: #111;
+	color: gray;
+}
+
+.chat .chat-global:hover, .chat .chat-game:hover {
+	cursor: pointer;
+}
+
+.chat .chat-game {
+	position: relative;
+	margin-left: -5px;
+}
+
 .chat .chat-display {
 	height: 200px;
-	width: 300px;
+	width: 400px;
 	background-color: #222;
 	transition: 0.5s;
-	padding: 10px;
 }
 
 .chat .chat-display .chat-messages {
-	height: 142px;
-	width: 277px;
+	height: 165px;
+	width: 390px;
 	transition: 0.5s;
 	padding-right: 5px;
 	overflow-y: auto;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .chat .chat-display .chat-messages .message {
-	background-color: #111;
 	color: #fff;
-	text-align: center;
-	padding: 3px;
-	margin-bottom: 5px;
+	padding-right: 3px;
+	padding-left: 3px;
 	word-break: break-all;
 }
 
 .chat .chat-display .chat-input {
-	width: 240px;
+	width: 400px;
+	height: 30px;
 	transition: 0.5s;
-	background-color: #111;
+	background-color: #333;
 	color: #fff;
 	outline: none;
 	border: none;
@@ -422,7 +453,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .top-panel .info {
-	width: 90px;
+	width: 91.59px;
 	height: 42px;
 	font-size: 13px;
 	display: inline;
@@ -467,6 +498,210 @@ input[type=range]::-webkit-slider-thumb {
 	padding: 5px 7px;
 	width: 48px;
 	float: right;
+}
+
+.flag_teh {
+	position: absolute;
+	left: 0;
+	top: 42px;
+	word-break: break-all;
+}
+
+.flag_teh {
+  width: 35px;
+  height: 36px; /* 175 */
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #222;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.flag_teh:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 7px solid #eee;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.flag_teh label {
+	display: none;
+	transition: 0.5s;
+}
+
+.flag_teh label:hover {
+	cursor: pointer;
+}
+
+.flag_teh:hover {
+	cursor: pointer;
+	height: 180px;
+}
+
+.flag_teh:hover label {
+	display: block;
+}
+
+.flag_ecom {
+	position: absolute;
+	left: 35px;
+	top: 42px;
+	word-break: break-all;
+}
+
+.flag_ecom {
+  width: 35px;
+  height: 36px; /* 175 */
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #1f1f1f;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.flag_ecom:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 7px solid #eee;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.flag_ecom label {
+	display: none;
+	transition: 0.5s;
+}
+
+.flag_ecom label:hover {
+	cursor: pointer;
+}
+
+.flag_ecom:hover {
+	cursor: pointer;
+	height: 165px;
+}
+
+.flag_ecom:hover label {
+	display: block;
+}
+
+.flag_fac {
+	position: absolute;
+	left: 70px;
+	top: 42px;
+	word-break: break-all;
+}
+
+.flag_fac {
+  width: 35px;
+  height: 36px; /* 175 */
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #1c1c1c;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.flag_fac:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 7px solid #eee;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.flag_fac label {
+	display: none;
+	transition: 0.5s;
+}
+
+.flag_fac label:hover {
+	cursor: pointer;
+}
+
+.flag_fac:hover {
+	cursor: pointer;
+	height: 135px;
+}
+
+.flag_fac:hover label {
+	display: block;
+}
+
+.flag_boo {
+	position: absolute;
+	left: 105px;
+	top: 42px;
+	word-break: break-all;
+}
+
+.flag_boo {
+  width: 35px;
+  height: 36px; /* 175 */
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.flag_boo:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 7px solid #eee;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.flag_boo label {
+	display: none;
+	transition: 0.5s;
+}
+
+.flag_boo label:hover {
+	cursor: pointer;
+}
+
+.flag_boo:hover {
+	cursor: pointer;
+	height: 104px;
+}
+
+.flag_boo:hover label {
+	display: block;
 }
 
 .right-panel {
@@ -554,5 +789,130 @@ input[type=range]::-webkit-slider-thumb {
 
 .right-panel .buttons .col-md-4:hover, .right-panel .buttons .col-md-4:active, .right-panel .buttons .col-md-4:focus {
 	background-color: #333;
+	cursor: pointer;
+}
+
+.airplane {
+	width: 70px;
+	height: 92px;
+	transform: rotate(90deg);
+	position: absolute;
+	top: 30%;
+	left: -90px;
+}
+
+.page-window {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+
+	top: 42px;
+
+	background-color: rgb(17,17,17,.97);
+	color: #f1f1f1;
+	padding: 5px;
+}
+
+.page-window .teh-item {
+	padding: 10px;
+	margin: 5px;
+
+	border: 2px solid #f1f1f1;
+	width: 150px;
+
+	text-align: center;
+
+	transition: 0.5s;
+
+	word-break: break-all;
+
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.page-window .teh-item b, .page-window .teh-item-active b {
+	font-size: 14px;
+}
+
+.page-window .teh-item:hover {
+	background-color: #f1f1f1;
+	color: #222;
+	cursor: pointer;
+}
+
+#tankimg {
+	height: 32px;
+	width: 32px;
+	margin: auto;
+	background: url(img/tank_white.png);
+	transition: 0.5s;
+}
+
+.page-window .teh-item:hover #tankimg {
+	background: url(img/tank_black.png);
+}
+
+#akimg {
+	height: 32px;
+	width: 32px;
+	margin: auto;
+	background: url(img/ak-47_white.png);
+	transition: 0.5s;
+}
+
+.page-window .teh-item:hover #akimg {
+	background: url(img/ak-47_black.png);
+}
+
+.page-window .window-close {
+	margin: 5px;
+	padding: 10px;
+	background-color: #f1f1f1;
+	color: #222;
+	width: 100px;
+	text-align: center;
+
+	transition: 0.5s;
+}
+
+.page-window .window-close:hover {
+	cursor: pointer;
+	background-color: tomato;
+	color: #f1f1f1;
+}
+
+.tehs {
+	display: inline;
+	float: left;
+}
+
+.tehs div {
+	display: inline-block;
+}
+
+#tehs-window {
+	display: none;
+}
+
+.teh-item-active {
+	border: 2px solid tomato;
+	padding: 10px;
+	margin: 5px;
+
+	width: 150px;
+
+	text-align: center;
+
+	transition: 0.5s;
+
+	word-break: break-all;
+
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.teh-item-active:hover {
+	background-color: tomato;
+	color: #f1f1f1;
 	cursor: pointer;
 }
