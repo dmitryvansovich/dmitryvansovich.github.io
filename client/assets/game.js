@@ -1147,7 +1147,7 @@ var antiCheatSystem_lastMoney = money;
 var antiCheatSystem_lastPointers = pointers;
 var antiCheatSystem_lastBalanceUpdate = 5;
 function antiCheatSystem(){
-	if(money > antiCheatSystem_lastMoney+18){
+	if(money > antiCheatSystem_lastMoney+418){
 		socket.emit('anticheat', {
 			command: 'CA001',
 			user: player_params,
@@ -1158,7 +1158,7 @@ function antiCheatSystem(){
 		});
 	}
 
-	if(pointers > antiCheatSystem_lastPointers+5){
+	if(pointers > antiCheatSystem_lastPointers+85){
 		socket.emit('anticheat', {
 			command: 'CA001',
 			user: player_params,
