@@ -1143,44 +1143,36 @@ function changeColor(type){
 // 	}
 // }
 
-// function gameLoop(){
-// 	var div = document.getElementById('map');
+var antiCheatSystem_lastMoney = money;
+var antiCheatSystem_lastPointers = pointers;
+var antiCheatSystem_lastBalanceUpdate = 5;
+function antiCheatSystem(){
+	if(money > antiCheatSystem_lastMoney+18){
+		socket.emit('anticheat', {
+			command: 'CA001',
+			user: player_params,
+			key: game_key,
+			type: 1,
+			last_money: antiCheatSystem_lastMoney,
+			money: money
+		});
+	}
 
-// 	if(x >= 610) {
-// 		x = 609;
-// 		return gameLoop();
-// 	}
-// 	if(y >= 128) {
-// 		y = 127;
-// 		return gameLoop();
-// 	}
-// 	if(y <= -12) {
-// 		y = -11;
-// 		return gameLoop();
-// 	}
-// 	if(x <= 449) {
-// 		x = 450;
-// 		return gameLoop();
-// 	}
+	if(pointers > antiCheatSystem_lastPointers+5){
+		socket.emit('anticheat', {
+			command: 'CA001',
+			user: player_params,
+			key: game_key,
+			type: 2,
+			last_pointers: antiCheatSystem_lastPointers,
+			pointers: pointers
+		});
+	}
 
-// 	if (up){
-// 		y = y - 2;
-// 	}
-// 	if (right){
-// 		x = x + 2;
-// 	}
-// 	if (down){
-// 		y = y + 2;
-// 	}
-// 	if (left){
-// 		x = x - 2;
-// 	}
-
-// 	div.style.left = x+'px';
-// 	div.style.top = y+'px';
-// 	window.requestAnimationFrame(gameLoop);
-// }
-// window.requestAnimationFrame(gameLoop)
+	antiCheatSystem_lastMoney = money;
+	antiCheatSystem_lastPointers = pointers;
+}
+setInterval(antiCheatSystem, 3000);
 
 function windows_open(w){
 	if(w == 1){
