@@ -341,25 +341,27 @@ function click(state){
 				$('#terr_player_country_flag').attr('src','assets/img/germany_reich.png');
 
 				let terrs_text = null;
-				if(enemy_states_arr.length == 1) terrs_text = 'территория'
-				if(enemy_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория'
-				if(enemy_states_arr.length >= 5) terrs_text = 'территорий' 
+				if(enemy_states_arr.length == 1) terrs_text = 'территория';
+				if(enemy_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
+				if(enemy_states_arr.length == 4) terrs_text = 'территории';
+				if(enemy_states_arr.length >= 5) terrs_text = 'территорий'; 
 				document.getElementById('terr_state_name').innerHTML = enemy_states_arr.length+' '+terrs_text;	
 			} else {
 				$('#terr_player_country').text('СССР');
 				$('#terr_player_country_flag').attr('src','assets/img/ussr.png');
 
 				let terrs_text = null;
-				if(enemy_states_arr.length == 1) terrs_text = 'территория'
-				if(enemy_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория'
-				if(enemy_states_arr.length >= 5) terrs_text = 'территорий' 
+				if(enemy_states_arr.length == 1) terrs_text = 'территория';
+				if(enemy_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
+				if(enemy_states_arr.length == 4) terrs_text = 'территории';
+				if(enemy_states_arr.length >= 5) terrs_text = 'территорий'; 
 				document.getElementById('terr_state_name').innerHTML = enemy_states_arr.length+' '+terrs_text;
 			}
 
 			if(player_country == 'Третий рейх'){
-				$('#terr_owner').text('Территория Америки');
+				$('#terr_owner').text('Территория СССР');
 			} else {
-				$('#terr_owner').text('Территория Германии');
+				$('#terr_owner').text('Территория Третьего рейха');
 			}
 
 			for(let i = 0; i < my_states_arr.length; i++){
@@ -387,9 +389,9 @@ function click(state){
 					$('#state_pointers').text(pointers);
 
 					if(player_country == 'Третий рейх'){
-						$('#terr_owner').text('Территория Германии');
+						$('#terr_owner').text('Территория Третьего рейха');
 					} else {
-						$('#terr_owner').text('Территория Америки');
+						$('#terr_owner').text('Территория СССР');
 					}
 
 					if(player_country == 'СССР'){
@@ -397,18 +399,20 @@ function click(state){
 						$('#terr_player_country_flag').attr('src','assets/img/ussr.png');
 
 						let terrs_text = null;
-						if(my_states_arr.length == 1) terrs_text = 'территория'
-						if(my_states_arr.length >= 2 && my_states_arr <= 4) terrs_text = 'территория'
-						if(my_states_arr.length >= 5) terrs_text = 'территорий' 
+						if(my_states_arr.length == 1) terrs_text = 'территория';
+						if(my_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
+						if(my_states_arr.length == 4) terrs_text = 'территории';
+						if(my_states_arr.length >= 5) terrs_text = 'территорий'; 
 						document.getElementById('terr_state_name').innerHTML = my_states_arr.length+' '+terrs_text;
 					} else {
 						$('#terr_player_country').text('Третий рейх');
 						$('#terr_player_country_flag').attr('src','assets/img/germany_reich.png');
 
 						let terrs_text = null;
-						if(my_states_arr.length == 1) terrs_text = 'территория'
-						if(my_states_arr.length >= 2 && my_states_arr <= 4) terrs_text = 'территория'
-						if(my_states_arr.length >= 5) terrs_text = 'территорий' 
+						if(my_states_arr.length == 1) terrs_text = 'территория';
+						if(my_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
+						if(my_states_arr.length == 4) terrs_text = 'территории';
+						if(my_states_arr.length >= 5) terrs_text = 'территорий'; 
 						document.getElementById('terr_state_name').innerHTML = my_states_arr.length+' '+terrs_text;	
 					}	
 				}
@@ -804,9 +808,10 @@ function updateStates(){
 	}
 
 	let terrs_text = null;
-	if(my_states_arr.length == 1) terrs_text = 'территория'
-	if(my_states_arr.length >= 2 && my_states_arr <= 4) terrs_text = 'территория'
-	if(my_states_arr.length >= 5) terrs_text = 'территорий' 
+	if(my_states_arr.length == 1) terrs_text = 'территория';
+	if(my_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
+	if(my_states_arr.length == 4) terrs_text = 'территории';
+	if(my_states_arr.length >= 5) terrs_text = 'территорий'; 
 	document.getElementsByClassName('state_name')[0].innerHTML = my_states_arr.length+' '+terrs_text;
 }
 
