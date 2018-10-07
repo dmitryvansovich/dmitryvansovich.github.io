@@ -6,10 +6,10 @@ let move = false;
 let selected_state_movefrom;
 
 let player_params = {
-	// first_name: 'Дмитрий',
-	// last_name: 'Вансович'
-	first_name: null,
-	last_name: null
+	first_name: 'Дмитрий',
+	last_name: 'Вансович'
+// 	first_name: null,
+// 	last_name: null
 };
 
 let player_tehs = [
@@ -22,32 +22,32 @@ let player_tehs = [
 }];
 
 socket.on('connect', function(data){
-	VK.init(function(){
-		VK.api('users.get', {fields: "photo_50"}, function(data){
-			player_params.first_name = data.response[0].first_name;
-			player_params.last_name = data.response[0].last_name;
+// // 	VK.init(function(){
+// // 		VK.api('users.get', {fields: "photo_50"}, function(data){
+// // 			player_params.first_name = data.response[0].first_name;
+// // 			player_params.last_name = data.response[0].last_name;
 
-			$('#game').css('display','none');
-			$('#menu').css('display','block');
-			$('#startgame').css('display','none');
-			$('#serverlist').css('display','none');
+// 			$('#game').css('display','none');
+// 			$('#menu').css('display','block');
+// 			$('#startgame').css('display','none');
+// 			$('#serverlist').css('display','none');
 
-			socket.emit('data', {
-				command: 'CD003',
-				player_params: player_params 
-			});
-		});
-	},'5.80');
+// 			socket.emit('data', {
+// 				command: 'CD003',
+// 				player_params: player_params 
+// 			});
+// // 		});
+// // 	},'5.80');
 
-	// $('#game').css('display','none');
-	// $('#menu').css('display','block');
-	// $('#startgame').css('display','none');
-	// $('#serverlist').css('display','none');
+	$('#game').css('display','none');
+	$('#menu').css('display','block');
+	$('#startgame').css('display','none');
+	$('#serverlist').css('display','none');
 
-	// socket.emit('data', {
-	// 	command: 'CD003',
-	// 	player_params: player_params 
-	// });
+	socket.emit('data', {
+		command: 'CD003',
+		player_params: player_params 
+	});
 });
 
 socket.on('data', function(data){
