@@ -1,5 +1,5 @@
 let socket = io.connect('https://ancientwarserver.herokuapp.com/',{'forceNew':false});
-//let socket = io.connect();
+// let socket = io.connect();
 let money, pointers, player1, player2, this_player, game_key, player, player_country;
 let my_states_arr = [], enemy_states_arr = [];
 let move = false;
@@ -27,12 +27,22 @@ socket.on('connect', function(data){
 			player_params.first_name = data.response[0].first_name;
 			player_params.last_name = data.response[0].last_name;
 
+			$('#game').css('display','none');
+			$('#menu').css('display','block');
+			$('#startgame').css('display','none');
+			$('#serverlist').css('display','none');
+
 			socket.emit('data', {
 				command: 'CD003',
 				player_params: player_params 
 			});
 		});
 	},'5.80');
+
+	// $('#game').css('display','none');
+	// $('#menu').css('display','block');
+	// $('#startgame').css('display','none');
+	// $('#serverlist').css('display','none');
 
 	// socket.emit('data', {
 	// 	command: 'CD003',
@@ -67,12 +77,20 @@ socket.on('data', function(data){
 				$('#state_pointers').text(data.pointers);
 			}
 		}
+	} else if(data.command == 'DC004'){
+		$('#servers_count').text(data.count);
+		$('#server-list_count').text(data.count);
 	}
 });
 
 socket.on('game', function(data){
 	if(data.command == 'SG001' && !game_key){
 		if(data.player1 != this_player && data.player2 != this_player) return;
+
+		$('#game').css('display','block');
+		$('#menu').css('display','none');
+		$('#startgame').css('display','none');
+		$('#serverlist').css('display','none');
 
 		game_key = data.key;
 		if(data.player1 == this_player){
@@ -210,13 +228,13 @@ socket.on('game', function(data){
 		}
 
 		if(player == 2){
-			$('#player_country').text('Германия');
-			player_country = 'Германия';
-			$('#player_country_flag').attr('src','assets/img/germany.png');
+			$('#player_country').text('Третий рейх');
+			player_country = 'Третий рейх';
+			$('#player_country_flag').attr('src','assets/img/germany_reich.png');
 		} else if(player == 1){
-			$('#player_country').text('Америка');
-			player_country = 'Америка';
-			$('#player_country_flag').attr('src','assets/img/united-states.png');
+			$('#player_country').text('СССР');
+			player_country = 'СССР';
+			$('#player_country_flag').attr('src','assets/img/ussr.png');
 		}
 
 		updateStates();
@@ -231,16 +249,10 @@ socket.on('game', function(data){
 				enemy_states_arr = data.newstates;
 				my_states_arr = data.enemynewstates;
 				updateStates();
-
-				console.log(enemy_states_arr);
-				console.log(my_states_arr);
 			} else {
 				my_states_arr = data.newstates;
 				enemy_states_arr = data.enemynewstates;
 				updateStates();
-
-				console.log(enemy_states_arr);
-				console.log(my_states_arr);
 			}
 		}
 	} else if(data.command == 'SG004'){
@@ -256,9 +268,9 @@ socket.on('chat', function(data){
 			let message;
 
 			if(data.player == 2){
-				message = '<div class="message"><label style="color:tomato;">[Германия]</label> <b><ins>'+data.player_name+'</ins></b>: '+data.message+'</div>';
+				message = '<div class="message"><label style="color:tomato;">[Третий рейх]</label> <b><ins>'+data.player_name+'</ins></b>: '+data.message+'</div>';
 			} else if(data.player == 1){
-				message = '<div class="message"><label style="color:#6cb361;">[Америка]</label> <b><ins>'+data.player_name+'</ins></b>: '+data.message+'</div>';
+				message = '<div class="message"><label style="color:#6cb361;">[СССР]</label> <b><ins>'+data.player_name+'</ins></b>: '+data.message+'</div>';
 			}
 
 			let html = document.getElementById('messages').innerHTML;
@@ -324,9 +336,9 @@ function click(state){
 			$('.right-panel .buttons').css('display','none');
 
 			$('#state_terr').text(state.toUpperCase());
-			if(player_country == 'Америка'){
-				$('#terr_player_country').text('Германия');
-				$('#terr_player_country_flag').attr('src','assets/img/germany.png');
+			if(player_country == 'СССР'){
+				$('#terr_player_country').text('Третий рейх');
+				$('#terr_player_country_flag').attr('src','assets/img/germany_reich.png');
 
 				let terrs_text = null;
 				if(enemy_states_arr.length == 1) terrs_text = 'территория'
@@ -334,8 +346,8 @@ function click(state){
 				if(enemy_states_arr.length >= 5) terrs_text = 'территорий' 
 				document.getElementById('terr_state_name').innerHTML = enemy_states_arr.length+' '+terrs_text;	
 			} else {
-				$('#terr_player_country').text('Америка');
-				$('#terr_player_country_flag').attr('src','assets/img/united-states.png');
+				$('#terr_player_country').text('СССР');
+				$('#terr_player_country_flag').attr('src','assets/img/ussr.png');
 
 				let terrs_text = null;
 				if(enemy_states_arr.length == 1) terrs_text = 'территория'
@@ -344,7 +356,7 @@ function click(state){
 				document.getElementById('terr_state_name').innerHTML = enemy_states_arr.length+' '+terrs_text;
 			}
 
-			if(player_country == 'Германия'){
+			if(player_country == 'Третий рейх'){
 				$('#terr_owner').text('Территория Америки');
 			} else {
 				$('#terr_owner').text('Территория Германии');
@@ -374,15 +386,15 @@ function click(state){
 					$('#state_money').text(money);
 					$('#state_pointers').text(pointers);
 
-					if(player_country == 'Германия'){
+					if(player_country == 'Третий рейх'){
 						$('#terr_owner').text('Территория Германии');
 					} else {
 						$('#terr_owner').text('Территория Америки');
 					}
 
-					if(player_country == 'Америка'){
-						$('#terr_player_country').text('Америка');
-						$('#terr_player_country_flag').attr('src','assets/img/united-states.png');
+					if(player_country == 'СССР'){
+						$('#terr_player_country').text('СССР');
+						$('#terr_player_country_flag').attr('src','assets/img/ussr.png');
 
 						let terrs_text = null;
 						if(my_states_arr.length == 1) terrs_text = 'территория'
@@ -390,8 +402,8 @@ function click(state){
 						if(my_states_arr.length >= 5) terrs_text = 'территорий' 
 						document.getElementById('terr_state_name').innerHTML = my_states_arr.length+' '+terrs_text;
 					} else {
-						$('#terr_player_country').text('Германия');
-						$('#terr_player_country_flag').attr('src','assets/img/germany.png');
+						$('#terr_player_country').text('Третий рейх');
+						$('#terr_player_country_flag').attr('src','assets/img/germany_reich.png');
 
 						let terrs_text = null;
 						if(my_states_arr.length == 1) terrs_text = 'территория'
@@ -471,261 +483,267 @@ function show_moveArmy() {
 	$('.getArmy').css('display','none');
 	$('.deleteArmy').css('display','none');
 
-	var states = document.getElementsByTagName('a');
-	move = true;
-	selected_state_movefrom = selected_state;
+	for(var i = 0; i < my_states_arr.length; i++){
+		if(my_states_arr[i].state == selected_state.toUpperCase()){
+			var states = document.getElementsByTagName('a');
+			move = true;
+			selected_state_movefrom = selected_state;
 
-	if(selected_state == 'AC'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_am'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ro'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'AM'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_ac'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ro'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_mt'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pa'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_rr'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'RR'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_am'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pa'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'PA'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_rr'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_am'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_mt'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_to'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ma'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ap'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'AP'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_pa'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'RO'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_am'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_mt'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'MT'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_ro'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_am'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pa'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_to'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ms'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_go'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'TO'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_mt'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pa'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ma'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pi'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ma'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_go'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ba'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'MA'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_pa'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_to'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ba'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pi'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'MS'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_mt'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_go'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_mg'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_sp'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pr'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'GO'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_ms'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_mt'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_to'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ba'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_mg'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'BA'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_mg'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_go'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_to'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ma'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_pi'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'PI'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_ma'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_to'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ba'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'MG'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_sp'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ms'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_go'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ba'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'SP'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_pr'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_ms'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_mg'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'PR'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_ms'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_sp'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_sc'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'SC'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_pr'){
-				states[i].style.opacity = '0.7';
-			}
-			if(states[i].id == 'state_rs'){
-				states[i].style.opacity = '0.7';
-			}
-		}
-	} else if(selected_state == 'RS'){
-		for(let i = 0; i < states.length; i++){
-			if(states[i].id == 'state_sc'){
-				states[i].style.opacity = '0.7';
-			}
+			if(selected_state == 'AC'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_am'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ro'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'AM'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_ac'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ro'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_mt'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pa'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_rr'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'RR'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_am'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pa'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'PA'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_rr'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_am'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_mt'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_to'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ma'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ap'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'AP'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_pa'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'RO'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_am'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_mt'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'MT'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_ro'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_am'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pa'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_to'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ms'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_go'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'TO'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_mt'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pa'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ma'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pi'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ma'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_go'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ba'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'MA'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_pa'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_to'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ba'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pi'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'MS'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_mt'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_go'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_mg'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_sp'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pr'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'GO'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_ms'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_mt'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_to'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ba'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_mg'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'BA'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_mg'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_go'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_to'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ma'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_pi'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'PI'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_ma'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_to'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ba'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'MG'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_sp'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ms'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_go'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ba'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'SP'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_pr'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_ms'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_mg'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'PR'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_ms'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_sp'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_sc'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'SC'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_pr'){
+						states[i].style.opacity = '0.7';
+					}
+					if(states[i].id == 'state_rs'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			} else if(selected_state == 'RS'){
+				for(let i = 0; i < states.length; i++){
+					if(states[i].id == 'state_sc'){
+						states[i].style.opacity = '0.7';
+					}
+				}
+			}
+		} else if(i == my_states_arr.length - 1){
+			return;
 		}
 	}
 }
@@ -769,7 +787,7 @@ function updateStates(){
 		for(let s = 0; s < states.length; s++){
 			if(states[s].id == 'state_'+my_states_arr[i].state.toLowerCase()){
 				states[s].setAttribute("class",'state_player'+player);
-				states[s].style.opacity = '1';
+				//states[s].style.opacity = '1';
 			}
 		}
 		document.getElementById('label_icon_state_'+my_states_arr[i].state.toLowerCase()).textContent = ''+my_states_arr[i].army;
@@ -779,7 +797,7 @@ function updateStates(){
 		for(let s = 0; s < states.length; s++){
 			if(states[s].id == 'state_'+enemy_states_arr[i].state.toLowerCase()){
 				states[s].setAttribute("class",'state_player'+enemyplayer);
-				states[s].style.opacity = '0.3';
+				//states[s].style.opacity = '0.3';
 			}
 		}
 		document.getElementById('label_icon_state_'+enemy_states_arr[i].state.toLowerCase()).textContent = ''+enemy_states_arr[i].army;
@@ -799,7 +817,14 @@ function newArmy(){
 
 	for(let i = 0; i < my_states_arr.length; i++){
 		if(my_states_arr[i].state == selected_state){
-			let value = document.getElementsByClassName('getArmy_range')[0].value;
+			let value;
+
+			if(player_tehs[1].activated == false){
+				value = document.getElementsByClassName('getArmy_range')[0].value;
+			} else {
+				let value1 = document.getElementsByClassName('getArmy_range')[0].value;
+				value = ''+Math.round(value1/1.5);
+			}
 
 			money = money - value*1;
 			pointers = pointers - 20;
@@ -1031,7 +1056,11 @@ function sendMessage() {
 	if(!game_key) return;
 	if(!player) return;
 
-	if(message_text){
+	if(message_text == '/server_stats') {
+		socket.emit('stats', {
+			game_key: game_key
+		});
+	} else if(message_text){
 		socket.emit('chat',{
 			command: "CC001",
 			key: game_key,
@@ -1040,7 +1069,6 @@ function sendMessage() {
 			player_name: player_params.first_name
 		});
 	}
-
 
 	$('.chat-input').val('');
 }
@@ -1051,7 +1079,7 @@ $('#chat-input').on('keydown', function(e) {
     if (e.keyCode == 13) { sendMessage(); }
 
     setTimeout(function() {
-        var res = /[^а-яА-Я!?: 1-9,.ёЁ<>=+-;()0]/g.exec(that.value);
+        var res = /[^а-яА-Яa-zA-Z!?: 1-9,.ёЁ<>=+-;()0_]/g.exec(that.value);
         that.value = that.value.replace(res, '');
     }, 0);
 });
@@ -1147,7 +1175,7 @@ var antiCheatSystem_lastMoney = money;
 var antiCheatSystem_lastPointers = pointers;
 var antiCheatSystem_lastBalanceUpdate = 5;
 function antiCheatSystem(){
-	if(money > antiCheatSystem_lastMoney+418){
+	if(money > antiCheatSystem_lastMoney+58){
 		socket.emit('anticheat', {
 			command: 'CA001',
 			user: player_params,
@@ -1158,7 +1186,7 @@ function antiCheatSystem(){
 		});
 	}
 
-	if(pointers > antiCheatSystem_lastPointers+85){
+	if(pointers > antiCheatSystem_lastPointers+50){
 		socket.emit('anticheat', {
 			command: 'CA001',
 			user: player_params,
@@ -1199,3 +1227,123 @@ function tehs_buy(item){
 		document.getElementById('teh-item-'+item).className = 'teh-item-active';
 	}
 }
+
+function randomInteger(min, max) {
+    let rand = min + Math.random() * (max + 1 - min);
+    rand = Math.floor(rand);
+    return rand;
+}
+
+let randomY = randomInteger(1,200);
+	randomY1 = randomInteger(-450,-100);
+
+document.getElementById('clouds').innerHTML = `
+	<div class="cloud" style="top:`+randomY+`px;">
+		<img src="assets/img/cloud_2.png">
+	</div>
+	<div class="cloud1" style="top:`+randomY1+`px;">
+		<img src="assets/img/cloud_2.png">
+	</div>`;
+
+setInterval(function(){
+	let randomY = randomInteger(1,200);
+		randomY1 = randomInteger(-450,-100);
+
+	document.getElementById('clouds').innerHTML = `
+		<div class="cloud" style="top:`+randomY+`px;">
+			<img src="assets/img/cloud_2.png">
+		</div>
+		<div class="cloud1" style="top:`+randomY1+`px;">
+			<img src="assets/img/cloud_2.png">
+		</div>`;
+}, 120000);
+
+function createserver(){
+	document.getElementById('createserverbutton').innerHTML = '<b class="text-primary" style="font-size:26px;">Ожидание игрока</b>';
+
+	socket.emit('data', {
+		command: 'CD004'
+	});
+}
+
+function to_createserver(){
+	$('#game').css('display','none');
+	$('#menu').css('display','none');
+	$('#startgame').css('display','block');
+	$('#serverlist').css('display','none');
+}
+
+function to_serverlist(){
+	$('#game').css('display','none');
+	$('#menu').css('display','none');
+	$('#startgame').css('display','none');
+	$('#serverlist').css('display','block');
+
+	socket.emit('server-list', {
+		command: 'CS002'
+	});
+}
+
+function to_menu(){
+	$('#game').css('display','none');
+	$('#menu').css('display','block');
+	$('#startgame').css('display','none');
+	$('#serverlist').css('display','none');
+}
+
+function randomserver(){
+	socket.emit('data', {
+		command: 'CD005'
+	});
+}
+
+function serverlist_connect(id){
+	socket.emit('server-list', {
+		command: 'CS001',
+		id: id
+	});
+}
+
+function serverlist_connect_closed(id){
+	let password = prompt('Пожалуйста, введите пароль от закрытого сервера');
+
+	socket.emit('server-list', {
+		command: 'CS003',
+		id: id,
+		password: password
+	});
+}
+
+socket.on('error', function(data){
+	if(data.command == 'E001'){
+		if(player_params.first_name+' '+player_params.last_name == data.user){
+			alert(data.text);
+		}
+	}
+});
+
+socket.on('server-list', function(data){
+	if(data.command == 'SC001' && data.games.length){
+		var serverlist_div = document.getElementById('server-list');
+		var html = '';
+		var games = data.games;
+
+		for(var i = 0; i < games.length; i++){
+			if(games[i].closed == false){
+				if(data.games[i].players == 1){
+					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle-o border-success"></div></div><div class="col-md-1 px-2 text-success" style="font-size:12px;padding-top:2px;"><b>Открытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/tank.png" width="16" height="16"></div><div class="col-md-3 text-success" style="font-size:12px;padding-top:2px;"><b>Лёгкая сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>1/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"><button class="btn btn-sm btn-outline-dark" style="font-size:8px;padding:3px 5px;" onclick="serverlist_connect('+i+');"><b>Подключиться</b></button></div></div>';
+				} else {
+					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle bg-success"></div></div><div class="col-md-1 px-2 text-success" style="font-size:12px;padding-top:2px;"><b>Открытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/tank.png" width="16" height="16"></div><div class="col-md-3 text-success" style="font-size:12px;padding-top:2px;"><b>Лёгкая сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>2/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"></div></div>';
+				}
+			} else {
+				if(data.games[i].players == 1){
+					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle-o border-danger"></div></div><div class="col-md-1 px-2 text-danger" style="font-size:12px;padding-top:2px;"><b>Закрытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/bomb.png" width="16" height="16"></div><div class="col-md-3 text-danger" style="font-size:12px;padding-top:2px;"><b>Невозможная сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>1/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"><button class="btn btn-sm btn-outline-dark" style="font-size:8px;padding:3px 5px;" onclick="serverlist_connect_closed('+i+');"><b>Подключиться</b></button></div></div>';
+				} else {
+					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle bg-danger"></div></div><div class="col-md-1 px-2 text-danger" style="font-size:12px;padding-top:2px;"><b>Закрытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/bomb.png" width="16" height="16"></div><div class="col-md-3 text-danger" style="font-size:12px;padding-top:2px;"><b>Невозможная сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>2/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"></div></div>';
+				}
+			}
+		}
+
+		serverlist_div.innerHTML = html;
+	}
+});
