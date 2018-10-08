@@ -19,6 +19,12 @@ body {
 
 #map{
 	position: absolute;
+	width: 550px;
+    height: 490px;
+}
+
+#map {
+    fill: #fff;
 }
 
 .gov_money {
@@ -176,12 +182,16 @@ i:hover {
 	background-color: #111;
 }
 
+#state_name {
+	font-size: 10px;
+}
+
 #map {
     display: none;
     position: absolute;
-    left: 50%;
-    top: 10%;
-    transform: translateX(-50%);
+    left: 45%;
+    top: 5%;
+    transform: scale(0.8, 0.8)  translateX(-50%);
 }
 #map .state_player1 {
     cursor: pointer;
@@ -209,7 +219,7 @@ i:hover {
 #map .state_player1:hover .label_state, #map .state.hover .label_state {
     display: block;
 }
-#map .model-green .state_player1 .shape {
+#map .model-green /*.state_player1 .shape*/ /*polygon*/ {
     fill: #6cb361;
     transition: 0.5s;
 }
@@ -224,7 +234,7 @@ i:hover {
 #map .model-green .state_player1 .label_state {
     fill: #666;
 }
-#map .model-green .state_player1:hover .shape, #map .model-green .state.hover .shape {
+#map .model-green:hover/* .shape, #map .model-green .state.hover .shape*/ {
     fill: #2d68b2;
 }
 #map .model-green .state_player1:hover .icon_state, #map .model-green .state.hover .icon_state {
@@ -296,25 +306,25 @@ i:hover {
 #map .state_player2:hover .label_state, #map .state.hover .label_state {
     display: block;
 }
-#map .model-green .state_player2 .shape {
+#map .model-red /*.state_player2 .shape*/ {
     fill: tomato;
     transition: 0.5s;
 }
-#map .model-green .state_player2 .icon_state {
+#map .model-red .state_player2 .icon_state {
     fill: tomato;
 }
-#map .model-green .state_player2 .label_icon_state {
+#map .model-red .state_player2 .label_icon_state {
     fill: #fff;
 	stroke: #fff;
 	stroke-width: 0.1;
 }
-#map .model-green .state_player2 .label_state {
+#map .model-red .state_player2 .label_state {
     fill: #666;
 }
-#map .model-green .state_player2:hover .shape, #map .model-green .state.hover .shape {
+#map .model-red:hover/* .shape, #map .model-green .state.hover .shape*/ {
     fill: #2d68b2;
 }
-#map .model-green .state_player2:hover .icon_state, #map .model-green .state.hover .icon_state {
+#map .model-red .state_player2:hover .icon_state, #map .model-green .state.hover .icon_state {
     fill: #5a95ce;
 }
 #map .model-orange .state_player2 .shape {
@@ -766,7 +776,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 #player_country {
-	font-size: 10px;
+	font-size: 12px;
 	font-weight: 900;
 }
 
@@ -1199,4 +1209,26 @@ input[type=range]::-webkit-slider-thumb {
 	max-height: 460px;
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+
+#regions {
+	stroke: #ddd;
+	stroke-width: 2;
+}
+
+#subregions {
+	stroke: white;
+	stroke-width: 0.7;
+}
+
+circle {
+	fill: rgba(255,255,255,.5);
+	stroke: #222;
+	stroke-width: 0.2;
+	translate: 0.5s;
+}
+
+circle:hover {
+    fill: #2d68b2;
+    cursor: pointer;
 }
