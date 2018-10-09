@@ -109,350 +109,367 @@ socket.on('game', function(data){
 			}
 
 			my_states_arr = [{
-				state: 'AC',
+				state: GLOBAL_MAP[8].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[2].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[12].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[5].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[9].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[14].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[71].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[58].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[59].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[67].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[61].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[74].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[60].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[66].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[62].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[68].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[64].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[78].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[73].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[69].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[70].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[63].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[7].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[1].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[4].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[6].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[72].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[0].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[65].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[94].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[79].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[95].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[81].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[88].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[11].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[80].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[3].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[13].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[15].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[10].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[43].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[47].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[49].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[42].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[50].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[56].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[37].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[92].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[90].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[93].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[84].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[100].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[51].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[52].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[45].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[53].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[48].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[40].id,
 				army: 0
 			},{
-				state: 'RR',
-				army: 0
-			},{
-				state: 'RO',
-				army: 0
-			},{
-				state: 'MT',
-				army: 0
-			},{
-				state: 'PA',
-				army: 0
-			},{
-				state: 'AP',
-				army: 0
-			},{
-				state: 'TO',
-				army: 0
-			},{
-				state: 'MA',
-				army: 0
-			},{
-				state: 'AM',
-				army: 0
-			},{
-				state: 'RR',
-				army: 0
-			},{
-				state: 'RO',
-				army: 0
-			},{
-				state: 'MT',
-				army: 0
-			},{
-				state: 'PA',
-				army: 0
-			},{
-				state: 'AP',
-				army: 0
-			},{
-				state: 'TO',
-				army: 0
-			},{
-				state: 'MA',
-				army: 0
-			},{
-				state: 'AM',
-				army: 0
-			},{
-				state: 'RR',
-				army: 0
-			},{
-				state: 'RO',
-				army: 0
-			},{
-				state: 'MT',
-				army: 0
-			},{
-				state: 'PA',
-				army: 0
-			},{
-				state: 'AP',
-				army: 0
-			},{
-				state: 'TO',
-				army: 0
-			},{
-				state: 'MA',
-				army: 0
-			},{
-				state: 'AM',
-				army: 0
-			},{
-				state: 'RR',
-				army: 0
-			},{
-				state: 'RO',
-				army: 0
-			},{
-				state: 'MT',
-				army: 0
-			},{
-				state: 'PA',
-				army: 0
-			},{
-				state: 'AP',
-				army: 0
-			},{
-				state: 'TO',
-				army: 0
-			},{
-				state: 'MA',
-				army: 0
-			},{
-				state: 'AM',
-				army: 0
-			},{
-				state: 'RR',
-				army: 0
-			},{
-				state: 'RO',
-				army: 0
-			},{
-				state: 'MT',
-				army: 0
-			},{
-				state: 'PA',
-				army: 0
-			},{
-				state: 'AP',
-				army: 0
-			},{
-				state: 'TO',
-				army: 0
-			},{
-				state: 'MA',
-				army: 0
-			},{
-				state: 'AM',
-				army: 0
-			},{
-				state: 'RR',
-				army: 0
-			},{
-				state: 'RO',
-				army: 0
-			},{
-				state: 'MT',
-				army: 0
-			},{
-				state: 'PA',
-				army: 0
-			},{
-				state: 'AP',
-				army: 0
-			},{
-				state: 'TO',
-				army: 0
-			},{
-				state: 'MA',
+				state: GLOBAL_MAP[41].id,
 				army: 0
 			}];
 
 			enemy_states_arr = [{
-				state: 'MS',
+				state: GLOBAL_MAP[29].id,
 				army: 0
 			},{
-				state: 'GO',
+				state: GLOBAL_MAP[87].id,
 				army: 0
 			},{
-				state: 'BA',
+				state: GLOBAL_MAP[77].id,
 				army: 0
 			},{
-				state: 'PI',
+				state: GLOBAL_MAP[85].id,
 				army: 0
 			},{
-				state: 'MG',
+				state: GLOBAL_MAP[86].id,
 				army: 0
 			},{
-				state: 'SP',
+				state: GLOBAL_MAP[83].id,
 				army: 0
 			},{
-				state: 'PR',
+				state: GLOBAL_MAP[22].id,
 				army: 0
 			},{
-				state: 'SC',
+				state: GLOBAL_MAP[20].id,
 				army: 0
 			},{
-				state: 'RS',
+				state: GLOBAL_MAP[35].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[17].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[26].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[18].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[30].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[28].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[33].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[21].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[36].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[19].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[16].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[24].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[76].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[91].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[96].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[89].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[25].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[31].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[34].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[82].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[32].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[23].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[27].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[101].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[117].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[109].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[75].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[97].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[110].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[102].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[111].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[108].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[104].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[114].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[106].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[107].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[116].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[115].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[99].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[113].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[46].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[57].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[39].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[38].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[44].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[55].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[98].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[112].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[105].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[54].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[103].id,
 				army: 0
 			}];
+
+			// for(var i = 0; i < enemy_states_arr.length; i++){
+			// 	$('#'+enemy_states_arr[i].state).css('fill','black');
+			// 	console.log(enemy_states_arr[i].state);
+			// }
 		}
 
 		if(data.player2 == this_player){
@@ -465,75 +482,375 @@ socket.on('game', function(data){
 			}
 
 			enemy_states_arr = [{
-				state: 'AC',
+				state: GLOBAL_MAP[8].id,
 				army: 0
 			},{
-				state: 'AM',
+				state: GLOBAL_MAP[2].id,
 				army: 0
 			},{
-				state: 'RR',
+				state: GLOBAL_MAP[12].id,
 				army: 0
 			},{
-				state: 'RO',
+				state: GLOBAL_MAP[5].id,
 				army: 0
 			},{
-				state: 'MT',
+				state: GLOBAL_MAP[9].id,
 				army: 0
 			},{
-				state: 'PA',
+				state: GLOBAL_MAP[14].id,
 				army: 0
 			},{
-				state: 'AP',
+				state: GLOBAL_MAP[71].id,
 				army: 0
 			},{
-				state: 'TO',
+				state: GLOBAL_MAP[58].id,
 				army: 0
 			},{
-				state: 'MA',
+				state: GLOBAL_MAP[59].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[67].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[61].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[74].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[60].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[66].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[62].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[68].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[64].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[78].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[73].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[69].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[70].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[63].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[7].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[1].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[4].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[6].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[72].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[0].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[65].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[94].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[79].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[95].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[81].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[88].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[11].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[80].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[3].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[13].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[15].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[10].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[43].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[47].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[49].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[42].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[50].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[56].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[37].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[92].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[90].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[93].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[84].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[100].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[51].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[52].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[45].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[53].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[48].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[40].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[41].id,
 				army: 0
 			}];
 
 			my_states_arr = [{
-				state: 'MS',
+				state: GLOBAL_MAP[29].id,
 				army: 0
 			},{
-				state: 'GO',
+				state: GLOBAL_MAP[87].id,
 				army: 0
 			},{
-				state: 'BA',
+				state: GLOBAL_MAP[77].id,
 				army: 0
 			},{
-				state: 'PI',
+				state: GLOBAL_MAP[85].id,
 				army: 0
 			},{
-				state: 'MG',
+				state: GLOBAL_MAP[86].id,
 				army: 0
 			},{
-				state: 'SP',
+				state: GLOBAL_MAP[83].id,
 				army: 0
 			},{
-				state: 'PR',
+				state: GLOBAL_MAP[22].id,
 				army: 0
 			},{
-				state: 'SC',
+				state: GLOBAL_MAP[20].id,
 				army: 0
 			},{
-				state: 'RS',
+				state: GLOBAL_MAP[35].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[17].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[26].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[18].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[30].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[28].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[33].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[21].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[36].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[19].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[16].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[24].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[76].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[91].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[96].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[89].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[25].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[31].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[34].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[82].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[32].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[23].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[27].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[101].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[117].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[109].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[75].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[97].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[110].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[102].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[111].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[108].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[104].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[114].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[106].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[107].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[116].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[115].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[99].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[113].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[46].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[57].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[39].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[38].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[44].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[55].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[98].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[112].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[105].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[54].id,
+				army: 0
+			},{
+				state: GLOBAL_MAP[103].id,
 				army: 0
 			}];
 		}
 
-		if(player == 2){
+		if(player == 1){
 			$('#player_country').text('Рейх');
 			player_country = 'Рейх';
 			$('#player_country_flag').attr('src','assets/img/germany_reich.png');
-		} else if(player == 1){
+		} else if(player == 2){
 			$('#player_country').text('СССР');
 			player_country = 'СССР';
 			$('#player_country_flag').attr('src','assets/img/ussr.png');
 		}
 
-		updateStates();
+		// updateStates();
 	} else if(data.command == 'SG002'){
 		if(game_key == data.key){
 			$('body').css('display','none');
@@ -630,7 +947,12 @@ function click(state){
 			$('.right-panel').css('display','block');
 			$('.right-panel .buttons').css('display','none');
 
-			$('#state_terr').text(state);
+			for(var i = 0; i < GLOBAL_MAP.length; i++){
+				if(GLOBAL_MAP[i].id == state+"-raion"){
+					$('#state_terr').text(GLOBAL_MAP[i].name+'['+i+']');
+				}
+			}
+
 			if(player_country == 'СССР'){
 				$('#terr_player_country').text('Рейх');
 				$('#terr_player_country_flag').attr('src','assets/img/germany_reich.png');
@@ -660,14 +982,14 @@ function click(state){
 			}
 
 			for(let i = 0; i < my_states_arr.length; i++){
-				if(my_states_arr[i].state == state.toUpperCase()){
+				if(my_states_arr[i].state == state+'-raion'){
 					$('#state_army').text(numberWithSpaces(my_states_arr[i].army));
 					$('#state_popular').text(numberWithSpaces(my_states_arr[i].army*70));
 				}
 			}
 
 			for(let i = 0; i < enemy_states_arr.length; i++){
-				if(enemy_states_arr[i].state == state.toUpperCase()){
+				if(enemy_states_arr[i].state == state+'-raion'){
 					$('#state_army').text(numberWithSpaces(enemy_states_arr[i].army));
 					$('#state_popular').text(numberWithSpaces(my_states_arr[i].army*70));
 				}
@@ -677,7 +999,7 @@ function click(state){
 			$('#state_pointers').text('?');
 
 			for(let i = 0; i < my_states_arr.length; i++){
-				if(my_states_arr[i].state == state.toUpperCase()){
+				if(my_states_arr[i].state == state+'-raion'){
 					$('.right-panel .buttons').css('display','flex');
 
 					$('#state_money').text(money);
@@ -1076,39 +1398,39 @@ function show_deleteArmy() {
 	}
 }
 
-function updateStates(){
-	let states = document.getElementsByTagName('a');
-	let enemyplayer;
+// function updateStates(){
+// 	let states = document.getElementsByTagName('a');
+// 	let enemyplayer;
 
-	if(player == 1) { enemyplayer = 2; } else { enemyplayer = 1; }
+// 	if(player == 1) { enemyplayer = 2; } else { enemyplayer = 1; }
 
-	for(let i = 0; i < my_states_arr.length; i++){
-		for(let s = 0; s < states.length; s++){
-			if(states[s].id == 'state_'+my_states_arr[i].state.toLowerCase()){
-				states[s].setAttribute("class",'state_player'+player);
-				//states[s].style.opacity = '1';
-			}
-		}
-		document.getElementById('label_icon_state_'+my_states_arr[i].state.toLowerCase()).textContent = ''+my_states_arr[i].army;
-	}
+// 	for(let i = 0; i < my_states_arr.length; i++){
+// 		for(let s = 0; s < states.length; s++){
+// 			if(states[s].id == 'state_'+my_states_arr[i].state.toLowerCase()){
+// 				states[s].setAttribute("class",'state_player'+player);
+// 				//states[s].style.opacity = '1';
+// 			}
+// 		}
+// 		document.getElementById('label_icon_state_'+my_states_arr[i].state.toLowerCase()).textContent = ''+my_states_arr[i].army;
+// 	}
 
-	for(let i = 0; i < enemy_states_arr.length; i++){
-		for(let s = 0; s < states.length; s++){
-			if(states[s].id == 'state_'+enemy_states_arr[i].state.toLowerCase()){
-				states[s].setAttribute("class",'state_player'+enemyplayer);
-				//states[s].style.opacity = '0.3';
-			}
-		}
-		document.getElementById('label_icon_state_'+enemy_states_arr[i].state.toLowerCase()).textContent = ''+enemy_states_arr[i].army;
-	}
+// 	for(let i = 0; i < enemy_states_arr.length; i++){
+// 		for(let s = 0; s < states.length; s++){
+// 			if(states[s].id == 'state_'+enemy_states_arr[i].state.toLowerCase()){
+// 				states[s].setAttribute("class",'state_player'+enemyplayer);
+// 				//states[s].style.opacity = '0.3';
+// 			}
+// 		}
+// 		document.getElementById('label_icon_state_'+enemy_states_arr[i].state.toLowerCase()).textContent = ''+enemy_states_arr[i].army;
+// 	}
 
-	let terrs_text = null;
-	if(my_states_arr.length == 1) terrs_text = 'территория';
-	if(my_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
-	if(my_states_arr.length == 4) terrs_text = 'территории';
-	if(my_states_arr.length >= 5) terrs_text = 'территорий'; 
-	document.getElementsByClassName('state_name')[0].innerHTML = my_states_arr.length+' '+terrs_text;
-}
+// 	let terrs_text = null;
+// 	if(my_states_arr.length == 1) terrs_text = 'территория';
+// 	if(my_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
+// 	if(my_states_arr.length == 4) terrs_text = 'территории';
+// 	if(my_states_arr.length >= 5) terrs_text = 'территорий'; 
+// 	document.getElementsByClassName('state_name')[0].innerHTML = my_states_arr.length+' '+terrs_text;
+// }
 
 function newArmy(){
 	if(!selected_state) return;
