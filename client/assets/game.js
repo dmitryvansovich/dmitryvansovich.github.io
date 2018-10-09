@@ -1761,16 +1761,16 @@ function changeColor(type){
 // document.addEventListener('keydown',press);
 // function press(e){
 // 	if(chat == false){
-// 		if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
+// 		if (e.keyCode === 38 /* up */){
 // 			down = true;
 // 		}
-// 		if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+// 		if (e.keyCode === 39 /* right */){
 // 			left = true;
 // 		}
-// 		if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+// 		if (e.keyCode === 40 /* down */){
 // 			up = true;
 // 		}
-// 		if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
+// 		if (e.keyCode === 37 /* left */){
 // 			right = true;
 // 		}
 // 	}
@@ -1779,20 +1779,41 @@ function changeColor(type){
 // document.addEventListener('keyup',release);
 // function release(e){
 // 	if(chat == false){
-// 		if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
+// 		if (e.keyCode === 38 /* up */){
 // 			down = false;
 // 		}
-// 		if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+// 		if (e.keyCode === 39 /* right */){
 // 			left = false;
 // 		}
-// 		if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+// 		if (e.keyCode === 40 /* down */){
 // 			up = false;
 // 		}
-// 		if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
+// 		if (e.keyCode === 37 /* left */){
 // 			right = false;
 // 		}
 // 	}
 // }
+
+// function gameLoop(){
+// 	var div = document.getElementById('map');
+// 	if (up){
+// 		y = y - 20;
+// 	}
+// 	if (right){
+// 		x = x + 20;
+// 	}
+// 	if (down){
+// 		y = y + 20;
+// 	}
+// 	if (left){
+// 		x = x - 20;
+// 	}
+
+// 	div.style.left = x+'px'
+// 	div.style.top = y+'px'
+// 	window.requestAnimationFrame(gameLoop);
+// }
+// window.requestAnimationFrame(gameLoop);
 
 var antiCheatSystem_lastMoney = money;
 var antiCheatSystem_lastPointers = pointers;
