@@ -191,7 +191,7 @@ i:hover {
     position: absolute;
     left: 45%;
     top: 5%;
-    transform: scale(0.8, 0.8)  translateX(-50%);
+    transform: scale(0.9, 0.9)  translateX(-50%);
 }
 #map .state_player1 {
     cursor: pointer;
@@ -420,13 +420,13 @@ input[type=range]::-webkit-slider-thumb {
     animation-timing-function: ease;       
 }
 
-.state_player1 .flag {
+.flag {
 	width: 15px;
 	height: 15px;
 	fill: url(#player1_flag);
 }
 
-.state_player2 .flag {
+.flag {
 	width: 15px;
 	height: 15px;
 	fill: url(#player2_flag);
@@ -1212,23 +1212,45 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 #regions {
-	stroke: #ddd;
-	stroke-width: 2;
+	fill: transparent;
+	stroke: white;
+	stroke-width: 1.5;
+	stroke-opacity: 0.5;
 }
 
 #subregions {
 	stroke: white;
-	stroke-width: 0.7;
+	stroke-width: 0.5;
+	stroke-opacity: 0.5;
 }
 
 circle {
 	fill: rgba(255,255,255,.5);
 	stroke: #222;
 	stroke-width: 0.2;
-	translate: 0.5s;
+	transition: 0.5s;
 }
 
 circle:hover {
     fill: #2d68b2;
     cursor: pointer;
+}
+
+.army {
+	background-color: rgba(34,34,34,.8);
+	color: #fff;
+	border-radius: 3px;
+	padding: 2px 4px;
+	display: inline-flex;
+	font-size: 10px;
+	transform: scale(0.7, 0.7);
+}
+
+.army img {
+	width: 15px;
+	height: 15px;
+}
+
+.army b {
+	margin-left: 4px;
 }
