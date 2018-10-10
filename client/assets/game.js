@@ -1758,55 +1758,51 @@ function changeColor(type){
 // 	x = window.innerWidth/2-20,
 // 	y = window.innerHeight/2-210;
 
-// document.addEventListener('keydown',press);
+// document.addEventListener('keydown',press)
 // function press(e){
-// 	if(chat == false){
-// 		if (e.keyCode === 38 /* up */){
-// 			down = true;
-// 		}
-// 		if (e.keyCode === 39 /* right */){
-// 			left = true;
-// 		}
-// 		if (e.keyCode === 40 /* down */){
-// 			up = true;
-// 		}
-// 		if (e.keyCode === 37 /* left */){
-// 			right = true;
-// 		}
+// 	if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
+// 		down = true;
+// 	}
+// 	if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+// 		left = true;
+// 	}
+// 	if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+// 		up = true;
+// 	}
+// 	if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
+// 		right = true;
 // 	}
 // }
 
-// document.addEventListener('keyup',release);
+// document.addEventListener('keyup',release)
 // function release(e){
-// 	if(chat == false){
-// 		if (e.keyCode === 38 /* up */){
-// 			down = false;
-// 		}
-// 		if (e.keyCode === 39 /* right */){
-// 			left = false;
-// 		}
-// 		if (e.keyCode === 40 /* down */){
-// 			up = false;
-// 		}
-// 		if (e.keyCode === 37 /* left */){
-// 			right = false;
-// 		}
+// 	if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
+// 		down = false;
+// 	}
+// 	if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+// 		left = false;
+// 	}
+// 	if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+// 		up = false;
+// 	}
+// 	if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
+// 		right = false;
 // 	}
 // }
 
 // function gameLoop(){
 // 	var div = document.getElementById('map');
 // 	if (up){
-// 		y = y - 20;
+// 		y = y - 10;
 // 	}
 // 	if (right){
-// 		x = x + 20;
+// 		x = x + 10;
 // 	}
 // 	if (down){
-// 		y = y + 20;
+// 		y = y + 10;
 // 	}
 // 	if (left){
-// 		x = x - 20;
+// 		x = x - 10;
 // 	}
 
 // 	div.style.left = x+'px'
@@ -1878,29 +1874,29 @@ function randomInteger(min, max) {
     return rand;
 }
 
-let randomY = randomInteger(1,200);
-	randomY1 = randomInteger(-450,-100);
+// let randomY = randomInteger(1,200);
+// 	randomY1 = randomInteger(-450,-100);
 
-document.getElementById('clouds').innerHTML = `
-	<div class="cloud" style="top:`+randomY+`px;">
-		<img src="assets/img/cloud_2.png">
-	</div>
-	<div class="cloud1" style="top:`+randomY1+`px;">
-		<img src="assets/img/cloud_2.png">
-	</div>`;
+// document.getElementById('clouds').innerHTML = `
+// 	<div class="cloud" style="top:`+randomY+`px;">
+// 		<img src="assets/img/cloud_2.png">
+// 	</div>
+// 	<div class="cloud1" style="top:`+randomY1+`px;">
+// 		<img src="assets/img/cloud_2.png">
+// 	</div>`;
 
-setInterval(function(){
-	let randomY = randomInteger(1,200);
-		randomY1 = randomInteger(-450,-100);
+// setInterval(function(){
+// 	let randomY = randomInteger(1,200);
+// 		randomY1 = randomInteger(-450,-100);
 
-	document.getElementById('clouds').innerHTML = `
-		<div class="cloud" style="top:`+randomY+`px;">
-			<img src="assets/img/cloud_2.png">
-		</div>
-		<div class="cloud1" style="top:`+randomY1+`px;">
-			<img src="assets/img/cloud_2.png">
-		</div>`;
-}, 120000);
+// 	document.getElementById('clouds').innerHTML = `
+// 		<div class="cloud" style="top:`+randomY+`px;">
+// 			<img src="assets/img/cloud_2.png">
+// 		</div>
+// 		<div class="cloud1" style="top:`+randomY1+`px;">
+// 			<img src="assets/img/cloud_2.png">
+// 		</div>`;
+// }, 120000);
 
 function createserver(){
 	document.getElementById('createserverbutton').innerHTML = '<b class="text-primary" style="font-size:26px;">Ожидание игрока</b>';
