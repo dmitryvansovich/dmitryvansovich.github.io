@@ -189,9 +189,9 @@ i:hover {
 #map {
     display: none;
     position: absolute;
-    left: 45%;
-    top: 5%;
-    transform: scale(0.9, 0.9)  translateX(-50%);
+    left: 50%;
+    top: 13%;
+    transform: scale(1.1, 1.1) translateX(-50%);
 }
 #map .state_player1 {
     cursor: pointer;
@@ -1214,15 +1214,15 @@ input[type=range]::-webkit-slider-thumb {
 #regions {
 	fill: transparent;
 	stroke: white;
-	stroke-width: 1.5;
-	stroke-opacity: 0.7;
+	stroke-width: 2;
+/*	stroke-opacity: 0.8;*/
 	pointer-events: none;
 }
 
 #subregions {
 	stroke: white;
 	stroke-width: 0.5;
-	stroke-opacity: 0.5;
+	stroke-opacity: 0.3;
 }
 
 circle {
@@ -1245,6 +1245,7 @@ circle:hover {
 	display: inline-flex;
 	font-size: 10px;
 	transform: scale(0.7, 0.7);
+	pointer-events: none;
 }
 
 .army img {
