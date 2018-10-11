@@ -220,7 +220,7 @@ i:hover {
     display: block;
 }
 #map .model-green /*.state_player1 .shape*/ /*polygon*/ {
-    fill: #6cb361;
+    fill: #111; /*#6cb361*/
     transition: 0.5s;
 }
 #map .model-green .state_player1 .icon_state {
