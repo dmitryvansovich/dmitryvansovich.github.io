@@ -1,15 +1,15 @@
 let socket = io.connect('https://ancientwarserver.herokuapp.com/',{'forceNew':false});
 // let socket = io.connect();
-let money, pointers, player1, player2, this_player, game_key, player = 1, player_country;
+let player1, player2, this_player, game_key, player, player_country;
 let my_states_arr = [], enemy_states_arr = [];
 let move = false;
 let selected_state_movefrom;
 
 let player_params = {
-	// first_name: 'Дмитрий',
-	// last_name: 'Вансович'
-	first_name: null,
-	last_name: null
+	first_name: 'Дмитрий',
+	last_name: 'Вансович'
+	// first_name: null,
+	// last_name: null
 };
 
 let player_tehs = [
@@ -39,8 +39,8 @@ socket.on('connect', function(data){
 	// 	});
 	// },'5.80');
 
-	$('#game').css('display','block');
-	$('#menu').css('display','none');
+	$('#game').css('display','none');
+	$('#menu').css('display','block');
 	$('#startgame').css('display','none');
 	$('#serverlist').css('display','none');
 
@@ -49,21 +49,16 @@ socket.on('connect', function(data){
 		player_params: player_params 
 	});
 
-	socket.emit('server-list', {
-		command: 'CS003',
-		id: 0,
-		password: 12345
-	});
+	// socket.emit('server-list', {
+	// 	command: 'CS003',
+	// 	id: 0,
+	// 	password: 12345
+	// });
 });
 
 socket.on('data', function(data){
 	if(data.command == 'DC001'){
-		money = data.money-2;
-		pointers = data.pointers-2;
 		this_player = data.user_socket;
-
-		clicker(1);
-		clicker(2);
 	} else if(data.command == 'DC002'){
 		if(data.key == game_key){
 			if(player != data.player){
@@ -427,9 +422,9 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[86].id,
-				army: 0,
-				divName: null,
-				div: null
+				army: 120,
+				divName: '1-й белорусский фронт',
+				div: 1
 			},{
 				state: GLOBAL_MAP[83].id,
 				army: 0,
@@ -522,9 +517,9 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[89].id,
-				army: 0,
-				divName: null,
-				div: null
+				army: 180,
+				divName: '2-й белорусский фронт',
+				div: 2
 			},{
 				state: GLOBAL_MAP[25].id,
 				army: 0,
@@ -667,9 +662,9 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[44].id,
-				army: 0,
-				divName: null,
-				div: null
+				army: 250,
+				divName: '3-й белорусский фронт',
+				div: 3
 			},{
 				state: GLOBAL_MAP[55].id,
 				army: 0,
@@ -701,11 +696,6 @@ socket.on('game', function(data){
 				divName: null,
 				div: null
 			}];
-
-			// for(var i = 0; i < enemy_states_arr.length; i++){
-			// 	$('#'+enemy_states_arr[i].state).css('fill','black');
-			// 	console.log(enemy_states_arr[i].state);
-			// }
 		}
 
 		if(data.player2 == this_player){
@@ -1036,9 +1026,9 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[86].id,
-				army: 0,
-				divName: null,
-				div: null
+				army: 120,
+				divName: '1-й белорусский фронт',
+				div: 1
 			},{
 				state: GLOBAL_MAP[83].id,
 				army: 0,
@@ -1131,9 +1121,9 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[89].id,
-				army: 0,
-				divName: null,
-				div: null
+				army: 180,
+				divName: '2-й белорусский фронт',
+				div: 2
 			},{
 				state: GLOBAL_MAP[25].id,
 				army: 0,
@@ -1276,9 +1266,9 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[44].id,
-				army: 0,
-				divName: null,
-				div: null
+				army: 250,
+				divName: '3-й белорусский фронт',
+				div: 3
 			},{
 				state: GLOBAL_MAP[55].id,
 				army: 0,
@@ -1322,7 +1312,7 @@ socket.on('game', function(data){
 			$('#player_country_flag').attr('src','assets/img/ussr.png');
 		}
 
-		// updateStates();
+		updateStates();
 	} else if(data.command == 'SG002'){
 		if(game_key == data.key){
 			$('body').css('display','none');
@@ -1393,8 +1383,8 @@ document.getElementsByClassName('deleteArmy_range')[0].addEventListener('change'
 
 document.getElementsByClassName('moveBlock_range')[0].addEventListener('change', function(){
 	for(let i = 0; i < my_states_arr.length; i++){
-		if(my_states_arr[i].state == selected_state_movefrom.toUpperCase()){
-			document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+' (-30 очков)';		
+		if(my_states_arr[i].state == selected_state_movefrom){
+			document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+'Т';		
 		}
 	}
 });
@@ -1422,6 +1412,12 @@ function click(state){
 			for(var i = 0; i < GLOBAL_MAP.length; i++){
 				if(GLOBAL_MAP[i].id == state+"-raion"){
 					$('#state_terr').text(GLOBAL_MAP[i].name+'['+i+']');
+					if(GLOBAL_MAP[i].region == 'brestskaia-voblasts') $('#state_terr_vobl').text('Брестская');
+					if(GLOBAL_MAP[i].region == 'vitsebskaia-voblasts') $('#state_terr_vobl').text('Витебская');
+					if(GLOBAL_MAP[i].region == 'homelskaia-voblasts') $('#state_terr_vobl').text('Гомельская');
+					if(GLOBAL_MAP[i].region == 'hrodnenskaia-voblasts') $('#state_terr_vobl').text('Гродненская');
+					if(GLOBAL_MAP[i].region == 'minskaia-voblasts') $('#state_terr_vobl').text('Минская');
+					if(GLOBAL_MAP[i].region == 'mahiliouskaia-voblasts') $('#state_terr_vobl').text('Могилёвская');
 				}
 			}
 
@@ -1455,17 +1451,35 @@ function click(state){
 
 			for(let i = 0; i < my_states_arr.length; i++){
 				if(my_states_arr[i].state == state+'-raion'){
-					$('#state_army').text(numberWithSpaces(my_states_arr[i].army));
-					$('#state_popular').text(numberWithSpaces(my_states_arr[i].army*70));
+					$('#state_army').text(numberWithSpaces(my_states_arr[i].army+'Т'));
+					if(my_states_arr[i].div){
+						$('#right-panel-body').css('display','block');
+						$('#state_army_name').text(my_states_arr[i].divName);
+					} else {
+						$('#right-panel-body').css('display','none');
+					}
 				}
 			}
 
 			for(let i = 0; i < enemy_states_arr.length; i++){
 				if(enemy_states_arr[i].state == state+'-raion'){
-					$('#state_army').text(numberWithSpaces(enemy_states_arr[i].army));
-					$('#state_popular').text(numberWithSpaces(my_states_arr[i].army*70));
+					$('#state_army').text(numberWithSpaces(enemy_states_arr[i].army+'Т'));
+					if(enemy_states_arr[i].div){
+						$('#right-panel-body').css('display','block');
+						$('#state_army_name').text(enemy_states_arr[i].divName);
+					} else {
+						$('#right-panel-body').css('display','none');
+					}
 				}
 			}
+			// var newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
+			// newLine.setAttribute('id','line2');
+			// newLine.setAttribute('x2',getCenterSVG(state+'-raion').x);
+			// newLine.setAttribute('y2',getCenterSVG(state+'-raion').y);
+			// newLine.setAttribute('x1',getCenterSVG('minski-raion').x/2);
+			// newLine.setAttribute('y1',getCenterSVG('minski-raion').y/2);
+			// newLine.setAttribute("stroke", "black")
+			// $("svg").append(newLine);
 
 			$('#state_money').text('?');
 			$('#state_pointers').text('?');
@@ -1476,6 +1490,7 @@ function click(state){
 
 					$('#state_money').text(money);
 					$('#state_pointers').text(pointers);
+
 
 					if(player_country == 'Рейх'){
 						$('#terr_owner').text('Территория Рейха');
@@ -1507,17 +1522,17 @@ function click(state){
 				}
 			}
 		} else if(!selected_state_move) {
-			let states = document.getElementsByTagName('a');
-			let thisstate = document.getElementById('state_'+state);	
+			let states = document.getElementsByTagName('polygon');
+			let thisstate = document.getElementById(selected_state_movefrom);	
 
-			if(thisstate.style.opacity != '0.7') return;
+			if(document.getElementById(state+'-raion').style.opacity != '0.7') return;
 
 			$('.move').css('display','block');
 
 			selected_state_move = state;
 
-			if(thisstate.style.opacity == '0.7'){
-				thisstate.style.opacity = '1';
+			if(document.getElementById(state+'-raion').style.opacity == '0.7'){
+				document.getElementById(state+'-raion').style.opacity = '1';
 			}
 
 			for(let i = 0; i < states.length; i++){
@@ -1542,7 +1557,7 @@ function click(state){
 			let this_army;
 
 			for(let i = 0; i < my_states_arr.length; i++){
-				if(my_states_arr[i].state == selected_state_movefrom.toUpperCase()){
+				if(my_states_arr[i].state == selected_state_movefrom){
 					this_army = my_states_arr[i].army;
 					updateMoveRange();
 				}
@@ -1551,7 +1566,7 @@ function click(state){
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+this_army;
 				document.getElementsByClassName('moveBlock_range')[0].value = ""+this_army/2;
-				document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+' (-30 очков)';
+				document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+'Т';
 			}
 
 			selected_state = null;
@@ -1561,280 +1576,17 @@ function click(state){
 	}
 }
 
-function clicker(item){
-	if(item == 1) {
-		money = money + 2;
-		document.getElementById('gov_money').innerHTML = 'Казна: '+numberWithSpaces(money);
-	} else if(item == 2) {
-		pointers = pointers + 2;
-		document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
-	}
-}
-
 function show_moveArmy() {
 	$('.bottom_menu').css('display','none');
 	$('.getArmy').css('display','none');
 	$('.deleteArmy').css('display','none');
 
 	for(var i = 0; i < my_states_arr.length; i++){
-		if(my_states_arr[i].state == selected_state.toUpperCase()){
-			var states = document.getElementsByTagName('a');
+		if(my_states_arr[i].state == selected_state+'-raion'){
 			move = true;
-			selected_state_movefrom = selected_state;
+			selected_state_movefrom = selected_state+'-raion';
 
-			if(selected_state == 'AC'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_am'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ro'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'AM'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_ac'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ro'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_mt'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pa'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_rr'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'RR'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_am'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pa'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'PA'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_rr'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_am'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_mt'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_to'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ma'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ap'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'AP'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_pa'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'RO'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_am'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_mt'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'MT'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_ro'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_am'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pa'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_to'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ms'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_go'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'TO'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_mt'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pa'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ma'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pi'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ma'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_go'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ba'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'MA'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_pa'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_to'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ba'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pi'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'MS'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_mt'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_go'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_mg'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_sp'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pr'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'GO'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_ms'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_mt'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_to'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ba'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_mg'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'BA'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_mg'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_go'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_to'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ma'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_pi'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'PI'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_ma'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_to'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ba'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'MG'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_sp'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ms'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_go'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ba'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'SP'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_pr'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_ms'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_mg'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'PR'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_ms'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_sp'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_sc'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'SC'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_pr'){
-						states[i].style.opacity = '0.7';
-					}
-					if(states[i].id == 'state_rs'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			} else if(selected_state == 'RS'){
-				for(let i = 0; i < states.length; i++){
-					if(states[i].id == 'state_sc'){
-						states[i].style.opacity = '0.7';
-					}
-				}
-			}
+			getCollision(my_states_arr[i].state);
 		} else if(i == my_states_arr.length - 1){
 			return;
 		}
@@ -1870,44 +1622,54 @@ function show_deleteArmy() {
 	}
 }
 
-// function updateStates(){
-// 	let states = document.getElementsByTagName('a');
-// 	let enemyplayer;
+function updateStates(){
+	let states = document.getElementsByTagName('polygon');
+	let enemyplayer;
 
-// 	if(player == 1) { enemyplayer = 2; } else { enemyplayer = 1; }
+	if(player == 1) { enemyplayer = 2; } else { enemyplayer = 1; }
 
-// 	for(let i = 0; i < my_states_arr.length; i++){
-// 		for(let s = 0; s < states.length; s++){
-// 			if(states[s].id == 'state_'+my_states_arr[i].state.toLowerCase()){
-// 				states[s].setAttribute("class",'state_player'+player);
-// 				//states[s].style.opacity = '1';
-// 			}
-// 		}
-// 		document.getElementById('label_icon_state_'+my_states_arr[i].state.toLowerCase()).textContent = ''+my_states_arr[i].army;
-// 	}
+	for(let i = 0; i < my_states_arr.length; i++){
+		for(let s = 0; s < states.length; s++){
+			if(states[s].id == my_states_arr[i].state){
+				if(player == 1){
+					states[s].setAttribute("class",'model-green');
+				} else {
+					states[s].setAttribute("class",'model-red');
+				}
 
-// 	for(let i = 0; i < enemy_states_arr.length; i++){
-// 		for(let s = 0; s < states.length; s++){
-// 			if(states[s].id == 'state_'+enemy_states_arr[i].state.toLowerCase()){
-// 				states[s].setAttribute("class",'state_player'+enemyplayer);
-// 				//states[s].style.opacity = '0.3';
-// 			}
-// 		}
-// 		document.getElementById('label_icon_state_'+enemy_states_arr[i].state.toLowerCase()).textContent = ''+enemy_states_arr[i].army;
-// 	}
+				states[s].style.opacity = '1';
+			}
+		}
+		$('#'+my_states_arr[i].state+'-army b').text(my_states_arr[i].army+'T');
+	}
 
-// 	let terrs_text = null;
-// 	if(my_states_arr.length == 1) terrs_text = 'территория';
-// 	if(my_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
-// 	if(my_states_arr.length == 4) terrs_text = 'территории';
-// 	if(my_states_arr.length >= 5) terrs_text = 'территорий'; 
-// 	document.getElementsByClassName('state_name')[0].innerHTML = my_states_arr.length+' '+terrs_text;
-// }
+	for(let i = 0; i < enemy_states_arr.length; i++){
+		for(let s = 0; s < states.length; s++){
+			if(states[s].id == enemy_states_arr[i].state){
+				if(player == 1){
+					states[s].setAttribute("class",'model-red');
+				} else {
+					states[s].setAttribute("class",'model-green');
+				}
+
+				states[s].style.opacity = '0.3';
+			}
+		}
+		$('#'+enemy_states_arr[i].state+'-army b').text(enemy_states_arr[i].army+'Т');
+	}
+
+	let terrs_text = null;
+	if(my_states_arr.length == 1) terrs_text = 'территория';
+	if(my_states_arr.length >= 2 && enemy_states_arr <= 4) terrs_text = 'территория';
+	if(my_states_arr.length == 4) terrs_text = 'территории';
+	if(my_states_arr.length >= 5) terrs_text = 'территорий'; 
+	document.getElementsByClassName('state_name')[0].innerHTML = my_states_arr.length+' '+terrs_text;
+
+	updateArmy();
+}
 
 function newArmy(){
 	if(!selected_state) return;
-
-	if(pointers < 20) return;
 
 	for(let i = 0; i < my_states_arr.length; i++){
 		if(my_states_arr[i].state == selected_state){
@@ -1968,10 +1730,8 @@ function move_ok(){
 	let movefrom_army = document.getElementsByClassName('moveBlock_range')[0].value, moveto_army;
 	let moveto_mystate = false;
 
-	if(pointers < 30) return;
-
 	for(var i = 0; i < my_states_arr.length; i++){
-		if(my_states_arr[i].state == selected_state_move.toUpperCase()){
+		if(my_states_arr[i].state == selected_state_move+'-raion'){
 			moveto_mystate = true;
 			moveto_army = my_states_arr[i].army;
 		}
@@ -1979,7 +1739,7 @@ function move_ok(){
 
 	if(moveto_mystate == false){
 		for(var i = 0; i < enemy_states_arr.length; i++){
-			if(enemy_states_arr[i].state == selected_state_move.toUpperCase()){
+			if(enemy_states_arr[i].state == selected_state_move+'-raion'){
 				moveto_army = enemy_states_arr[i].army;
 			}
 		}
@@ -1987,11 +1747,8 @@ function move_ok(){
 
 	if(moveto_mystate == true){
 		for(var i = 0; i < my_states_arr.length; i++){
-			if(my_states_arr[i].state == selected_state_move.toUpperCase()){
+			if(my_states_arr[i].state == selected_state_move+'-raion'){
 				my_states_arr[i].army = my_states_arr[i].army*1 + movefrom_army*1;
-
-				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 
 				socket.emit('game',{
 					command: "GS001",
@@ -2001,16 +1758,13 @@ function move_ok(){
 					byplayer: this_player
 				});
 			}
-			if(my_states_arr[i].state == selected_state_movefrom.toUpperCase()){
+			if(my_states_arr[i].state == selected_state_movefrom){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
-
-				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
 				document.getElementsByClassName('moveBlock_range')[0].value = ""+my_states_arr[i].army/2;
-				document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+' (-30 очков)';
+				document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+'T';
 
 				socket.emit('game',{
 					command: "GS001",
@@ -2023,16 +1777,13 @@ function move_ok(){
 		}
 	} else if(moveto_mystate == false){
 		for(var i = 0; i < my_states_arr.length; i++){
-			if(my_states_arr[i].state == selected_state_movefrom.toUpperCase()){
+			if(my_states_arr[i].state == selected_state_movefrom){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
-
-				pointers = pointers*1 - 30;
-				document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
 				document.getElementsByClassName('moveBlock_range')[0].value = ""+my_states_arr[i].army/2;
-				document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+' (-30 очков)';
+				document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+'T';
 
 				socket.emit('game',{
 					command: "GS001",
@@ -2044,7 +1795,8 @@ function move_ok(){
 			}
 		}
 		for(var i = 0; i < enemy_states_arr.length; i++){
-			if(enemy_states_arr[i].state == selected_state_move.toUpperCase()){
+			if(enemy_states_arr[i].state == selected_state_move+'-raion'){
+				console.log(enemy_states_arr[i].army);
 				if(enemy_states_arr[i].army < movefrom_army){
 					movefrom_army = movefrom_army - enemy_states_arr[i].army;
 					enemy_states_arr[i].army = movefrom_army;
@@ -2060,18 +1812,18 @@ function move_ok(){
 						byplayer: this_player
 					});
 
-					let states = document.getElementsByTagName('a');
+					let states = document.getElementsByTagName('polygon');
 					for(var x = 0; x < states.length; x++){
-						if(states[x].id == 'state_'+selected_state_move){
+						if(states[x].id == selected_state_move+'-raion'){
 							socket.emit('game', {
 								command: "GS002",
 								key: game_key,
 								state: x
 							});
-							if(states[x].className == 'state_player2'){
-								states[x].setAttribute("class","state_player1");
+							if(player == 1){
+								states[x].setAttribute("class","model-green");
 							} else {
-								states[x].setAttribute("class","state_player2");
+								states[x].setAttribute("class","model-red");
 							}
 						}
 					}
@@ -2183,14 +1935,6 @@ function numberWithSpaces(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
-setInterval(function(){
-	money = money + my_states_arr.length;
-	pointers = pointers + Math.floor(my_states_arr.length/7)*1;
-
-	document.getElementById('gov_money').innerHTML = 'Казна: '+numberWithSpaces(money);
-	document.getElementById('gov_pointers').innerHTML = 'Очки: '+numberWithSpaces(pointers);
-}, 3000);
-
 function changeColor(type){
 	let states = document.getElementsByTagName('a');
 
@@ -2220,600 +1964,6 @@ function changeColor(type){
 		}
 	}
 }
-
-			my_states_arr = [{
-				state: GLOBAL_MAP[8].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[2].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[12].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[5].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[9].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[14].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[71].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[58].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[59].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[67].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[61].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[74].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[60].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[66].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[62].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[68].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[64].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[78].id,
-				army: 35,
-				divName: '1-я группа армий',
-				div: null
-			},{
-				state: GLOBAL_MAP[73].id,
-				army: 35,
-				divName: '1-я группа армий',
-				div: null
-			},{
-				state: GLOBAL_MAP[69].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[70].id,
-				army: 35,
-				divName: '1-я группа армий',
-				div: null
-			},{
-				state: GLOBAL_MAP[63].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[7].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[1].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[4].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[6].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[72].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[0].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[65].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[94].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[79].id,
-				army: 35,
-				divName: '1-я группа армий',
-				div: 1
-			},{
-				state: GLOBAL_MAP[95].id,
-				army: 40,
-				divName: '2-я группа армий',
-				div: 2
-			},{
-				state: GLOBAL_MAP[81].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[88].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[11].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[80].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[3].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[13].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[15].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[10].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[43].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[47].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[49].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[42].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[50].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[56].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[37].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[92].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[90].id,
-				army: 40,
-				divName: '2-я группа армий',
-				div: 2
-			},{
-				state: GLOBAL_MAP[93].id,
-				army: 40,
-				divName: '2-я группа армий',
-				div: 2
-			},{
-				state: GLOBAL_MAP[84].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[100].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[51].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[52].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[45].id,
-				army: 50,
-				divName: '3-я группа армий',
-				div: 3
-			},{
-				state: GLOBAL_MAP[53].id,
-				army: 50,
-				divName: '3-я группа армий',
-				div: 3
-			},{
-				state: GLOBAL_MAP[48].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[40].id,
-				army: 50,
-				divName: '3-я группа армий',
-				div: 3
-			},{
-				state: GLOBAL_MAP[41].id,
-				army: 50,
-				divName: '3-я группа армий',
-				div: 3
-			}];
-
-			enemy_states_arr = [{
-				state: GLOBAL_MAP[29].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[87].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[77].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[85].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[86].id,
-				army: 125,
-				divName: "1-я белорусская",
-				div: 1
-			},{
-				state: GLOBAL_MAP[83].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[22].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[20].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[35].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[17].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[26].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[18].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[30].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[28].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[33].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[21].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[36].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[19].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[16].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[24].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[76].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[91].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[96].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[89].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[25].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[31].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[34].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[82].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[32].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[23].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[27].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[101].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[117].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[109].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[75].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[97].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[110].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[102].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[111].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[108].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[104].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[114].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[106].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[107].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[116].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[115].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[99].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[113].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[46].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[57].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[39].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[38].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[44].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[55].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[98].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[112].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[105].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[54].id,
-				army: 0,
-				divName: null,
-				div: null
-			},{
-				state: GLOBAL_MAP[103].id,
-				army: 0,
-				divName: null,
-				div: null
-			}];
 
 //changeColor('notype');
 
@@ -2877,35 +2027,35 @@ function changeColor(type){
 // }
 // window.requestAnimationFrame(gameLoop);
 
-var antiCheatSystem_lastMoney = money;
-var antiCheatSystem_lastPointers = pointers;
-var antiCheatSystem_lastBalanceUpdate = 5;
-function antiCheatSystem(){
-	if(money > antiCheatSystem_lastMoney+58){
-		socket.emit('anticheat', {
-			command: 'CA001',
-			user: player_params,
-			key: game_key,
-			type: 1,
-			last_money: antiCheatSystem_lastMoney,
-			money: money
-		});
-	}
+// var antiCheatSystem_lastMoney = money;
+// var antiCheatSystem_lastPointers = pointers;
+// var antiCheatSystem_lastBalanceUpdate = 5;
+// function antiCheatSystem(){
+// 	if(money > antiCheatSystem_lastMoney+58){
+// 		socket.emit('anticheat', {
+// 			command: 'CA001',
+// 			user: player_params,
+// 			key: game_key,
+// 			type: 1,
+// 			last_money: antiCheatSystem_lastMoney,
+// 			money: money
+// 		});
+// 	}
 
-	if(pointers > antiCheatSystem_lastPointers+50){
-		socket.emit('anticheat', {
-			command: 'CA001',
-			user: player_params,
-			key: game_key,
-			type: 2,
-			last_pointers: antiCheatSystem_lastPointers,
-			pointers: pointers
-		});
-	}
+// 	if(pointers > antiCheatSystem_lastPointers+50){
+// 		socket.emit('anticheat', {
+// 			command: 'CA001',
+// 			user: player_params,
+// 			key: game_key,
+// 			type: 2,
+// 			last_pointers: antiCheatSystem_lastPointers,
+// 			pointers: pointers
+// 		});
+// 	}
 
-	antiCheatSystem_lastMoney = money;
-	antiCheatSystem_lastPointers = pointers;
-}
+// 	antiCheatSystem_lastMoney = money;
+// 	antiCheatSystem_lastPointers = pointers;
+// }
 // setInterval(antiCheatSystem, 3000);
 
 function windows_open(w){
@@ -3058,21 +2208,102 @@ updateArmy();
 
 function updateArmy(){
 	let states = document.getElementsByTagName('polygon');
+	var my_src, enemy_src;
+
+	if(player == 1){ 
+		my_src = 'assets/img/germany_reich.png';
+		enemy_src = 'assets/img/ussr.png'; 
+	} else { 
+		my_src = 'assets/img/ussr.png';
+		enemy_src = 'assets/img/germany_reich.png'; 
+	}
 
 	for(var i = 0; i < my_states_arr.length; i++){
 		$('#'+my_states_arr[i].state+'-army').children('b').text(my_states_arr[i].army+'T');
+		$('#'+my_states_arr[i].state+'-army').children('img').attr('src', my_src);
 	}
 
 	for(var i = 0; i < enemy_states_arr.length; i++){
 		$('#'+enemy_states_arr[i].state+'-army').children('b').text(enemy_states_arr[i].army+'T');
+		$('#'+enemy_states_arr[i].state+'-army').children('img').attr('src', enemy_src);
 	}
 
 	for(var i = 0; i < states.length; i++){
 		if(states[i].className.animVal == 'model-green' || states[i].className.animVal == 'model-red'){
 			let state_army = $('#'+states[i].id+'-army').children('b').text();
+			// var center = getCenterSVG(states[i].id);
+			// console.log(center);
+			//txt.setAttribute('y', '30');
 			if(state_army == '0T' || state_army == '0Т'){
 				document.getElementById(states[i].id+'-army').style.opacity = '0';
+			} else {
+				document.getElementById(states[i].id+'-army').style.opacity = '1';
 			}
 		}
 	}
 }
+
+let polygons = [];
+
+for(var i = 0; i < GLOBAL_MAP.length; i++){
+	let polygon = document.getElementById(GLOBAL_MAP[i].id).points;
+
+	polygons.push({polygon: polygon, id: GLOBAL_MAP[i].id});
+}
+
+// let document_polygons = document.getElementsByTagName('polygon');
+// for(var i = 0; i < document_polygons.length; i++){
+// 	document_polygons[i].style.opacity = '0.3';
+// }
+
+function getCollision(element){
+	for(var i = 0; i < polygons.length; i++){
+		let this_points = document.getElementById(element).points;
+
+		for(var h = 0; h < polygons[i].polygon.length; h++){
+			for(var l = 0; l < this_points.length; l++){
+				if(polygons[i].polygon[h].x == this_points[l].x && polygons[i].polygon[h].y == this_points[l].y){
+					document.getElementById(polygons[i].id).style.opacity = '0.7';
+				}
+			}		
+		}
+
+		document.getElementById(element).style.opacity = '1';
+	}
+}
+
+function getCenterSVG(id){
+	let polygon = document.getElementById(id);
+	var points = polygon.getAttribute('points');
+
+	if (!points) {
+		return;
+	}
+
+	const pointsArray = points.split(' ');
+	const center = {
+		x: 0,
+		y: 0
+	};
+
+	for (let i = 0; i < pointsArray.length; i++) {
+		const pair = pointsArray[i].split(',');
+
+		center.x += (pair[0] / pointsArray.length);
+		center.y += (pair[1] / pointsArray.length);
+	}
+
+	return center;
+}
+
+var audio;
+$("div").mousedown(function() {
+	audio = document.getElementsByTagName("audio")[0];
+	audio.volume = '0.05';
+	audio.loop = true;
+	audio.play();
+	return false;
+}).mouseup(function() {
+	audio.loop = false;
+	return false;
+});
