@@ -1361,9 +1361,9 @@ socket.on('chat', function(data){
 
 			message = '<div class="message"><label style="color:#2d68b2;">[Игра]</label> '+data.message+'</div>';
 
-			let html = document.getElementById('messages').innerHTML;
-			html += message;
-			document.getElementById('messages').innerHTML = html;
+			// let html = document.getElementById('messages').innerHTML;
+			// html += message;
+			// document.getElementById('messages').innerHTML = html;
 
 			var el = document.getElementsByClassName('chat-messages')[0];
 			el.scrollTop = el.scrollHeight;
@@ -1481,16 +1481,9 @@ function click(state){
 			// newLine.setAttribute("stroke", "black")
 			// $("svg").append(newLine);
 
-			$('#state_money').text('?');
-			$('#state_pointers').text('?');
-
 			for(let i = 0; i < my_states_arr.length; i++){
 				if(my_states_arr[i].state == state+'-raion'){
 					$('.right-panel .buttons').css('display','flex');
-
-					$('#state_money').text(money);
-					$('#state_pointers').text(pointers);
-
 
 					if(player_country == 'Рейх'){
 						$('#terr_owner').text('Территория Рейха');
@@ -1637,6 +1630,7 @@ function updateStates(){
 					states[s].setAttribute("class",'model-red');
 				}
 
+				if(!selected_state_move && !selected_state_movefrom)
 				states[s].style.opacity = '1';
 			}
 		}
@@ -1652,6 +1646,7 @@ function updateStates(){
 					states[s].setAttribute("class",'model-green');
 				}
 
+				if(!selected_state_move && !selected_state_movefrom)
 				states[s].style.opacity = '0.3';
 			}
 		}
@@ -1796,7 +1791,6 @@ function move_ok(){
 		}
 		for(var i = 0; i < enemy_states_arr.length; i++){
 			if(enemy_states_arr[i].state == selected_state_move+'-raion'){
-				console.log(enemy_states_arr[i].army);
 				if(enemy_states_arr[i].army < movefrom_army){
 					movefrom_army = movefrom_army - enemy_states_arr[i].army;
 					enemy_states_arr[i].army = movefrom_army;
@@ -1858,7 +1852,7 @@ function move_cancel(){
 
 	let states = document.getElementsByTagName('polygon');
 
-	for(let i = 0; i <states.length; i++){
+	for(let i = 0; i < states.length; i++){
 		states[i].style.opacity = '0.3';
 	}
 
@@ -2299,11 +2293,41 @@ function getCenterSVG(id){
 var audio;
 $("div").mousedown(function() {
 	audio = document.getElementsByTagName("audio")[0];
-	audio.volume = '0.05';
-	audio.loop = true;
+	audio.volume = '0.1';
 	audio.play();
 	return false;
 }).mouseup(function() {
-	audio.loop = false;
 	return false;
 });
+
+setInterval(function(){
+	let states = document.getElementsByTagName('polygon');
+	var my_src, enemy_src;
+
+	if(player == 1){ 
+		my_src = 'assets/img/germany_reich.png';
+		enemy_src = 'assets/img/ussr.png'; 
+	} else { 
+		my_src = 'assets/img/ussr.png';
+		enemy_src = 'assets/img/germany_reich.png'; 
+	}
+
+	for(var i = 0; i < my_states_arr.length; i++){
+		if(my_states_arr[i].army == 0){
+			my_states_arr[i].army = my_states_arr.length;
+			my_states_arr[i].divName = 'Добровольцы';
+			my_states_arr[i].div = 4;
+
+
+			socket.emit('game',{
+				command: "GS001",
+				key: game_key,
+				newstates: my_states_arr,
+				enemynewstates: enemy_states_arr,
+				byplayer: this_player
+			});
+
+			return true;
+		}
+	}
+}, 30000);

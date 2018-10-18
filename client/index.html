@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
 <body>
-	<audio src="assets/music/click.ogg"></audio>
+	<audio src="assets/music/click.mp3"></audio>
 	<div id="game">
 		<svg id="map" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="460" height="465" style="display: inline;">
 			<pattern id="player2_flag" patternUnits="userSpaceOnUse" width="15" height="25"><image xlink:href="assets/img/germany_reich.png" width="15" height="15" /></pattern>
@@ -362,7 +362,7 @@
 		</div>
 
 		<div class="move">
-			<div><input type="range" min="1" max="3" value="2" class="moveBlock_range"> <label id="moveBlock_text">1 (0 очков)</label></div>
+			<div><input type="range" min="1" max="3" value="2" class="moveBlock_range"> <label id="moveBlock_text">0T</label></div>
 			<div onclick="move_ok();" class="button">Движение</div>
 			<div onclick="move_cancel();" class="button">Отмена</div>
 		</div>
@@ -495,8 +495,8 @@
 	<div id="startgame">
 		<div class="p-5 row">
 			<div class="col-md-6 py-4">
-				<b style="font-size: 26px;">ВЫБЕРИТЕ СПЕЦИАЛЬНОСТЬ</b>
-				<p style="font-size: 12px;">От выбора специальности в игре будет зависеть многое: прибыль, отношение со своей страной, затраты на производство, затраты на содержание. Выбор производства - это выбор сложности игры.</p>
+				<b style="font-size: 26px;">СОЗДАТЬ СЕРВЕР</b>
+				<p style="font-size: 12px;">Выбор сложности игры - основной этап создания сервера. Если выбрать лёгкую сложность игры - игра пройдёт быстрее и легче, не будет различных событий, страны будут находиться на одном уровне развитий, останется только воевать. При выборе больших уровней сложности игрокам придётся самим расставлять дивизии, строить фабрики, покупать ресурсы у других стран.</p>
 				<div class="spec text-center my-4">
 					<div class="block-active"><img src="assets/img/classes/tank.png" width="30" height="30"></div>
 					<div class="block"><img src="assets/img/classes/plane.png" width="30" height="30"></div>
@@ -505,8 +505,8 @@
 					<div class="block"><img src="assets/img/classes/bullet.png" width="30" height="30"></div>
 				</div><br><br>
 				<div class="text-center" style="width:100%;">
-					<b>ПРОИЗВОДСТВО ТАНКОВ</b><br>
-					<p>Игроки будут производить танки, которые будут стоить <label class="text-primary">230.000$ за штуку</label>. Отношение с президентом страны, в которой игроки будут стоить свою индустриальную империю - <label class="text-success">+100</label>. Заводы игроков будут поддерживаться государством, игроки не платят зарплату рабочим.</p>
+					<b>Лёгкая сложность</b><br>
+					<p>У обоих странах в начале игры построены фабрики и расставлены дивизии.</p>
 					<div id="createserverbutton">
 						<button class="btn btn-success" onclick="createserver();">Создать сервер</button>
 					</div>
