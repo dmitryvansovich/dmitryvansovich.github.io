@@ -1365,24 +1365,25 @@ socket.on('chat', function(data){
 			// html += message;
 			// document.getElementById('messages').innerHTML = html;
 
-			var el = document.getElementsByClassName('chat-messages')[0];
-			el.scrollTop = el.scrollHeight;
+			// var el = document.getElementsByClassName('chat-messages')[0];
+			// el.scrollTop = el.scrollHeight;
 		}
 	}
 });
 
 let selected_state;
 
-document.getElementsByClassName('getArmy_range')[0].addEventListener('change', function(){
-	document.getElementById('armyRange_text').innerHTML = document.getElementsByClassName('getArmy_range')[0].value+' (-20 очков)';
-});
+// document.getElementsByClassName('getArmy_range')[0].addEventListener('change', function(){
+// 	document.getElementById('armyRange_text').innerHTML = document.getElementsByClassName('getArmy_range')[0].value+' (-20 очков)';
+// });
 
-document.getElementsByClassName('deleteArmy_range')[0].addEventListener('change', function(){
-	document.getElementById('armyRangeD_text').innerHTML = document.getElementsByClassName('deleteArmy_range')[0].value+' (0 очков)';
-});
+// document.getElementsByClassName('deleteArmy_range')[0].addEventListener('change', function(){
+// 	document.getElementById('armyRangeD_text').innerHTML = document.getElementsByClassName('deleteArmy_range')[0].value+' (0 очков)';
+// });
 
-document.getElementsByClassName('moveBlock_range')[0].addEventListener('change', function(){
+document.getElementsByClassName('moveBlock_range')[0].addEventListener('input', function(){
 	for(let i = 0; i < my_states_arr.length; i++){
+		console.log('change');
 		if(my_states_arr[i].state == selected_state_movefrom){
 			document.getElementById('moveBlock_text').innerHTML = document.getElementsByClassName('moveBlock_range')[0].value+'Т';		
 		}
@@ -1580,40 +1581,38 @@ function show_moveArmy() {
 			selected_state_movefrom = selected_state+'-raion';
 
 			getCollision(my_states_arr[i].state);
-		} else if(i == my_states_arr.length - 1){
-			return;
 		}
 	}
 }
 
-function show_getArmy() {
-	$('.bottom_menu').css('display','none');
-	$('.getArmy').css('display','block');
-	$('.deleteArmy').css('display','none');
+// function show_getArmy() {
+// 	$('.bottom_menu').css('display','none');
+// 	$('.getArmy').css('display','block');
+// 	$('.deleteArmy').css('display','none');
 
-	document.getElementsByClassName('getArmy_range')[0].min = "0";
-	if(player_tehs[1].activated == false){
-		document.getElementsByClassName('getArmy_range')[0].max = ""+money;
-	} else if(player_tehs[1].activated == true){
-		document.getElementsByClassName('getArmy_range')[0].max = ""+Math.round(money*1.5);
-	}
-	document.getElementsByClassName('getArmy_range')[0].value = ""+money/2;
-	document.getElementById('armyRange_text').innerHTML = document.getElementsByClassName('getArmy_range')[0].value+' (-20 очков)';
-}
+// 	document.getElementsByClassName('getArmy_range')[0].min = "0";
+// 	if(player_tehs[1].activated == false){
+// 		document.getElementsByClassName('getArmy_range')[0].max = ""+money;
+// 	} else if(player_tehs[1].activated == true){
+// 		document.getElementsByClassName('getArmy_range')[0].max = ""+Math.round(money*1.5);
+// 	}
+// 	document.getElementsByClassName('getArmy_range')[0].value = ""+money/2;
+// 	document.getElementById('armyRange_text').innerHTML = document.getElementsByClassName('getArmy_range')[0].value+' (-20 очков)';
+// }
 
-function show_deleteArmy() {
-	$('.bottom_menu').css('display','none');
-	$('.deleteArmy').css('display','block');
+// function show_deleteArmy() {
+// 	$('.bottom_menu').css('display','none');
+// 	$('.deleteArmy').css('display','block');
 
-	for(let i = 0; i < my_states_arr.length; i++){
-		if(my_states_arr[i].state == selected_state){
-			document.getElementsByClassName('deleteArmy_range')[0].min = "0";
-			document.getElementsByClassName('deleteArmy_range')[0].max = ""+my_states_arr[i].army;
-			document.getElementsByClassName('deleteArmy_range')[0].value = ""+my_states_arr[i].army/2;
-			document.getElementById('armyRangeD_text').innerHTML = document.getElementsByClassName('deleteArmy_range')[0].value+' (0 очков)';
-		}
-	}
-}
+// 	for(let i = 0; i < my_states_arr.length; i++){
+// 		if(my_states_arr[i].state == selected_state){
+// 			document.getElementsByClassName('deleteArmy_range')[0].min = "0";
+// 			document.getElementsByClassName('deleteArmy_range')[0].max = ""+my_states_arr[i].army;
+// 			document.getElementsByClassName('deleteArmy_range')[0].value = ""+my_states_arr[i].army/2;
+// 			document.getElementById('armyRangeD_text').innerHTML = document.getElementsByClassName('deleteArmy_range')[0].value+' (0 очков)';
+// 		}
+// 	}
+// }
 
 function updateStates(){
 	let states = document.getElementsByTagName('polygon');
@@ -2295,9 +2294,6 @@ $("div").mousedown(function() {
 	audio = document.getElementsByTagName("audio")[0];
 	audio.volume = '0.1';
 	audio.play();
-	return false;
-}).mouseup(function() {
-	return false;
 });
 
 setInterval(function(){
