@@ -99,6 +99,7 @@ body {
 }
 
 .chat .chat-display {
+	padding: 5px;
 	height: 200px;
 	width: 400px;
 	background-color: #222;
@@ -109,10 +110,11 @@ body {
 	height: 165px;
 	width: 390px;
 	transition: 0.5s;
-	padding-right: 5px;
+	/*padding-right: 5px;*/
 	overflow-y: auto;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	padding-left: 5px;
 }
 
 .chat .chat-display .chat-messages .message {
@@ -132,6 +134,8 @@ body {
 	border: none;
 	padding: 3px 5px;
 	margin-top: 5px;
+	margin: -5px;
+    margin-top: 0px;
 }
 
 .chat .chat-display .chat-input-send {
@@ -450,6 +454,11 @@ input[type=range]::-webkit-slider-thumb {
 	width: 100%;
 }
 
+.top-panel .peoples {
+	position: absolute;
+	right: 0;
+}
+
 .top-panel div {
 	margin: 0;
 	padding: 0;
@@ -707,7 +716,7 @@ input[type=range]::-webkit-slider-thumb {
 
 .flag_boo:hover {
 	cursor: pointer;
-	height: 104px;
+	height: 165px;
 }
 
 .flag_boo:hover label {
@@ -928,7 +937,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .chat .chat-messages .message label {
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .clouds {
