@@ -1343,9 +1343,9 @@ socket.on('chat', function(data){
 			let message;
 
 			if(data.player == 2){
-				message = '<div class="message"><label style="color:tomato;">[Рейх]</label> <b><ins>'+data.player_name+'</ins></b>: '+data.message+'</div>';
+				message = '<div class="message"><label style="color:tomato;"><b>СССР</b></label>: '+data.message+'</div>';
 			} else if(data.player == 1){
-				message = '<div class="message"><label style="color:#6cb361;">[СССР]</label> <b><ins>'+data.player_name+'</ins></b>: '+data.message+'</div>';
+				message = '<div class="message"><label style="color:#6cb361;"><b>Рейх</b></label>: '+data.message+'</div>';
 			}
 
 			let html = document.getElementById('messages').innerHTML;
@@ -1357,9 +1357,9 @@ socket.on('chat', function(data){
 		}
 	} else if(data.command == 'SC002'){
 		if(game_key == data.key){
-			let message;
+			// let message;
 
-			message = '<div class="message"><label style="color:#2d68b2;">[Игра]</label> '+data.message+'</div>';
+			// message = '<div class="message"><label style="color:#2d68b2;">[Игра]</label> '+data.message+'</div>';
 
 			// let html = document.getElementById('messages').innerHTML;
 			// html += message;
@@ -1629,7 +1629,7 @@ function updateStates(){
 					states[s].setAttribute("class",'model-red');
 				}
 
-				if(!selected_state_move && !selected_state_movefrom)
+				if(!selected_state_move && !selected_state_movefrom && !selected_state)
 				states[s].style.opacity = '1';
 			}
 		}
@@ -1645,7 +1645,7 @@ function updateStates(){
 					states[s].setAttribute("class",'model-green');
 				}
 
-				if(!selected_state_move && !selected_state_movefrom)
+				if(!selected_state_move && !selected_state_movefrom && !selected_state)
 				states[s].style.opacity = '0.3';
 			}
 		}
