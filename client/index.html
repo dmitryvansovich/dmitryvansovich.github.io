@@ -11,6 +11,7 @@
 
 	<!-- Шрифт -->
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
 
 	<!-- Иконки -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -177,6 +178,8 @@
 
 				</g>
 
+				<g id="border"></g>
+
 				<foreignobject x="135" y="280"><div class="army" id="baranavitski-raion-army"><img src="assets/img/germany_reich.png"><b id="army-text">0Т</b></div></foreignobject>
 				<foreignobject x="145" y="320"><div class="army" id="liahavitski-raion-army"><img src="assets/img/germany_reich.png"><b id="army-text">0Т</b></div></foreignobject>
 				<foreignobject x="165" y="340"><div class="army" id="hantsavitski-raion-army"><img src="assets/img/germany_reich.png"><b id="army-text">0Т</b></div></foreignobject>
@@ -325,7 +328,7 @@
 	<div class="gov_pointers" id="gov_pointers">Очки: 2 <i onclick="clicker(2);" class="far fa-fw fa-plus-square" style="font-size: 14px;margin-left:1em;" onclick="clicker('points');"></i></div> -->
 
 		<div class="top-panel">
-			<div class="image"><img id="player_country_flag" src="assets/img/germany_reich.png" width="32" height="32"></div>
+			<div class="image"><img id="player_country_flag" src="assets/img/germany_reich.png" width="30" height="30"></div>
 			<div class="info">
 				<div class="top" id="player_country">Рейх</div>
 				<div class="bottom state_name" id="state_name">59 территорий</div>
@@ -338,7 +341,7 @@
 					Очки: 2
 				</div>
 			</div> -->
-			<!-- <div class="peoples"><img src="assets/img/team.png" width="32" height="32"></div> -->
+			<div class="peoples" onclick="popup('open');"><img src="assets/img/military.png" width="32" height="32"></div>
 			<!-- <div class="diplomaty"><img src="assets/img/question.png" width="32" height="32"></div> -->
 		</div>
 	
@@ -452,6 +455,24 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="blocker">
+			<div class="timer">
+				00:<label id="timer-time">00:00</label><br><br>
+				<p>до окончания призыва<br>призывников: <label id="timer-army" style="font-weight: 500;">59Т</label></p>
+			</div>
+		</div>
+
+		<div class="popup">
+			<div class="container">
+				<div class="header">Подтвердите действие</div>
+				<div class="body">Вы действительно хотите начать призыв?</div>
+				<div class="buttons">
+					<div class="button1" onclick="popup('close');">Нет</div>
+					<div class="button2" onclick="popup('next');">Да</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div id="menu">	
@@ -520,9 +541,14 @@
 
 	<div id="serverlist">
 		<div id="serverlist-block">
-			<div class="header bg-white p-3"><button class="btn btn-sm btn-outline-danger" style="font-size:8px;padding:3px 5px;margin-top:-3px;" onclick="to_menu();"><b>Назад</b></button> Список доступных серверов (<label id="server-list_count"></label>)</div>
-			<div id="server-list" class="bg-white">
+			<div class="header text-center clearfix">
+				<button class="btn btn-sm btn-outline-light float-left" style="font-size:10px;padding:3px 5px;margin-top:-3px;" onclick="to_menu();"><b>Назад</b></button>
+				Список доступных серверов
+				<div class="float-right">
+					 <div class="btn btn-sm btn-outline-light float-left" style="font-size:10px;padding:3px 5px;margin-top:-3px;"><b><label id="server-list_count"></label> онлайн</b></div>
+				</div>
 			</div>
+			<div class="body" id="server-list"></div>
 		</div>
 	</div>
 
