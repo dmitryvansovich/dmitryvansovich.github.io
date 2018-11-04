@@ -662,7 +662,7 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[44].id,
-				army: 250,
+				army: 200,
 				divName: '3-й белорусский фронт',
 				div: 3
 			},{
@@ -1026,7 +1026,7 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[86].id,
-				army: 120,
+				army: 95,
 				divName: '1-й белорусский фронт',
 				div: 1
 			},{
@@ -1121,7 +1121,7 @@ socket.on('game', function(data){
 				div: null
 			},{
 				state: GLOBAL_MAP[89].id,
-				army: 180,
+				army: 130,
 				divName: '2-й белорусский фронт',
 				div: 2
 			},{
@@ -1412,7 +1412,7 @@ function click(state){
 
 			for(var i = 0; i < GLOBAL_MAP.length; i++){
 				if(GLOBAL_MAP[i].id == state+"-raion"){
-					$('#state_terr').text(GLOBAL_MAP[i].name+'['+i+']');
+					$('#state_terr').text(GLOBAL_MAP[i].name);
 					if(GLOBAL_MAP[i].region == 'brestskaia-voblasts') $('#state_terr_vobl').text('Брестская');
 					if(GLOBAL_MAP[i].region == 'vitsebskaia-voblasts') $('#state_terr_vobl').text('Витебская');
 					if(GLOBAL_MAP[i].region == 'homelskaia-voblasts') $('#state_terr_vobl').text('Гомельская');
@@ -1473,14 +1473,6 @@ function click(state){
 					}
 				}
 			}
-			// var newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
-			// newLine.setAttribute('id','line2');
-			// newLine.setAttribute('x2',getCenterSVG(state+'-raion').x);
-			// newLine.setAttribute('y2',getCenterSVG(state+'-raion').y);
-			// newLine.setAttribute('x1',getCenterSVG('minski-raion').x/2);
-			// newLine.setAttribute('y1',getCenterSVG('minski-raion').y/2);
-			// newLine.setAttribute("stroke", "black")
-			// $("svg").append(newLine);
 
 			for(let i = 0; i < my_states_arr.length; i++){
 				if(my_states_arr[i].state == state+'-raion'){
@@ -1535,18 +1527,11 @@ function click(state){
 				}
 			}
 
+			//setBorder(state+'-raion',selected_state_movefrom);
+
 			$('.bottom_menu').css('display','none');
 			$('.getArmy').css('display','none');
 			$('.deleteArmy').css('display','none');
-
-			// for(let i = 0; i <states.length; i++){
-			// 	states[i].style.opacity = '0.3';
-			// }
-
-			// let my_states = document.getElementsByClassName('state_player'+player);
-			// for(let i = 0; i < my_states.length; i++){
-			// 	my_states[i].style.opacity = '1';
-			// }
 
 			let this_army;
 
@@ -1721,8 +1706,27 @@ function deleteArmy(){
 }
 
 function move_ok(){
+	document.getElementById('border').innerHTML = ` `;
+
 	let movefrom_army = document.getElementsByClassName('moveBlock_range')[0].value, moveto_army;
 	let moveto_mystate = false;
+	let movefrom_divName, movefrom_div;
+	let big = false;
+
+	for(var i = 0; i < my_states_arr.length; i++){
+		if(my_states_arr[i].state == selected_state_movefrom){
+			if(movefrom_army == document.getElementsByClassName('moveBlock_range')[0].max){
+				movefrom_div = my_states_arr[i].div;
+				movefrom_divName = my_states_arr[i].divName;
+
+				my_states_arr[i].div = null;
+				my_states_arr[i].divName = null;
+			} else {
+				movefrom_div = my_states_arr[i].div;
+				movefrom_divName = my_states_arr[i].divName;
+			}
+		}
+	}
 
 	for(var i = 0; i < my_states_arr.length; i++){
 		if(my_states_arr[i].state == selected_state_move+'-raion'){
@@ -1739,10 +1743,17 @@ function move_ok(){
 		}
 	}
 
+	if(movefrom_army > moveto_army)
+		big = true;
+
 	if(moveto_mystate == true){
 		for(var i = 0; i < my_states_arr.length; i++){
 			if(my_states_arr[i].state == selected_state_move+'-raion'){
 				my_states_arr[i].army = my_states_arr[i].army*1 + movefrom_army*1;
+				if(movefrom_div){
+					my_states_arr[i].div = movefrom_div;
+					my_states_arr[i].divName = movefrom_divName;
+				}
 
 				socket.emit('game',{
 					command: "GS001",
@@ -1754,6 +1765,10 @@ function move_ok(){
 			}
 			if(my_states_arr[i].state == selected_state_movefrom){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
+				if(movefrom_div && movefrom_army == document.getElementsByClassName('moveBlock_range')[0].max){
+					my_states_arr[i].div = null;
+					my_states_arr[i].divName = null;
+				}
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
@@ -1773,6 +1788,10 @@ function move_ok(){
 		for(var i = 0; i < my_states_arr.length; i++){
 			if(my_states_arr[i].state == selected_state_movefrom){
 				my_states_arr[i].army = my_states_arr[i].army*1 - movefrom_army*1;
+				if(movefrom_div && big == true && movefrom_army == document.getElementsByClassName('moveBlock_range')[0].max){
+					my_states_arr[i].div = null;
+					my_states_arr[i].divName = null;
+				}
 
 				document.getElementsByClassName('moveBlock_range')[0].min = "0";
 				document.getElementsByClassName('moveBlock_range')[0].max = ""+my_states_arr[i].army;
@@ -1793,6 +1812,11 @@ function move_ok(){
 				if(enemy_states_arr[i].army < movefrom_army){
 					movefrom_army = movefrom_army - enemy_states_arr[i].army;
 					enemy_states_arr[i].army = movefrom_army;
+
+					if(movefrom_div){
+						enemy_states_arr[i].div = movefrom_div;
+						enemy_states_arr[i].divName = movefrom_divName;
+					}
 
 					my_states_arr.push(enemy_states_arr[i]);
 					enemy_states_arr.splice(i, 1);
@@ -1865,6 +1889,8 @@ function move_cancel(){
 	selected_state = null;
 	selected_state_move = null;
 	selected_state_movefrom = null;
+
+	document.getElementById('border').innerHTML = '';
 }
 
 let chat = false;
@@ -2180,15 +2206,57 @@ socket.on('server-list', function(data){
 		for(var i = 0; i < games.length; i++){
 			if(games[i].closed == false){
 				if(data.games[i].players == 1){
-					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle-o border-success"></div></div><div class="col-md-1 px-2 text-success" style="font-size:12px;padding-top:2px;"><b>Открытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/tank.png" width="16" height="16"></div><div class="col-md-3 text-success" style="font-size:12px;padding-top:2px;"><b>Лёгкая сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>1/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"><button class="btn btn-sm btn-outline-dark" style="font-size:8px;padding:3px 5px;" onclick="serverlist_connect('+i+');"><b>Подключиться</b></button></div></div>';
+					html = html +  `<div class="block">
+										<div class="block-header clearfix">
+											`+data.games[i].creator.first_name+` `+data.games[i].creator.last_name+`
+											<div class="block-button float-right" onclick="serverlist_connect(`+i+`);"><i class="fas fa-play"></i></div>
+										</div>
+										<div class="block-body">
+											<p>Статус: <b class="text-success">открыт</b></p>
+											<p>Сложность: <b class="text-success">лёгкая</b></p>
+											<p>Игроков: <b class="text-primary">1/2</b></p>
+											<p>Пароль: <b class="text-success">нету</b></p>
+										</div>
+									</div>`;
 				} else {
-					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle bg-success"></div></div><div class="col-md-1 px-2 text-success" style="font-size:12px;padding-top:2px;"><b>Открытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/tank.png" width="16" height="16"></div><div class="col-md-3 text-success" style="font-size:12px;padding-top:2px;"><b>Лёгкая сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>2/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"></div></div>';
+					html = html +  `<div class="block">
+										<div class="block-header clearfix">
+											`+data.games[i].creator.first_name+` `+data.games[i].creator.last_name+`
+										</div>
+										<div class="block-body">
+											<p>Статус: <b class="text-danger">закрыт</b></p>
+											<p>Сложность: <b class="text-success">лёгкая</b></p>
+											<p>Игроков: <b class="text-primary">2/2</b></p>
+											<p>Пароль: <b class="text-success">нету</b></p>
+										</div>
+									</div>`;
 				}
 			} else {
 				if(data.games[i].players == 1){
-					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle-o border-danger"></div></div><div class="col-md-1 px-2 text-danger" style="font-size:12px;padding-top:2px;"><b>Закрытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/bomb.png" width="16" height="16"></div><div class="col-md-3 text-danger" style="font-size:12px;padding-top:2px;"><b>Невозможная сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>1/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"><button class="btn btn-sm btn-outline-dark" style="font-size:8px;padding:3px 5px;" onclick="serverlist_connect_closed('+i+');"><b>Подключиться</b></button></div></div>';
+					html = html +  `<div class="block">
+										<div class="block-header clearfix">
+											`+data.games[i].creator.first_name+` `+data.games[i].creator.last_name+`
+											<div class="block-button float-right" onclick="serverlist_connect_closed(`+i+`);"><i class="fas fa-play"></i></div>
+										</div>
+										<div class="block-body">
+											<p>Статус: <b class="text-success">открыт</b></p>
+											<p>Сложность: <b class="text-danger">невозможная</b></p>
+											<p>Игроков: <b class="text-primary">1/2</b></p>
+											<p>Пароль: <b class="text-danger">есть</b></p>
+										</div>
+									</div>`;
 				} else {
-					html = html + '<div class="row bg-white p-1"><div class="col-md-01 px-1"><div class="circle bg-danger"></div></div><div class="col-md-1 px-2 text-danger" style="font-size:12px;padding-top:2px;"><b>Закрытый</b></div><div class="col-md-5 px-2 text-center">'+data.games[i].creator.first_name+' '+data.games[i].creator.last_name+'</div><div class="col-md-01 px-2"><img src="assets/img/classes/bomb.png" width="16" height="16"></div><div class="col-md-3 text-danger" style="font-size:12px;padding-top:2px;"><b>Невозможная сложность</b></div><div class="col-md-1 text-center text-primary" style="font-size:12px;padding-top:2px;"><b>2/2</b></div><div class="col-md-1 text-right" style="font-size:12px;padding-top:2px;"></div></div>';
+					html = html +  `<div class="block">
+										<div class="block-header clearfix">
+											`+data.games[i].creator.first_name+` `+data.games[i].creator.last_name+`
+										</div>
+										<div class="block-body">
+											<p>Статус: <b class="text-danger">закрыт</b></p>
+											<p>Сложность: <b class="text-danger">невозможная</b></p>
+											<p>Игроков: <b class="text-primary">2/2</b></p>
+											<p>Пароль: <b class="text-danger">есть</b></p>
+										</div>
+									</div>`;
 				}
 			}
 		}
@@ -2258,7 +2326,7 @@ function getCollision(element){
 				if(polygons[i].polygon[h].x == this_points[l].x && polygons[i].polygon[h].y == this_points[l].y){
 					document.getElementById(polygons[i].id).style.opacity = '0.7';
 				}
-			}		
+			}
 		}
 
 		document.getElementById(element).style.opacity = '1';
@@ -2267,26 +2335,69 @@ function getCollision(element){
 
 function getCenterSVG(id){
 	let polygon = document.getElementById(id);
-	var points = polygon.getAttribute('points');
+	var coords = polygon.getAttribute('points');
 
-	if (!points) {
+	if (!coords) {
 		return;
 	}
 
-	const pointsArray = points.split(' ');
-	const center = {
-		x: 0,
-		y: 0
-	};
+	var coordsArray = coords.split(' '),
+		center = [];
 
-	for (let i = 0; i < pointsArray.length; i++) {
-		const pair = pointsArray[i].split(',');
+	// For rect and poly areas we need to loop through the coordinates
+	var coord,
+		minX = maxX = parseInt(coordsArray[0], 10),
+		minY = maxY = parseInt(coordsArray[1], 10);
+	for (var i = 0, l = coordsArray.length; i < l; i++) {
+		coord = parseInt(coordsArray[i], 10);
+		if (i%2 == 0) { // Even values are X coordinates
+			if (coord < minX) {
+				minX = coord;
+			} else if (coord > maxX) {
+				maxX = coord;
+			}
+		} else { // Odd values are Y coordinates
+			if (coord < minY) {
+				minY = coord;
+			} else if (coord > maxY) {
+				maxY = coord;
+			}
+		}
+	}
+	center = [parseInt((minX + maxX) / 2, 10), parseInt((minY + maxY) / 2, 10)];
 
-		center.x += (pair[0] / pointsArray.length);
-		center.y += (pair[1] / pointsArray.length);
+	return(center);
+}
+
+function setBorder(svg1,svg2){
+	let polygon1 = document.getElementById(svg1).points;
+	let polygon2 = document.getElementById(svg2).points;
+
+	if (!polygon1 || !polygon2)
+		return;
+
+	var f, s, i;
+	var _polyline = [];
+
+	for(f = 0; f < polygon1.length; f++){
+		for(s = 0; s < polygon2.length; s++){
+			if(polygon1[f].x == polygon2[s].x && polygon1[f].y == polygon2[s].y){
+				console.log('[x] '+polygon1[f].x+' [y] '+polygon1[f].y);
+				_polyline.push({x: polygon1[f].x, y: polygon1[f].y});
+			}
+		}
 	}
 
-	return center;
+	var points = '';
+
+	for(i = 0; i < _polyline.length; i++){
+		points = points + ', '+ _polyline[i].x + ' ' + _polyline[i].y;
+	}
+
+	points = points.substr(1);
+	points = points.substr(1);
+
+	document.getElementById('border').innerHTML = `<polyline fill="none" style="stroke-width:3;stroke:#28a745;" points="`+points+`"></polyline>`;
 }
 
 var audio;
@@ -2296,7 +2407,7 @@ $("div").mousedown(function() {
 	audio.play();
 });
 
-setInterval(function(){
+function setRandomArmy(army){
 	let states = document.getElementsByTagName('polygon');
 	var my_src, enemy_src;
 
@@ -2310,7 +2421,7 @@ setInterval(function(){
 
 	for(var i = 0; i < my_states_arr.length; i++){
 		if(my_states_arr[i].army == 0){
-			my_states_arr[i].army = my_states_arr.length;
+			my_states_arr[i].army = army;
 			my_states_arr[i].divName = 'Добровольцы';
 			my_states_arr[i].div = 4;
 
@@ -2326,4 +2437,67 @@ setInterval(function(){
 			return true;
 		}
 	}
-}, 30000);
+}
+
+function setTimer(timer_time){
+	$('.blocker').css('display','block');
+
+	var start_time = timer_time;
+	var time = updateTimer(timer_time);
+
+	$('#timer-time').text(time.min+':'+time.sec);
+	$('#timer-army').text(start_time+'T');
+
+	move_cancel();
+
+	var timer = setInterval(function(){
+		var time = updateTimer(timer_time);
+		timer_time = time.time - 1;
+
+		if(timer_time > -1){
+			$('#timer-time').text(time.min+':'+time.sec);
+		} else {
+			$('#timer-time').text(time.min+':'+time.sec);
+			clearInterval(timer);
+
+			setTimeout(function(){
+				$('.blocker').css('display','none');
+				setRandomArmy(start_time);
+			}, 1000);
+		}
+
+	}, 1000);
+}
+
+function updateTimer(seconds){
+	var _sec = seconds;
+	var _min = 0;
+
+	while(_sec >= 60){
+		_min = _min + 1;
+		_sec = _sec - 60;
+	}
+
+	if(_sec < 10)
+		_sec = '0'+_sec
+
+	if(_min < 10)
+		_min = '0'+_min
+
+	return {
+		sec: _sec,
+		min: _min,
+		time: seconds
+	}
+}
+
+function popup(action){
+	if(action == 'open'){
+		$('.popup').css('display','block');
+	} else if(action == 'close'){
+		$('.popup').css('display','none');
+	} else if(action == 'next'){
+		popup('close');
+		setTimer(my_states_arr.length);
+	}
+}
