@@ -35,21 +35,21 @@
         }
         #MAP polygon:hover, #MAP path:hover {
             cursor: pointer;
-            fill: #c7c7c7;
+            fill: #c7c7c7!important;
         }
-        #MAP .newpolygon {
+        #MAP #country {
             stroke-width: 1;
             stroke-opacity: 1;
             stroke: #000;
             fill: transparent;
         }
+        #MAP .clicked { fill: rgb(141, 192, 150)!important; }
         #MAP .border {
             stroke-width: 1;
             stroke-opacity: 1;
             stroke: red;
             fill: transparent;
         }
-        #MAP #clicked1, #MAP #clicked2 { fill: rgb(141, 192, 150); }
         #MAP text { font: 3px sans-serif; transform: translate(-1.5px, 1.5px); opacity: .1; }
         .fpsDisplay {
             position: absolute;
@@ -74,6 +74,7 @@
             color: #fff;
             background-color: #000;
             border-radius: 3px;
+            transition: .25s;
         }
         .devOptions {
             position: absolute;
@@ -88,6 +89,7 @@
             color: #fff;
             background-color: #000;
             border-radius: 3px;
+            transition: .25s;
         }
         .devOptions .block {
             display: grid;
@@ -113,6 +115,24 @@
             bottom: 0px;
             left: 0px;
         }
+        #mergePolygonsButton {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            color: black;
+
+            font-size: 12px;
+            margin-bottom: 7px;
+            padding: 2.5px 4px;
+
+            color: #fff;
+            background-color: #000;
+            border-radius: 3px;
+            transition: .25s;
+
+            opacity: 0;
+        }
+        #mergePolygonsButton:hover { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -4935,267 +4955,316 @@
       4181,967.3 4182.5,967.9 4181.5,970.5 4182.5,974 4180.4,974.5 4178.1,975.8 4175.9,979.2 4171.3,980 	"/>
    </g>
    </svg>
-   <div class="fpsDisplay">
-      <div class="debugInfo">work in progress</div>
-      <div id="FPS"></div>
-      <div id="fpschart"></div>
-  </div>
-  <div class="devOptions">
-      <div class="block" id="showMerge" onclick="toggleCircles();" data-tippy-content="Show or hide circles on polygon borders">
-          Show merge
-          <div class="circle active"></div>
-      </div>
-  </div>
+    <div class="fpsDisplay">
+        <div class="debugInfo">work in progress</div>
+        <div id="FPS"></div>
+        <div id="fpschart"></div>
+    </div>
+    <div class="devOptions">
+        <div class="block" id="showMerge" onclick="toggleCircles();" data-tippy-content="Show or hide circles on polygon borders">
+            Show merge
+            <div class="circle active"></div>
+        </div>
+    </div>
+    <div id="mergePolygonsButton" onclick="startMergingPolygons()">Merge polygons</div>
 
-  <script src='https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.19.0/apexcharts.min.js"></script>
-  <script>
-      const MAP = panzoom(document.querySelector('#MAP'), {
-          smoothScroll: false,
-          bounds: true,
-          animate: false,
-          duration: 0,
-          zoomDoubleClickSpeed: 1,
-          onTouch: function(e) {
-              return false;
-          },
-          onDoubleClick: function(e) {
-              return false;
-          }
-      });
-      MAP.moveTo(-300, 0);
-      MAP.zoom
-  </script>
-  <script>
-      let fpsHistory = [0,0,0,0,0];
-      let options = {
-          series: [{data: fpsHistory}],
-          chart: {
-              type: 'area',
-              width: 67,
-              height: 70,
-              zoom: { enabled: false },
-              toolbar: { show: false },
-              animations: { speed: 125 }
-          },
-          colors: ['#000', '#000'],
-          dataLabels: { enabled: false },
-          stroke: { curve: 'straight', width: 2, },
-          xaxis: { opposite: true, labels: { show: false }, axisBorder: { show: false } },
-          yaxis: { opposite: true, labels: { show: false }, max: 60, min: 0 },
-          legend: { show: false },
-          grid: { show: false },
-          tooltip: { enabled: false }
-      };
+    <script src='https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.19.0/apexcharts.min.js"></script>
+    <script>
+        const MAP = panzoom(document.querySelector('#MAP'), {
+            smoothScroll: false,
+            bounds: true,
+            animate: false,
+            duration: 0,
+            zoomDoubleClickSpeed: 1,
+            onTouch: function(e) {
+                return false;
+            },
+            onDoubleClick: function(e) {
+                return false;
+            }
+        });
+        MAP.moveTo(-300, 0);
+        MAP.zoom
+    </script>
+    <script>
+        let fpsHistory = [0,0,0,0,0];
+        let options = {
+            series: [{data: fpsHistory}],
+            chart: {
+                type: 'area',
+                width: 67,
+                height: 70,
+                zoom: { enabled: false },
+                toolbar: { show: false },
+                animations: { speed: 125 }
+            },
+            colors: ['#000', '#000'],
+            dataLabels: { enabled: false },
+            stroke: { curve: 'straight', width: 2, },
+            xaxis: { opposite: true, labels: { show: false }, axisBorder: { show: false } },
+            yaxis: { opposite: true, labels: { show: false }, max: 60, min: 0 },
+            legend: { show: false },
+            grid: { show: false },
+            tooltip: { enabled: false }
+        };
 
-      const fpsChart = new ApexCharts(document.querySelector("#fpschart"), options);
-      fpsChart.render();
-  </script>
-  <script>
-      const times = [];
-      let fps;
+        const fpsChart = new ApexCharts(document.querySelector("#fpschart"), options);
+        fpsChart.render();
+    </script>
+    <script>
+        const times = [];
+        let fps;
 
-      function refreshLoop() {
-          window.requestAnimationFrame(() => {
-              const now = performance.now();
-              while (times.length > 0 && times[0] <= now - 1000) {
-                  times.shift();
-              }
-              times.push(now);
-              if(times.length >= 45){
-                  fps = "<label style='color: green;'>" + times.length + "</label> <span>FPS</span>";
-              } else if(times.length > 15 && times.length < 45){
-                  fps = "<label style='color: orange;'>" + times.length + "</label> <span>FPS</span>";
-              } else if(times.length <= 15){
-                  fps = "<label style='color: red;'>" + times.length + "</label> <span>FPS</span>";
-              }
-              document.querySelector("#FPS").innerHTML = fps;
+        function refreshLoop() {
+            window.requestAnimationFrame(() => {
+                const now = performance.now();
+                while (times.length > 0 && times[0] <= now - 1000) {
+                    times.shift();
+                }
+                times.push(now);
+                if(times.length >= 45){
+                    fps = "<label style='color: green;'>" + times.length + "</label> <span>FPS</span>";
+                } else if(times.length > 15 && times.length < 45){
+                    fps = "<label style='color: orange;'>" + times.length + "</label> <span>FPS</span>";
+                } else if(times.length <= 15){
+                    fps = "<label style='color: red;'>" + times.length + "</label> <span>FPS</span>";
+                }
+                document.querySelector("#FPS").innerHTML = fps;
 
-              refreshLoop();
-          });
-      }
+                refreshLoop();
+            });
+        }
 
-      setInterval(() => {
-          fpsHistory[0] = fpsHistory[1];
-          fpsHistory[1] = fpsHistory[2];
-          fpsHistory[2] = fpsHistory[3];
-          fpsHistory[3] = fpsHistory[4];
-          fpsHistory[4] = times.length;
-          fpsChart.updateSeries([{data: fpsHistory}]);
-      }, 250);
+        setInterval(() => {
+            fpsHistory[0] = fpsHistory[1];
+            fpsHistory[1] = fpsHistory[2];
+            fpsHistory[2] = fpsHistory[3];
+            fpsHistory[3] = fpsHistory[4];
+            fpsHistory[4] = times.length;
+            fpsChart.updateSeries([{data: fpsHistory}]);
+        }, 250);
 
-      refreshLoop();
-  </script>
-  <script>
-      var showCircles = true;
-      function toggleCircles(){
-          if(showCircles){
-              showCircles = false;
-              showMerge.innerHTML = `Show merge<div class="circle"></div>`;
+        refreshLoop();
+    </script>
+    <script>
+        var showCircles = true;
+        function toggleCircles(){
+            if(showCircles){
+                showCircles = false;
+                showMerge.innerHTML = `Show merge<div class="circle"></div>`;
 
-              let circles = document.querySelectorAll("circle");
-              for(let i in circles)
-                  if(circles[i]) circles[i].style.opacity = 0;
-          } else {
-              showCircles = true;
-              showMerge.innerHTML = `Show merge<div class="circle active"></div>`;
+                let circles = document.querySelectorAll("circle");
+                for(let i in circles)
+                    if(circles[i]) circles[i].style.opacity = 0;
+            } else {
+                showCircles = true;
+                showMerge.innerHTML = `Show merge<div class="circle active"></div>`;
 
-              let circles = document.querySelectorAll("circle");
-              for(let i in circles)
-                  if(circles[i]) circles[i].style.opacity = 1;
-          }
-      }
-  </script>
-  <script>
-      function mergePolygons(polygon1, polygon2){
-          while(document.querySelectorAll("circle").length > 0){
-              document.querySelectorAll("circle")[document.querySelectorAll("circle").length-1].remove();
-          }
+                let circles = document.querySelectorAll("circle");
+                for(let i in circles)
+                    if(circles[i]) circles[i].style.opacity = 1;
+            }
+        }
+    </script>
+    <script>
+        function mergePolygons(polygon1, polygon2, name){
+            while(document.querySelectorAll("circle").length > 0){
+                document.querySelectorAll("circle")[document.querySelectorAll("circle").length-1].remove();
+            }
 
-          var polygon1points = [];
-          var polygon2points = [];
-          var dublicates = [];
+            var polygon1points = [];
+            var polygon2points = [];
+            var dublicates = [];
 
-          var circles = ``;
-          var showed;
-          if(!showCircles) showed = `style="opacity: 0;"`;
-          
-          var newpolygon = [];
-          for(let i in polygon1.points){
-              polygon1points.push(`${polygon1.points[i].x},${polygon1.points[i].y}`)
-          }
-          polygon1points = polygon1points.filter(value => value !== "undefined,undefined");
-          for(let i in polygon2.points){
-              polygon2points.push(`${polygon2.points[i].x},${polygon2.points[i].y}`)
-          }
-          polygon2points = polygon2points.filter(value => value !== "undefined,undefined");
-          
-          let splited;
-          while(polygon2points.includes(polygon1points[0])){
-              splited = polygon1points.pop();
-              polygon1points.unshift(splited);
-          }
+            var circles = ``;
+            var showed = "";
+            if(!showCircles) showed = `style="opacity: 0;"`;
+            
+            var newpolygon = [];
+            for(let i in polygon1.points){
+                polygon1points.push(`${polygon1.points[i].x},${polygon1.points[i].y}`)
+            }
+            polygon1points = polygon1points.filter(value => value !== "undefined,undefined");
+            for(let i in polygon2.points){
+                polygon2points.push(`${polygon2.points[i].x},${polygon2.points[i].y}`)
+            }
+            polygon2points = polygon2points.filter(value => value !== "undefined,undefined");
+            
+            let splited;
+            while(polygon2points.includes(polygon1points[0])){
+                splited = polygon1points.pop();
+                polygon1points.unshift(splited);
+            }
 
-          let l;
-          for(let i = 0; i < polygon1points.length; i++){
-              if(i == 0){
-                  circles += `<circle ${showed} cx="${polygon1points[i].split(",")[0]}" cy="${polygon1points[i].split(",")[1]}" r="1" fill="green"/>`;
-              } else {
-                  circles += `<circle ${showed} cx="${polygon1points[i].split(",")[0]}" cy="${polygon1points[i].split(",")[1]}" r=".25" fill="white"/>`;
-              }
-              var a = polygon1points[i].split(",")[0]*1 - polygon2.points[0].x;
-              var b = polygon1points[i].split(",")[1]*1 - polygon2.points[0].y;
-              let distance = Math.sqrt(a*a + b*b);
-              newpolygon.push(polygon1points[i]);
-              if(distance < 30)
-                  if(polygon2points.includes(polygon1points[i])){
-                      let k = polygon2points.indexOf(polygon1points[i]);
-                      k++;
-                      if(k > polygon2points.length-1) k = 0;
-                      if(polygon1points.includes(polygon2points[k])){
-                          k--;
-                          if(k == -1) k = polygon2points.length-1;
-                          k--;
-                          if(k == -1) k = polygon2points.length-1;
-                          newpolygon.push(polygon2points[k]);
-                          circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
+            let l;
+            for(let i = 0; i < polygon1points.length; i++){
+                if(i == 0){
+                    circles += `<circle ${showed} cx="${polygon1points[i].split(",")[0]}" cy="${polygon1points[i].split(",")[1]}" r="1" fill="green"/>`;
+                } else {
+                    circles += `<circle ${showed} cx="${polygon1points[i].split(",")[0]}" cy="${polygon1points[i].split(",")[1]}" r=".25" fill="white"/>`;
+                }
+                var a = polygon1points[i].split(",")[0]*1 - polygon2.points[0].x;
+                var b = polygon1points[i].split(",")[1]*1 - polygon2.points[0].y;
+                let distance = Math.sqrt(a*a + b*b);
+                newpolygon.push(polygon1points[i]);
+                if(distance < 30)
+                    if(polygon2points.includes(polygon1points[i])){
+                        let k = polygon2points.indexOf(polygon1points[i]);
+                        k++;
+                        if(k > polygon2points.length-1) k = 0;
+                        if(polygon1points.includes(polygon2points[k])){
+                            k--;
+                            if(k == -1) k = polygon2points.length-1;
+                            k--;
+                            if(k == -1) k = polygon2points.length-1;
+                            newpolygon.push(polygon2points[k]);
+                            circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
 
-                          function addPointPolygon2(){
-                              k--;
-                              if(k == -1) k = polygon2points.length-1;
-                              newpolygon.push(polygon2points[k]);
-                              circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
-                              return polygon1points.includes(polygon2points[k]);
-                          }
+                            function addPointPolygon2(){
+                                k--;
+                                if(k == -1) k = polygon2points.length-1;
+                                newpolygon.push(polygon2points[k]);
+                                circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
+                                return polygon1points.includes(polygon2points[k]);
+                            }
 
-                          let nextDublicate = false;
-                          while(!nextDublicate){
-                              nextDublicate = addPointPolygon2();
-                          }
-                      } else {
-                          newpolygon.push(polygon2points[k]);
-                          circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
+                            let nextDublicate = false;
+                            while(!nextDublicate){
+                                nextDublicate = addPointPolygon2();
+                            }
+                        } else {
+                            newpolygon.push(polygon2points[k]);
+                            circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
 
-                          function addPointPolygon2(){
-                              k++;
-                              if(k > polygon2points.length-1) k = 0;
-                              newpolygon.push(polygon2points[k]);
-                              circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
-                              return polygon1points.includes(polygon2points[k]);
-                          }
+                            function addPointPolygon2(){
+                                k++;
+                                if(k > polygon2points.length-1) k = 0;
+                                newpolygon.push(polygon2points[k]);
+                                circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r=".25" fill="white"/>`;
+                                return polygon1points.includes(polygon2points[k]);
+                            }
 
-                          let nextDublicate = false;
-                          while(!nextDublicate){
-                              nextDublicate = addPointPolygon2();
-                          }
-                      }
+                            let nextDublicate = false;
+                            while(!nextDublicate){
+                                nextDublicate = addPointPolygon2();
+                            }
+                        }
 
-                      l = polygon1points.indexOf(polygon2points[k]);
-                      circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r="1" fill="orange"/>`;
-                      break; // resume
-                  }
-          }
-          for(let i = l; i < polygon1points.length; i++){
-              if(polygon1points[i] == polygon1points[0]) break;
-              if(!polygon2points.includes(polygon1points[i])){
-                  newpolygon.push(polygon1points[i]);
-                  circles += `<circle ${showed} cx="${polygon1points[i].split(",")[0]}" cy="${polygon1points[i].split(",")[1]}" r=".25" fill="white"/>`;
-              }
-          }
+                        l = polygon1points.indexOf(polygon2points[k]);
+                        circles += `<circle ${showed} cx="${polygon2points[k].split(",")[0]}" cy="${polygon2points[k].split(",")[1]}" r="1" fill="orange"/>`;
+                        break; // resume
+                    }
+            }
+            for(let i = l; i < polygon1points.length; i++){
+                if(polygon1points[i] == polygon1points[0]) break;
+                if(!polygon2points.includes(polygon1points[i])){
+                    newpolygon.push(polygon1points[i]);
+                    circles += `<circle ${showed} cx="${polygon1points[i].split(",")[0]}" cy="${polygon1points[i].split(",")[1]}" r=".25" fill="white"/>`;
+                }
+            }
 
-          if(document.querySelectorAll(".newpolygon").length !== 0)
-              document.querySelector(".newpolygon").remove()
-          document.querySelector("#MAP").innerHTML += `<polygon class="newpolygon" points="${newpolygon.join(" ")}"/>`;
-          document.querySelector("#MAP").innerHTML += circles;
-          // document.querySelector("#MAP").innerHTML += `<polyline class="newpolygon" points="${newpolygon.join(" ")}"/>`;
-          return true;
-      }
+            if(polygon1.id == "country") polygon1.remove();
+            
+            document.querySelector("#MAP").innerHTML += `<polygon id="${name}" points="${newpolygon.join(" ")}"/>`;
+            document.querySelector("#MAP").innerHTML += circles;
+            // document.querySelector("#MAP").innerHTML += `<polyline class="newpolygon" points="${newpolygon.join(" ")}"/>`;
+            return true;
+        }
 
-      var clicks = 0;
-      document.addEventListener('click', function(e) {
-          e = e || window.event;
-          var target = e.target || e.srcElement,
-              text = target.textContent || target.innerText;
+        var clicks = [];
+        document.addEventListener('click', function(e) {
+            e = e || window.event;
+            var target = e.target || e.srcElement,
+                text = target.textContent || target.innerText;
 
-          if(target.tagName === "polygon"){
-              if(target.id === "clicked1") return true;
-              if(clicks === 0){
-                  target.id = "clicked1";
-                  clicks++;
-              } else {
-                  mergePolygons(document.querySelector("#clicked1"), target);
-                  clicks = 0;
-                  if(document.querySelectorAll("#clicked1").length > 0)
-                      document.querySelector("#clicked1").id = "";
-              }
+            if(target.tagName === "polygon"){
+                if(target.className.baseVal === "clicked") return true;
+                target.className.baseVal = "clicked";
+                clicks.push(target);
+                if(clicks.length >= 2){
+                    mergePolygonsButton.style.opacity = 1;
+                } else {
+                    mergePolygonsButton.style.opacity = 0;
+                }
+                // } else {
+                //     mergePolygons(document.querySelector("#clicked1"), target);
+                //     clicks = 0;
+                //     if(document.querySelectorAll("#clicked1").length > 0)
+                //         document.querySelector("#clicked1").id = "";
+                // }
 
-              return true;
-          }
-      }, false);
+                return true;
+            }
+        }, false);
 
-      const getCentroid = (coord) => {
-          let center = coord.reduce(function (x,y) {
-              return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length] 
-          }, [0,0])
-          return center;
-      }
+        const getCentroid = (coord) => {
+            let center = coord.reduce(function (x,y) {
+                return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length] 
+            }, [0,0])
+            return center;
+        }
 
-      // var polygons = document.querySelectorAll("polygon");
-      // let html = ``;
-      // polygons.forEach((polygon, index) => {
-      //     let coords = [];
-      //     for(let i in polygon.points)
-      //         coords.push([polygon.points[i].x, polygon.points[i].y]);
-      //     coords = coords.filter(value => value[0] !== undefined);
-      //     let center = getCentroid(coords);
-      //     html += `<text x="${center[0]}" y="${center[1]}">${index}</text>`;
-      // });
-      // document.querySelector("#MAP").innerHTML += html;
-  </script>
-  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-  <script>
-      tippy('[data-tippy-content]');
-  </script>
+        // var polygons = document.querySelectorAll("polygon");
+        // let html = ``;
+        // polygons.forEach((polygon, index) => {
+        //     let coords = [];
+        //     for(let i in polygon.points)
+        //         coords.push([polygon.points[i].x, polygon.points[i].y]);
+        //     coords = coords.filter(value => value[0] !== undefined);
+        //     let center = getCentroid(coords);
+        //     html += `<text x="${center[0]}" y="${center[1]}">${index}</text>`;
+        // });
+        // document.querySelector("#MAP").innerHTML += html;
+    </script>
+    <script>
+        function isNeightbors(polygon1, polygon2){
+            var polygon1points = [];
+            var polygon2points = [];
+            var dublicates = [];
+            for(let i in polygon1.points){
+                polygon1points.push(`${polygon1.points[i].x},${polygon1.points[i].y}`)
+            }
+            polygon1points = polygon1points.filter(value => value !== "undefined,undefined");
+            for(let i in polygon2.points){
+                polygon2points.push(`${polygon2.points[i].x},${polygon2.points[i].y}`)
+            }
+            polygon2points = polygon2points.filter(value => value !== "undefined,undefined");
+
+            for(let i in polygon1points)
+                if(polygon2points.includes(polygon1points[i])) dublicates.push(polygon1points[i]);
+
+            return dublicates.length >= 2;
+        }
+    </script>
+    <script>
+        async function startMergingPolygons(){
+            for(let i in clicks)
+                clicks[i].className.baseVal = "";
+
+            mergePolygons(clicks[0], clicks[1], "country");
+            clicks.splice(0, 2);
+            let notConnected = [];
+            while(clicks.length > 0){
+                for(let i in clicks){
+                    if(isNeightbors(document.getElementById("country"), clicks[i])){
+                        await mergePolygons(document.getElementById("country"), clicks[i], "country");
+                        clicks.splice(i, 1);
+                    } else {
+                        if(notConnected[i])
+                            notConnected[i] = notConnected[i] + 1;
+                        else
+                            notConnected[i] = 1; 
+                        if(notConnected[i] >= 20) clicks.splice(i, 1);
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script>
+        tippy('[data-tippy-content]');
+    </script>
 </body>
 </html>
