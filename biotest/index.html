@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Pangolin', cursive;
+            margin: 0px;
+            width: 100vw;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+        }
+        .container .left,
+        .container .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            position: relative;
+
+            width: 50%;
+            height: 100vh;
+        }
+
+        .container .left svg {
+            transform: scale(0.75);
+        }
+        .container .left polygon.st2 {
+            stroke-width: 1;
+            stroke: #3b3b3b;
+            fill: transparent;
+
+            pointer-events: none;
+        }
+        .container .left polygon:not(.st2) {
+            /* stroke-width: 1;
+            stroke: #c4c4c4; */
+            fill: white;
+
+            transition: .15s;
+        }
+        .container .left polygon:not(.st2):hover {
+            fill: #cbcbcb!important;
+        }
+        .container .left svg text {
+            pointer-events: none;
+        }
+        .container .right {
+            font-size: 18px;
+        }
+        .container .right button {
+            display: block;
+            margin-top: 5px;
+
+            background-color: #fff;
+            border: 2px solid #3a3a3a;
+            padding: 7px 15px;
+            border-radius: 7px;
+
+            font-weight: 600;
+
+            transition: .15s;
+        }
+        .container .right button:hover {
+            background-color: #3a3a3a;
+            color: #fff;
+
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 600px){
+            .container { display: block; }
+            .container .left, .container .right { width: auto; }
+            .container .left { height: 70vh; }
+            .container .right { height: 30vh; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left" id="left">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 308 432.5" style="enable-background:new 0 0 308 432.5;" xml:space="preserve">
+                <g id="bio1">
+                    <polygon onclick="selectpoly(this)" id="46" points="86.5,76.3 88.2,84.7 86.5,97.9 86.5,108.4 89.8,122.8 80.3,121.1 75.2,125.2 71.4,135.1 70.1,145.9 64.5,147.2 62,151 59.7,134.1 62,108.7 62,79.7 74.8,80.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="47" points="77.7,149.2 79.4,154.3 79.4,160.3 75.5,163.3 68.5,163.8 62,160.2 59.7,155.8 62,151 64.5,147.2 70.1,145.9 74.8,147.1"></polygon>
+                    <polygon onclick="selectpoly(this)" id="45" points="89.8,122.8 99.6,123.5 106.6,120.9 112,117 111.3,124.4 113.1,129 118.5,134.2 112.2,143.8 105.8,155.1 101.9,166.6 102.4,177.1 89.2,165.3 85.4,167.8 74.4,168.1 57.6,167.2 48,163.4 44.3,161.6 52.5,155.8 59.7,155.8 62,160.2 68.5,163.8 75.5,163.3 79.4,160.3 79.4,154.3 77.7,149.2 74.8,147.1 70.1,145.9 71.4,135.1 75.2,125.2 80.3,121.1"></polygon>
+                    <polygon onclick="selectpoly(this)" id="44" points="121.4,131.7 131,126.9 130.3,115.2 128.8,102.7 128.8,97.1 124.3,96 120.9,106.4 112,117 111.3,124.4 113.1,129 118.5,134.2"></polygon>
+                    <polygon onclick="selectpoly(this)" id="21" points="219.5,130.6 213.8,142.9 212,153.2 211.8,163.5 201.6,166.5 185.8,169.2 160.5,169 143.3,170.1 132.7,174.3 125.8,171.5 120.8,165.5 119.7,156.6 131.8,149.4 142.8,146.1 153.6,147.1 166.8,149.4 182.7,148.1 195.6,142.6 209.8,136.2"></polygon>
+                    <polygon onclick="selectpoly(this)" id="22" points="208.1,108.4 216.5,116.4 218,124.3 219.5,130.6 209.8,136.2 182.7,148.1 166.8,149.4 153.6,147.1 142.8,146.1 131.8,149.4 119.7,156.6 121.4,131.7 131,126.9 138.3,131.7 148.7,134.2 159.7,133.5 174.4,129 188.8,124.1 199.9,115.9"></polygon>
+                    <polygon onclick="selectpoly(this)" id="20" points="211.8,163.5 213.4,179.8 206.5,181.6 189.5,180.1 172.6,180.5 163.7,184.9 146.6,189 128.8,191.4 133.4,180.1 132.7,174.3 143.3,170.1 160.5,169 185.8,169.2 201.6,166.5"></polygon>
+                    <polygon onclick="selectpoly(this)" id="38" points="107.4,186.6 102.4,180.4 102.4,177.1 101.9,166.6 105.8,155.1 112.2,143.8 118.5,134.2 121.4,131.7 119.7,156.6 120.8,165.5 125.8,171.5 132.7,174.3 133.4,180.1 128.8,191.4 119.7,191.4 112.5,189.9"></polygon>
+                    <polygon onclick="selectpoly(this)" id="11" points="39.8,166.1 36.9,172.2 48.6,177.1 67.3,180.6 87.5,181.4 102.4,180.4 102.4,177.1 89.2,165.3 85.4,167.8 74.4,168.1 57.6,167.2 44.3,161.6"></polygon>
+                    <polygon onclick="selectpoly(this)" id="10" points="50.5,77.2 37.9,73.4 29.2,85.4 18.9,104 13.6,121.5 12.9,137.1 15.4,151.8 22.9,161.6 30.1,168.6 36.9,172.2 39.8,166.1 44.3,161.6 52.5,155.8 59.7,155.8 62,151 59.7,134.1 62,108.7 62,79.7"></polygon>
+                    <polygon onclick="selectpoly(this)" id="9" points="85.2,35.9 87.8,51.5 96.1,70.5 106.1,82.3 116.3,92.3 124.3,96 120.9,106.4 112,117 106.6,120.9 99.6,123.5 89.8,122.8 86.5,108.4 86.5,97.9 88.2,84.7 86.5,76.3 74.8,80.3 62,79.7 37.9,73.4 52.5,58 69.4,44.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="8" points="107.4,28.1 115.8,41.3 121.9,59.9 126.7,79.7 128.6,89.6 128.8,97.1 124.3,96 116.3,92.3 106.1,82.3 96.1,70.5 87.8,51.5 85.2,35.9 96.9,31.5"></polygon>
+                    <polygon onclick="selectpoly(this)" id="6" points="158.1,19.6 157,32.4 153.1,52.4 145.9,74.2 138.8,95.1 136,107.2 136.7,125.7 131,126.9 130.3,115.2 128.8,102.7 128.8,97.1 128.6,89.6 126.7,79.7 121.9,59.9 115.8,41.3 107.4,28.1 124.3,23.4 140.4,20.4 151.5,19.6 154.6,20.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="37" points="231.6,120.9 230.1,141 230.8,157.7 232.3,170 224.7,174.3 213.4,179.8 211.8,163.5 212,153.2 213.8,142.9 219.5,130.6 226.8,126.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="39" points="223.1,87 232.9,88.6 239.4,96.1 234.7,109.4 231.6,120.9 226.8,126.3 219.5,130.6 216.5,116.4 208.1,108.4 214.3,96.7"></polygon>
+                    <polygon onclick="selectpoly(this)" id="19" points="262.4,61.7 271.3,71.6 279.1,84.6 272,95.5 262.4,109.6 258.7,126.9 259.8,146.9 259.6,169.4 247.9,168.2 239.4,168.2 232.3,170 230.8,157.7 230.1,141 231.6,120.9 234.7,109.4 239.4,96.1 246.1,82.3 254.6,69"></polygon>
+                    <polygon onclick="selectpoly(this)" id="18" points="285.2,94.6 291.5,108.8 284.3,115.2 277.4,128.5 275.6,145.6 276.5,164.7 268.9,167.9 259.6,169.4 259.8,146.9 258.7,126.9 262.4,109.6 272,95.5 279.1,84.6"></polygon>
+                    <polygon onclick="selectpoly(this)" id="17" points="294.8,119 295.8,131.7 294.8,144.8 289.7,154.3 283.5,160.3 276.5,164.7 275.6,145.6 277.4,128.5 284.3,115.2 291.5,108.8 293.6,114.2"></polygon>
+                    <polygon onclick="selectpoly(this)" id="7a" points="237.3,41.2 230.1,43.7 221.9,51 215.9,58.3 210.4,66.1 208.7,72.4 217.4,76.2 223,80.9 223.1,87 232.9,88.6 239.4,96.1 246.1,82.3 254.6,69 262.4,61.7 252.6,51.5 244.2,45"></polygon>
+                    <polygon onclick="selectpoly(this)" id="40" points="190.5,72.1 200.9,72.1 208.7,72.4 217.4,76.2 223,80.9 223.1,87 214.3,96.7 208.1,108.4 201.3,104.5 191.8,105.3 186.9,110.7 179.3,114.6 171.2,116.8 172.8,109.6 177.5,96.1 185.2,82.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="7b" points="208.1,26.2 221.3,31.3 237.3,41.2 230.1,43.7 221.9,51 215.9,58.3 210.4,66.1 208.7,72.4 190.5,72.1 192.5,65.9 199.7,60.5 205.4,50 208.7,36.5"></polygon>
+                    <polygon onclick="selectpoly(this)" id="5" points="198.8,26.2 203.9,25.2 208.1,26.2 208.7,36.5 205.4,50 199.7,60.5 192.5,65.9 194.8,53.8 195.3,41.2"></polygon>
+                    <polygon onclick="selectpoly(this)" id="42" points="178.5,121.4 176.3,125.1 174.4,129 188.8,124.1 199.9,115.9 208.1,108.4 201.3,104.5 191.8,105.3 186.9,110.7 179.3,114.6 179.4,118.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="41" points="158.1,124.3 165.2,121.3 171.2,116.8 179.3,114.6 179.4,118.8 178.5,121.4 176.3,125.1 174.4,129 159.7,133.5 155.5,133.7 156.1,129"></polygon>
+                    <polygon onclick="selectpoly(this)" id="52" points="141.2,125.1 150.2,124.8 158.1,124.3 156.1,129 155.5,133.7 148.7,134.2 138.3,131.7 131,126.9 136.7,125.7"></polygon>
+                    <polygon onclick="selectpoly(this)" id="43" points="141.9,112.2 148.6,109.1 157.3,108.4 166.9,108.7 172.8,109.6 171.2,116.8 165.2,121.3 158.1,124.3 150.2,124.8 141.2,125.1 141.2,117.7"></polygon>
+                    <polygon onclick="selectpoly(this)" id="2" points="196,24.4 198.8,26.2 195.3,41.2 194.8,53.8 192.5,65.9 190.5,72.1 185.2,82.3 177.5,96.1 172.8,109.6 166.9,108.7 161.8,108.5 167,98.8 171.2,86.2 178.5,68.7 181.2,59.1 182.1,49.3 186.2,38.3 191.1,29.9"></polygon>
+                    <polygon onclick="selectpoly(this)" id="1" points="186.7,20.3 190.5,20.3 193.4,21.7 196,24.4 191.1,29.9 186.2,38.3 182.1,49.3 181.2,59.1 178.5,68.7 171.2,86.2 167,98.8 161.8,108.5 157.3,108.4 152.7,108.8 156,98.3 163.2,83.7 170.1,69.6 171.2,53.4 175.5,40.2 183.1,27.6"></polygon>
+                    <polygon onclick="selectpoly(this)" id="3" points="176.1,23 182.1,20.3 186.7,20.3 183.1,27.6 175.5,40.2 171.2,53.4 170.1,69.6 156,98.3 152.7,108.8 148.6,109.1 141.9,112.2 144.6,101 150.8,89.3 158.1,78.3 160.4,70 160.6,52.9 163.2,44.8 170.3,33.2"></polygon>
+                    <polygon onclick="selectpoly(this)" id="4" points="164.9,18.7 171.2,19.6 176.1,23 170.3,33.2 163.2,44.8 160.6,52.9 160.4,70 158.1,78.3 150.8,89.3 144.6,101 141.9,112.2 141.2,117.7 141.2,125.1 136.7,125.7 136,107.2 138.8,95.1 153.1,52.4 157,32.4 158.1,19.6"></polygon>
+                </g>
+                <g id="bio2">
+                    <polygon onclick="selectpoly(this)" id="1" points="178.4,214.9 183.2,214 188.2,214.9 186.4,221.9 183.3,226.6 178.4,231.5 179.3,222.7"></polygon>
+                    <polygon onclick="selectpoly(this)" id="3" points="172.3,216.7 175.2,214.5 178.4,214.9 179.3,222.7 178.4,231.5 176.4,242.3 173.2,251.5 167.4,251.5 167.4,239.9 169.6,226.1"></polygon>
+                    <polygon onclick="selectpoly(this)" id="4" points="141.3,214 148.5,211.3 158.1,210.6 166.3,211.7 170.5,213.5 172.3,216.7 169.6,226.1 167.4,239.9 167.4,251.5 156.8,250.4 145.9,251.5 143.8,241.9 145.1,229.5 144.1,219.6"></polygon>
+                    <polygon onclick="selectpoly(this)" id="2" points="187.5,231 183.3,243.1 179.3,254.3 173.2,251.5 176.4,242.3 178.4,231.5 183.3,226.6 186.4,221.9 188.2,214.9 189.4,221.1"></polygon>
+                    <polygon onclick="selectpoly(this)" id="5" points="197.1,221.3 198.7,226.5 197.1,234.1 192.5,243.8 187.3,255.1 179.3,254.3 183.3,243.1 187.5,231 189.4,221.1 188.2,214.9 193.2,216.5"></polygon>
+                    <polygon onclick="selectpoly(this)" id="6" points="109.2,218.3 117.3,216.6 124.3,213.4 134.2,212.2 141.3,214 144.1,219.6 145.1,229.5 143.8,241.9 145.9,251.5 133.4,252.9 118.8,252.9 115.7,248 116.4,240.9 113.1,236.9 111.6,231"></polygon>
+                    <polygon onclick="selectpoly(this)" id="8" points="66.3,229.1 70.9,235 77.1,241.1 88.6,235.8 102.8,232.5 111.6,231 109.2,218.3 94.3,219.7 78.3,223.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="9" points="49,237.8 37.9,245.1 30.8,252.9 39.2,258.1 47.3,265.5 58.1,252.9 67.7,245.7 77.1,241.1 70.9,235 66.3,229.1"></polygon>
+                    <polygon onclick="selectpoly(this)" id="10" points="24,261.4 16.4,277.6 11.7,295.7 11.7,313 20.4,308.9 31.3,309.2 30.7,297.9 34.6,281.6 47.3,265.5 39.2,258.1 30.8,252.9"></polygon>
+                    <polygon onclick="selectpoly(this)" id="12" points="81.5,376.5 82.1,369.8 66.1,364.5 53.4,356.7 32.9,337.1 25.6,317.8 20.4,308.9 11.7,313 14.5,327.7 23.5,344.2 36.4,359.1 51.2,369 65.3,374.8 76.1,377.1"></polygon>
+                    <polygon onclick="selectpoly(this)" id="7" points="200.7,219.2 204.7,220.8 209.3,220.8 219.7,227.3 247.8,245.2 272,268.9 280.9,282.3 264.4,293.9 245.6,313.2 239.1,304.3 232.2,300.6 226.3,300.6 229.5,290 223.1,275.6 209.7,263.5 198.7,256.6 187.3,255.1 192.5,243.8 197.1,234.1 198.7,226.5 197.1,221.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="19" points="291.5,343.9 294.4,332.5 293.9,314.2 289,296.4 280.9,282.3 264.4,293.9 245.6,313.2 260.8,318.1 277,328.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="18" points="279.5,358.9 287,352 291.5,343.9 277,328.3 260.8,318.1 245.6,313.2 237.8,318.7 230.6,326.2 244.5,330.8 265.2,345.2"></polygon>
+                    <polygon onclick="selectpoly(this)" id="31" points="188,264.9 199.5,271.2 208.2,281.3 213.2,295.1 215.4,307.3 214.5,318.4 230.6,326.2 237.8,318.7 245.6,313.2 239.1,304.3 232.2,300.6 226.3,300.6 229.5,290 223.1,275.6 209.7,263.5 198.7,256.6 187.3,255.1 179.3,254.3 181.3,260.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="23" points="185.2,275.3 182,280.8 181.5,288.6 188.6,289.9 197.1,289.9 203.8,294 206.4,300 205.9,305.5 202.9,309 196.1,311.4 214.5,318.4 215.4,307.3 213.2,295.1 208.2,281.3 199.5,271.2 188,264.9 187.3,270.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="17" points="268.8,364.9 256.8,369.6 252.5,357.7 241.9,348.9 228.4,346.6 214.1,347.3 205.6,345.6 216.8,333.9 230.6,326.2 244.5,330.8 265.2,345.2 279.5,358.9"></polygon>
+                    <polygon onclick="selectpoly(this)" id="18" points="190.9,358 211.3,360.2 224,360.2 238.4,365.9 245.6,375 256.8,369.6 252.5,357.7 241.9,348.9 228.4,346.6 214.1,347.3 205.6,345.6 197.2,350.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="19" points="227.4,384.7 236.4,378.8 245.6,375 238.4,365.9 224,360.2 211.3,360.2 190.9,358 185.1,361 180.7,365.1 192,364.8 201,367.2 213.2,373.2 221.7,378.4"></polygon>
+                    <polygon onclick="selectpoly(this)" id="37" points="198.2,386.2 200.5,394 200.5,401.1 211.1,395.3 220.8,389.6 227.4,384.7 221.7,378.4 213.2,373.2 201,367.2 198.2,377.4"></polygon>
+                    <polygon onclick="selectpoly(this)" id="29" points="188.5,323.3 182.3,335.5 189.4,340.8 190.9,347.9 190.9,358 197.2,350.8 205.6,345.6 216.8,333.9 230.6,326.2 214.5,318.4 196.1,311.4"></polygon>
+                    <polygon onclick="selectpoly(this)" id="20" points="114.7,407.1 112.8,411.7 112.8,417.5 122.7,419.5 139.4,419.5 155.5,416.9 174.6,411.3 190.9,405.4 200.5,401.1 200.5,394 198.2,386.2 198.2,377.4 201,367.2 185,379.8 166.5,392 145.1,402.6 138.1,406.3 125.4,407.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="36" points="166.3,369.6 156.9,381.5 149.1,393.3 145.1,402.6 166.5,392 185,379.8 201,367.2 192,364.8 180.7,365.1 171.1,366.6"></polygon>
+                    <polygon onclick="selectpoly(this)" id="35" points="175.7,345.2 165.3,353.7 167.1,362 166.3,369.6 171.1,366.6 180.7,365.1 185.1,361 190.9,358 190.9,347.9 189.4,340.8 182.3,335.5"></polygon>
+                    <polygon onclick="selectpoly(this)" id="28" points="128.9,373.5 140.2,370.3 155.6,361.4 165.3,353.7 167.1,362 166.3,369.6 156.9,381.5 143.4,387.6 129.5,392.5 121.6,391.4 127.7,385.5 130,379.4"></polygon>
+                    <polygon onclick="selectpoly(this)" id="34" points="108.1,364.8 108.1,373.1 111.7,382.4 116,388.6 121.6,391.4 127.7,385.5 130,379.4 128.9,373.5 126.3,367.2 120,361.4 112.8,360.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="38" points="99.5,370.5 96.5,378.7 90.8,392.5 92.4,405.5 100.3,412.9 112.8,417.5 112.8,411.7 114.7,407.1 119.1,398.6 121.6,391.4 116,388.6 111.7,382.4 108.1,373.1 108.1,364.8"></polygon>
+                    <polygon onclick="selectpoly(this)" id="35" points="149.1,393.3 145.1,402.6 138.1,406.3 125.4,407.8 114.7,407.1 119.1,398.6 121.6,391.4 129.5,392.5 143.4,387.6 156.9,381.5"></polygon>
+                    <polygon onclick="selectpoly(this)" id="25" points="107,326.8 114.7,331.5 120.1,339.6 120.6,348.7 118.6,353.7 112.8,360.3 108.1,364.8 99.5,370.5 90.1,375 81.5,376.5 82.1,369.8 83.9,361.6 86.8,352.5 89.6,345 97.1,333.4 103.4,327.6"></polygon>
+                    <polygon onclick="selectpoly(this)" id="11" points="50.8,339.7 63.6,351.6 75.3,358 83.9,361.6 82.1,369.8 66.1,364.5 53.4,356.7 32.9,337.1 25.6,317.8 20.4,308.9 31.3,309.2 34.9,320.4 44.3,330.9"></polygon>
+                    <polygon onclick="selectpoly(this)" id="32" points="71,325.4 65.3,307.1 64.5,293.4 70.3,278 81,266.5 95,259.5 109.9,254.5 116.8,249.8 115.7,248 116.4,240.9 113.1,236.9 111.6,231 88.6,235.8 77.1,241.1 67.7,245.7 58.1,252.9 47.3,265.5 34.6,281.6 30.7,297.9 31.3,309.2 34.9,320.4 44.3,330.9 50.8,339.7 63.6,351.6 75.3,358 83.9,361.6 86.8,352.5 89.6,345 81.5,338.4 75.1,332.3"></polygon>
+                    <polygon onclick="selectpoly(this)" id="33" points="123.6,266.2 123.6,279.8 111.6,281.6 97.4,286.5 92.2,294.2 92.2,304.8 93.9,314.5 98.9,321.9 107,326.8 103.4,327.6 97.1,333.4 89.6,345 81.5,338.4 75.1,332.3 71,325.4 65.3,307.1 64.5,293.4 70.3,278 81,266.5 95,259.5 109.9,254.5 116.8,249.8 118.8,252.9 122.3,259.5"></polygon>
+                    <polygon onclick="selectpoly(this)" id="24" points="141.3,279.1 155.9,279.1 169.6,284.3 181.5,288.6 182,280.8 185.2,275.3 187.3,270.8 188,264.9 181.3,260.8 179.3,254.3 173.2,251.5 167.4,251.5 156.8,250.4 145.9,251.5 133.4,252.9 118.8,252.9 122.3,259.5 123.6,266.2 123.6,279.8 134.2,279.7"></polygon>
+                    <polygon onclick="selectpoly(this)" id="27" points="173.1,333.3 182.3,335.5 175.7,345.2 165.3,353.7 155.6,361.4 140.2,370.3 128.9,373.5 126.3,367.2 120,361.4 112.8,360.3 118.6,353.7 133.1,352.5 138.9,354.7 144.4,350.1 153.6,349.7 163.5,343"></polygon>
+                    <polygon onclick="selectpoly(this)" id="30" points="188,313.2 180.7,323 173.1,333.3 182.3,335.5 188.5,323.3 196.1,311.4"></polygon>
+                    <polygon onclick="selectpoly(this)" id="29" points="110.6,298.1 121.6,295.5 136.2,294.6 150.7,297.4 162.6,299 173.1,301.6 187.3,307.8 196.1,311.4 188,313.2 173.1,333.3 163.5,343 153.6,349.7 144.4,350.1 138.9,354.7 133.1,352.5 118.6,353.7 120.6,348.7 124.3,345.6 122.8,336.6 116.2,327.5 106.9,318.4 102.3,309.4 105.3,302.5"></polygon>
+                </g>
+                <g id="borders">
+                    <polygon onclick="selectpoly(this)" class="st2" points="171.2,19.6 164.9,18.7 158.1,19.6 154.6,20.3 151.5,19.6 140.4,20.4 124.3,23.4 107.4,28.1 85.2,35.9 69.4,44.8 52.5,58 37.9,73.4 29.2,85.4 18.9,104 13.6,121.5 12.9,137.1 15.4,151.8 22.9,161.6 30.1,168.6 36.9,172.2 48.6,177.1 67.3,180.6 87.5,181.4 102.4,180.4 107.4,186.6 112.5,189.9 119.7,191.4 128.8,191.4 146.6,189 163.7,184.9 172.6,180.5 189.5,180.1 206.5,181.6 213.4,179.8 224.7,174.3 232.3,170 239.4,168.2 247.9,168.2 259.6,169.4 268.9,167.9 276.5,164.7 283.5,160.3 289.7,154.3 294.8,144.8 295.8,131.7 294.8,119 293.6,114.2 291.5,108.8 285.2,94.6 279.1,84.6 271.3,71.6 262.4,61.7 252.6,51.5 244.2,45 237.3,41.2 221.3,31.3 208.1,26.2 203.9,25.2 198.8,26.2 196,24.4 193.4,21.7 190.5,20.3 186.7,20.3 182.1,20.3 176.1,23"></polygon>
+                    <polygon onclick="selectpoly(this)" class="st2" points="120.6,348.7 124.3,345.6 122.8,336.6 116.2,327.5 106.9,318.4 102.3,309.4 105.3,302.5 110.6,298.1 121.6,295.5 136.2,294.6 150.7,297.4 162.6,299 173.1,301.6 196.1,311.4 202.9,309 205.9,305.5 206.4,300 203.8,294 197.1,289.9 188.6,289.9 181.5,288.6 155.9,279.1 141.3,279.1 134.2,279.7 123.6,279.8 111.6,281.6 97.4,286.5 92.2,294.2 92.2,304.8 93.9,314.5 98.9,321.9 107,326.8 114.7,331.5 120.1,339.6"></polygon>
+                    <polygon onclick="selectpoly(this)" class="st2" points="66.3,229.1 49,237.8 37.9,245.1 30.8,252.9 24,261.4 16.4,277.6 11.7,295.7 11.7,313 14.5,327.7 23.5,344.2 36.4,359.1 51.2,369 65.3,374.8 76.1,377.1 81.5,376.5 90.1,375 99.5,370.5 96.5,378.7 90.8,392.5 92.4,405.5 100.3,412.9 112.8,417.5 122.7,419.5 139.4,419.5 155.5,416.9 174.6,411.3 190.9,405.4 200.5,401.1 220.8,389.6 227.4,384.7 236.4,378.8 245.6,375 256.8,369.6 268.8,364.9 279.5,358.9 287,352 291.5,343.9 294.4,332.5 293.9,314.2 289,296.4 280.9,282.3 272,268.9 247.8,245.2 209.3,220.8 204.7,220.8 200.7,219.2 197.1,221.3 193.2,216.5 188.2,214.9 183.2,214 178.4,214.9 175.2,214.5 172.3,216.7 170.5,213.5 166.3,211.7 158.1,210.6 148.5,211.3 141.3,214 134.2,212.2 124.3,213.4 117.3,216.6 109.2,218.3 94.3,219.7 78.3,223.8"></polygon>
+                </g>
+            </svg>                                  
+        </div>
+        <div class="right">
+            <div class="text" id="question">
+                zły
+            </div>
+        </div>
+    </div>
+
+    <script src="svg.js"></script>
+    <script>
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+        };
+        function polycenter(points){
+            if(!points) return;
+
+            const pointsArray = points.split(' ');
+            const center = {
+                x: 0,
+                y: 0
+            };
+
+            for(let i = 0; i < pointsArray.length; i++){
+                const pair = pointsArray[i].split(',');
+
+                center.x += (pair[0] / pointsArray.length);
+                center.y += (pair[1] / pointsArray.length);
+            }
+
+            return center;
+        };
+    </script>
+    <script>
+        const questions = {
+            "1": "ośrodek czucia somatycznego",
+            "2": "ośrodek czucia somatycznego",
+            "3": "ośrodek czucia somatycznego",
+            "4": "sterowanie ruchami dowolnymi",
+            "5": "ośrodek asocjacyjny czucia somatycznego",
+            "6": "programowanie ruchów dowolnych",
+            "7a": "uwaga wzrokowa",
+            "7b": "ośrodek asocjacyjny czucia somatycznego",
+            "8a": "dowolne ruchy gałek ocznych",
+            "9": "sterowanie złożonymi formami zachowania",
+            "10": "sterowanie złożonymi formami zachowania",
+            "11": "sterowanie złożonymi formami zachowania",
+            "12": "sterowanie złożonymi formami zachowania",
+            "17": "analiza wstępna synteza informacji wzrokowej",
+            "18": "analiza wstępna synteza informacji wzrokowej",
+            "19": "analiza wstępna synteza informacji wzrokowej",
+            "20": "synteza informacji wzrokowej",
+            "21": "synteza informacji wzrokowej",
+            "22": "analiza informacji słuchowej",
+            "23": "sterowanie czynnościami popędowo-emocjonalnymi",
+            "24": "sterowanie czynnościami popędowo-emocjonalnymi",
+            "25": "sterowanie czynnościami popędowo-emocjonalnymi",
+            "32": "sterowanie czynnościami popędowo-emocjonalnymi",
+            "41": "odbiór mowy",
+            "42": "odbiór mowy, analiza informacji słuchowej",
+            "44": "nadawanie mowy",
+            "45": "nadawanie mowy",
+            "46": "pamięć operacyjna"
+        };
+        let questionsNumbers = '<text x="69.633333" y="114.56" id="text-46" style="font-size: 6px;">46</text><text x="67.327273" y="157.372727" id="text-47" style="font-size: 6px;">47</text><text x="83.28666666666666" y="148.16333333333333" id="text-45" style="font-size: 6px;">45</text><text x="118.854545" y="116.41818181818182" id="text-44" style="font-size: 6px;">44</text><text x="170.02105263157895" y="160.357895" id="text-21" style="font-size: 6px;">21</text><text x="170.07894736842107" y="141.663158" id="text-22" style="font-size: 6px;">22</text><text x="170.72857142857143" y="177.14285714285717" id="text-20" style="font-size: 6px;">20</text><text x="108.5875" y="168.51250000000002" id="text-38" style="font-size: 6px;">38</text><text x="69.65" y="176.075" id="text-11" style="font-size: 6px;">11</text><text x="39.461111111111116" y="131.42222222222222" id="text-10" style="font-size: 6px;">10</text><text x="94.45" y="86.13000000000001" id="text-9" style="font-size: 6px;">9</text><text x="110.91538461538462" y="65.82307692307693" id="text-8" style="font-size: 6px;">8</text><text x="135.785" y="66.53999999999999" id="text-6" style="font-size: 6px;">6</text><text x="218.436364" y="150.9272727272727" id="text-37" style="font-size: 6px;">37</text><text x="224.69" y="108.04" id="text-39" style="font-size: 6px;">39</text><text x="243.677778" y="119.38888888888887" id="text-19" style="font-size: 6px;">19</text><text x="267.153846" y="127.55384615384614" id="text-18" style="font-size: 6px;">18</text><text x="284.045455" y="139.190909" id="text-17" style="font-size: 6px;">17</text><text x="232.49999999999997" y="66.9375" id="text-7a" style="font-size: 6px;">7a</text><text x="197" y="94.10624999999999" id="text-40" style="font-size: 6px;">40</text><text x="211.5769230769231" y="51.93846153846154" id="text-7b" style="font-size: 6px;">7b</text><text x="200.8" y="42.833333333333336" id="text-5" style="font-size: 6px;">5</text><text x="187.70000000000005" y="116.16363636363637" id="text-42" style="font-size: 6px;">42</text><text x="168.5181818181818" y="124.31818181818181" id="text-41" style="font-size: 6px;">41</text><text x="146.2" y="132.377778" id="text-52" style="font-size: 6px;">52</text><text x="151.872727" y="118.181818" id="text-43" style="font-size: 6px;">43</text><text x="182.74444444444444" y="67.72777777777777" id="text-2" style="font-size: 6px;">2</text><text x="175.74" y="60.775" id="text-1" style="font-size: 6px;">1</text><text x="164" y="64.01666666666665" id="text-3" style="font-size: 6px;">3</text><text x="153.90526315789475" y="69.37894736842104" id="text-4" style="font-size: 6px;">4</text><text x="181.457143" y="221.928571" id="text-1" style="font-size: 6px;">1</text><text x="171.76" y="235.16" id="text-3" style="font-size: 6px;">3</text><text x="156.9357142857143" y="227.72857142857143" id="text-4" style="font-size: 6px;">4</text><text x="179.54" y="238.82" id="text-2" style="font-size: 6px;">2</text><text x="190.3272727272727" y="232.88181818181818" id="text-5" style="font-size: 6px;">5</text><text x="127.61333333333334" y="231.97333333333333" id="text-6" style="font-size: 6px;">6</text><text x="88.78888888888889" y="229.5888888888889" id="text-8" style="font-size: 6px;">8</text><text x="54.430000000000014" y="246.31999999999996" id="text-9" style="font-size: 6px;">9</text><text x="22.1" y="283.79999999999995" id="text-10" style="font-size: 6px;">10</text><text x="31.764286" y="349.7285714285714" id="text-12" style="font-size: 6px;">12</text><text x="222.68571428571425" y="260.1714285714285" id="text-7" style="font-size: 6px;">7</text><text x="277.5" y="313.64444444444445" id="text-19" style="font-size: 6px;">19</text><text x="261.95" y="333.53" id="text-18" style="font-size: 6px;">18</text><text x="213.64736842105262" y="287.2473684210526" id="text-31" style="font-size: 6px;">31</text><text x="193.564706" y="283.376471" id="text-23" style="font-size: 6px;">23</text><text x="242.0583333333333" y="344.966667" id="text-17" style="font-size: 6px;">17</text><text x="225.55833333333334" y="357.15000000000003" id="text-18" style="font-size: 6px;">18</text><text x="212.90000000000003" y="368.65384615384613" id="text-19" style="font-size: 6px;">19</text><text x="209.25999999999996" y="384.71000000000004" id="text-37" style="font-size: 6px;">37</text><text x="200.25454545454545" y="335.6181818181818" id="text-29" style="font-size: 6px;">29</text><text x="160.10555555555553" y="405.294444" id="text-20" style="font-size: 6px;">20</text><text x="171.37" y="378.25000000000006" id="text-36" style="font-size: 6px;">36</text><text x="178.6181818181818" y="355.03636363636366" id="text-35" style="font-size: 6px;">35</text><text x="144.37500000000003" y="377.7" id="text-28" style="font-size: 6px;">28</text><text x="116.2" y="378.236364" id="text-34" style="font-size: 6px;">34</text><text x="102.457143" y="395.521429" id="text-38" style="font-size: 6px;">38</text><text x="130.29" y="401.87" id="text-35" style="font-size: 6px;">35</text><text x="100.99374999999999" y="352.33125" id="text-25" style="font-size: 6px;">25</text><text x="39.123077" y="340.4769230769231" id="text-11" style="font-size: 6px;">11</text><text x="48.06" y="291.7033333333333" id="text-32" style="font-size: 6px;">32</text><text x="76.916667" y="295.8166666666667" id="text-33" style="font-size: 6px;">33</text><text x="147.53" y="268.695" id="text-24" style="font-size: 6px;">24</text><text x="145.76874999999998" y="360.09375" id="text-27" style="font-size: 6px;">27</text><text x="177.783333" y="331.283333" id="text-30" style="font-size: 6px;">30</text><text x="141.29565217391303" y="323.66521739130434" id="text-29" style="font-size: 6px;">29</text>';
+
+        let rightAnswers = null;
+
+        function selectpoly(e){
+            if(rightAnswers === null) return;
+
+            if(rightAnswers.includes(e.id)){
+                document.getElementById('question').innerHTML = '<b style="color:#62d749;">dobrze! 😘</b><button onclick="randomquestion()">jeszcze</button>';
+            } else {
+                document.getElementById('question').innerHTML = '<b style="color:#dd4542;">błąd 😔</b><button onclick="randomquestion()">jeszcze</button>';
+                e.style.fill = "#dd4542";
+                e.style.strokeWidth = 1;
+                e.style.stroke = "#dd4542";
+            }
+
+            for(let i in rightAnswers){
+                document.getElementById(rightAnswers[i]).style.fill = "#62d749";
+                document.getElementById(rightAnswers[i]).style.strokeWidth = 1;
+                document.getElementById(rightAnswers[i]).style.stroke = "#62d749";
+            }
+
+            showNumbers();
+        }
+
+        function showNumbers(){
+            let html = `<g id="texts">`;
+
+            let polygons = document.getElementsByTagName('polygon');
+            for(let i in polygons){
+                if(typeof polygons[i] !== 'object') continue;
+                if(polygons[i].id.length === 0) continue;
+
+                polygons[i].style.stroke = '#3b3b3b';
+                polygons[i].style.strokeWidth = 1;
+            }
+
+            html += questionsNumbers;
+            document.getElementsByTagName('svg')[0].innerHTML += html + "</g>";
+        }
+
+        function randomquestion(){
+            let polygons = document.getElementsByTagName('polygon');
+            for(let i in polygons)
+                if(polygons[i].points){
+                    polygons[i].style.fill = null;
+                    polygons[i].style.stroke = null;
+                    polygons[i].style.strokeWidth = null;
+                }
+            
+            if(rightAnswers)
+                document.getElementById("texts").remove();
+
+            let keys = Object.keys(questions);
+            let key = keys[getRandomInt(0, keys.length-1)];
+            
+            let right = [];
+            for(let i in keys)
+                if(questions[keys[i]] === questions[key]) right.push(keys[i]);
+
+            rightAnswers = right;
+            document.getElementById('question').innerHTML = questions[key];
+        }
+        randomquestion();
+
+        function gettextcoords(){
+            let texts = document.getElementsByTagName('text');
+            let coords = {};
+            for(let i in texts){
+                if(typeof texts[i] !== 'object') continue;
+                
+                coords[texts[i].id.split('-')[1]] = [texts[i].x.baseVal[0].value*1, texts[i].y.baseVal[0].value*1];
+            }
+
+            console.log(coords)
+        }
+    </script>
+</body>
+</html>
